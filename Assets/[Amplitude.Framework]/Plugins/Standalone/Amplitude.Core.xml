@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Amplitude.Core</name>
+    </assembly>
+    <members>
+        <member name="T:Amplitude.Core.AppDomain.AppDomain">
+            <summary>
+            Represent an app domain.
+            </summary>
+        </member>
+        <member name="M:Amplitude.Core.AppDomain.AppDomain.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Amplitude.Core.AppDomain.AppDomain"/> class.
+            </summary>
+            <param name="domainName">The name of the Application Domain.</param>
+        </member>
+        <member name="M:Amplitude.Core.AppDomain.AppDomain.#ctor(System.String,System.Security.IPermission[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Amplitude.Core.AppDomain.AppDomain"/> class.
+            </summary>
+            <param name="domainName">The name of the Application Domain.</param>
+            <param name="permissions">The initial set of permissions of the Application Domain. Note: Permissions are not working in Unity.</param>
+        </member>
+        <member name="M:Amplitude.Core.AppDomain.AppDomain.LoadAssemblies(System.String[])">
+            <summary>
+            Load assemblies in the application domain and create an instance of all classes that derive from TProxy.
+            </summary>
+            <param name="paths">Paths of the assemblies to load.</param>
+        </member>
+        <member name="M:Amplitude.Core.AppDomain.AppDomain.CreateInstances``1">
+            <summary>
+            Create an instance of each type that derive from TBase.
+            </summary>
+            <typeparam name="T">The base type of instances to create.</typeparam>
+            <returns>Returns a list of instances.</returns>
+        </member>
+        <member name="M:Amplitude.Core.AppDomain.AppDomain.Unload">
+            <summary>
+            Unload the application domain.
+            </summary>
+        </member>
+        <member name="M:Amplitude.Core.AppDomain.Proxy.LoadFile(System.String)">
+            <summary>
+            Loads the content of a file to a byte array.
+            </summary>
+            <param name="filePath">The file path.</param>
+            <returns>Returns the content of a file.</returns>
+        </member>
+        <member name="F:Amplitude.Core.AssemblyInfo.Name">
+            <summary>Gets the assembly name.</summary>
+        </member>
+        <member name="F:Amplitude.Core.AssemblyInfo.FullName">
+            <summary>Gets the assembly full name.</summary>
+        </member>
+        <member name="F:Amplitude.Core.AssemblyInfo.Version">
+            <summary>
+            Gets the assembly version used during build and at runtime to locate, link, and load the assemblies.
+            It is provided by <see cref="T:System.Reflection.AssemblyVersionAttribute"/>.
+            </summary>
+        </member>
+        <member name="F:Amplitude.Core.AssemblyInfo.InternalVersion">
+            <summary>
+            Gets the assembly version used internally by Amplitude projects.
+            It is provided by <see cref="T:Amplitude.Core.AssemblyVersionAttribute"/>.
+            </summary>
+        </member>
+        <member name="F:Amplitude.Core.AssemblyInfo.FullVersion">
+            <summary>
+            Gets the assembly full version used to track its exact revision.
+            It is provided by <see cref="T:System.Reflection.AssemblyInformationalVersionAttribute"/>.
+            </summary>
+        </member>
+    </members>
+</doc>

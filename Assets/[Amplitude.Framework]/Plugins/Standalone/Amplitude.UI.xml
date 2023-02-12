@@ -1,0 +1,386 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Amplitude.UI</name>
+    </assembly>
+    <members>
+        <member name="T:Amplitude.UI.Animations.UIAnimationBaseController">
+            <summary>
+            Provides basic operation on the Items list hold by any IUIAnimationController realization.
+            </summary>
+        </member>
+        <member name="T:Amplitude.UI.Animations.UIAnimationController">
+            <summary>
+            Standard implementation of IUIAnimationController. Only concerns one target.
+            </summary>
+        </member>
+        <member name="M:Amplitude.UI.Animations.UIAnimationMultiController.SetTarget(Amplitude.UI.Animations.IUIAnimationItem,Amplitude.UI.UIComponent)">
+            <summary>
+            HACK: Set the target at index index to target and initialize the corresponding item.
+            Should not be internal here but shouldn't be in IUIAnimationControllerINSPECTABLE either.
+            </summary>
+            <param name="item">Item whose target will change.</param>
+            <param name="target">Value of the new target.</param>
+        </member>
+        <member name="M:Amplitude.UI.Animations.IUIAnimationController.ReverseAnimations(System.Boolean)">
+            <summary>
+            If no AnimationItem is InProgress, behave exactly like IUIAnimationController.StartAnimation(!allReversed).
+            Otherwise, reverse the AnimationItem in progress and start the others ignoring their delays.
+            </summary>
+            <param name="allReversed">Should all the items be reversed.</param>
+        </member>
+        <member name="P:Amplitude.UI.Animations.IUIAnimationItem.IsInitialized">
+            <summary>
+            Gets a value indicating whether the Item has a valid Target and a Client.
+            </summary>
+        </member>
+        <member name="P:Amplitude.UI.Animations.IUIAnimationItem.OncePerController">
+            <summary>
+            Gets a value indicating whether an AnimationController can own multiple instance of the same IAnimationItem implementation.
+            </summary>
+        </member>
+        <member name="P:Amplitude.UI.Animations.IUIAnimationItem.Interpolator">
+            <summary>
+            Gets a value indicating the entity containing the Min and Max value. Actual implementation depending
+            on the actual type of the values.
+            </summary>
+        </member>
+        <member name="P:Amplitude.UI.Animations.IUIAnimationItem.Curve">
+            <summary>
+            Gets or sets a value indicating the interpolation curve.
+            </summary>
+        </member>
+        <member name="P:Amplitude.UI.Animations.IUIAnimationItem.Duration">
+            <summary>
+            Gets or sets a value indicating the duration of the animation.
+            </summary>
+        </member>
+        <member name="P:Amplitude.UI.Animations.IUIAnimationItem.IsPaused">
+            <summary>
+            Gets or sets a value indicating whether the animation is paused or not.
+            A paused item still receives updates (the animation is still in progress).
+            </summary>
+        </member>
+        <member name="P:Amplitude.UI.Animations.IUIAnimationItem.Repeat">
+            <summary>
+            Gets or sets a value indicating whether the animation should loop once it is over.
+            </summary>
+        </member>
+        <member name="P:Amplitude.UI.Animations.IUIAnimationItem.Delay">
+            <summary>
+            Gets or sets how long the animation should be delayed when launched forward.
+            </summary>
+        </member>
+        <member name="P:Amplitude.UI.Animations.IUIAnimationItem.ReverseDelay">
+            <summary>
+            Gets or sets how long the animation should be delayed when launched backward.
+            </summary>
+        </member>
+        <member name="P:Amplitude.UI.Animations.IUIAnimationItem.AutoTrigger">
+            <summary>
+            Gets or sets a value indicating whether the item should be launched as soon as its target is visible.
+            </summary>
+        </member>
+        <member name="P:Amplitude.UI.Animations.IUIAnimationItem.InProgress">
+            <summary>
+            Gets a value indicating whether the Animation is in progress.
+            </summary>
+        </member>
+        <member name="P:Amplitude.UI.Animations.IUIAnimationItem.IsReversed">
+            <summary>
+            Gets a value indicating whether the Animation is reversed.
+            </summary>
+        </member>
+        <member name="M:Amplitude.UI.Animations.IUIAnimationItem.IsValidTarget(Amplitude.UI.UIComponent)">
+            <summary>
+            Test the passed Component against the Traits it should have in order to be altered by 
+            that item.
+            </summary>
+            <param name="potentialTarget">Tested component.</param>
+            <returns>Returns true if potentialTarget can be this item target.</returns>
+        </member>
+        <member name="M:Amplitude.UI.Animations.IUIAnimationItem.Initialize(Amplitude.UI.Animations.IUIAnimationItemClient,System.Object,System.Boolean)">
+            <summary>
+            Sets the item target if possible.
+            </summary>
+            <param name="client">Item client that should be warned of some of the items' behaviors.</param>
+            <param name="target">Component that will be affected by that item.</param>
+            <param name="setValuesToDefault">Whether the current values of the component should be applied to the interpolator.</param>
+        </member>
+        <member name="M:Amplitude.UI.Animations.IUIAnimationItem.StartAnimation(System.Boolean,System.Boolean)">
+            <summary>
+            Start the items from the beginning.
+            </summary>
+            <param name="forward">Should the animation be played forward.</param>
+            <param name="ignoreDelays">Should the delays be ignored.</param>
+        </member>
+        <member name="M:Amplitude.UI.Animations.IUIAnimationItem.ResetAnimation(System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Reset the state of this Item so that the animation can be started from the beginning or the end.
+            Take into account the fact the animation is played forward or backward.
+            Optionally, applies the value of these milestones.
+            </summary>
+            <param name="toStart">Should the animation be set to the beginning or the end.</param>
+            <param name="applyValue">Should the value be applied to the target.</param>
+            <param name="ignoreDelays">Should the delays be ignored.</param>
+        </member>
+        <member name="M:Amplitude.UI.Animations.IUIAnimationItem.StopAnimation">
+            <summary>
+            Stop the animation played by the Item but does not alter the Target.
+            The item will just stop receiving updates.
+            </summary>
+        </member>
+        <member name="M:Amplitude.UI.Animations.IUIAnimationItem.UpdateAnimation">
+            <summary>
+            Updates the currentTime of the animation, perform the interpolation and apply the value to the target.
+            Only the UIAnimationManager should call that method.
+            </summary>
+            <returns>Returns true if this item still requires updates.</returns>
+        </member>
+        <member name="T:Amplitude.UI.Animations.IUIAnimationItemSerializable">
+            <summary>
+            This interface is a way to provide method used in serialization process.
+            It should not be used anywhere else in the code.
+            </summary>
+        </member>
+        <member name="T:Amplitude.UI.Animations.IUIAnimationManagedController">
+            <summary>
+            Interface providing the methods called by the UIAnimationManager.
+            </summary>
+        </member>
+        <member name="M:Amplitude.UI.Animations.IUIAnimationManagedController.UpdateAnimation">
+            <summary>
+            Loop through all the Items and update the ones in progress.
+            </summary>
+            <returns>Returns true if any of the Item is in progress.</returns>
+        </member>
+        <member name="T:Amplitude.UI.Animations.UIAnimationItemsCollection">
+            <summary>
+            Encapsulates collection-related helpers, as well as Serialization process for any Item.
+            </summary>
+        </member>
+        <member name="E:Amplitude.UI.Animations.UIAnimationTemplate.OnAfterDeserialization">
+            <summary>
+            HACK Each AnimationController initializes its items using its registered Template at Deserialization.
+            However, the order of deserialization cannot be guaranteed, therefore, the Controller can be deserialized
+            while the Template is not. In this case, the Controller register to that event to initialize its items.
+            Get rid of that event as soon as there is a better way to initialize these Controllers in Editor.
+            </summary>
+        </member>
+        <member name="T:Amplitude.UI.Animations.Scene.UIAnimatorComponent.AnimationItemOrder">
+            <summary>
+            Description of an AnimationItem expected from the currently inspected Target (see CreateItems).
+            </summary>
+        </member>
+        <member name="M:Amplitude.UI.Boards.IUIBoardEntry.Load(Amplitude.UI.Boards.IUIBoardProxy)">
+            <summary>
+            Cells instantiations should occur here.
+            </summary>
+            <param name="proxy">Gather all the information required to define the Board.</param>
+        </member>
+        <member name="M:Amplitude.UI.Boards.IUIBoardEntry.Unload">
+            <summary>
+            Destroy anything that was created on Load call.
+            </summary>
+        </member>
+        <member name="M:Amplitude.UI.Boards.IUIBoardEntry.Bind``1(``0)">
+            <summary>
+            Data binding should occur here. The data will not be sent back, a reference should be kept if required.
+            </summary>
+            <typeparam name="TData">Type of data that is being sent.</typeparam>
+            <param name="data">Data reflected by data-binding.</param>
+        </member>
+        <member name="M:Amplitude.UI.Boards.IUIBoardEntry.Unbind">
+            <summary>
+            Any reference kept on Bind should be reset here.
+            </summary>
+        </member>
+        <member name="M:Amplitude.UI.Boards.IUIBoardImpl.Sort">
+            <summary>
+            Sort the Board entries according to the current Comparer state.
+            </summary>
+        </member>
+        <member name="P:Amplitude.UI.Boards.IUIBoardProxy.Comparer">
+            <summary>
+            Gets a Comparer whose job is to keep track of the various sorts applied to the different entries.
+            Any modification to this object should be followed by a call to Sort.
+            </summary>
+        </member>
+        <member name="M:Amplitude.UI.Boards.IUIBoardProxy.Sort">
+            <summary>
+            Sort the entries according to the current Comparer state.
+            </summary>
+        </member>
+        <member name="M:Amplitude.UI.Boards.IUIBoardProxy.OnSelectionChanged">
+            <summary>
+            Called when the selection is changed but not definitive.
+            </summary>
+        </member>
+        <member name="M:Amplitude.UI.Boards.IUIBoardProxy.OnSelectionPicked">
+            <summary>
+            Called when the selection is done immediately (e.g. through a double-click).
+            </summary>
+        </member>
+        <member name="T:Amplitude.UI.Boards.UIBoard">
+            <summary>
+            Proxy class managing the actual heavy-lifting UITable implementation.
+            </summary>
+        </member>
+        <member name="M:Amplitude.UI.Boards.UIBoard.Load``1(Amplitude.UI.Boards.IUIBoardEntryEnabler{``0})">
+            <summary>
+            Instantiate an initial line that will be copied for other entries.
+            </summary>
+            <typeparam name="DataType">Type that will be used as data.</typeparam>
+            <param name="validator">Object used to define what entry should be enabled.</param>
+        </member>
+        <member name="M:Amplitude.UI.Boards.UIBoard.Unload">
+            <summary>
+            Release all the data, destroy all the GameObjects that were created since the last Load call.
+            </summary>
+        </member>
+        <member name="M:Amplitude.UI.Boards.UIBoard.Refresh">
+            <summary>
+            Refresh all the Entries. Create new Entries if any new one is needed.
+            </summary>
+        </member>
+        <member name="M:Amplitude.UI.Boards.UIBoard.Add``1(``0,System.Boolean)">
+            <summary>
+            Add a data to the others.
+            </summary>
+            <typeparam name="DataType">Type of the data. Should be the same as the one used in Load.</typeparam>
+            <param name="newData">New data instance.</param>
+            <param name="rebindNow">Should the new entry be created/bound right away? Set to false if multiple operations will be done immediately.</param>
+        </member>
+        <member name="M:Amplitude.UI.Boards.UIBoard.AddRange``1(System.Collections.Generic.IEnumerable{``0},System.Boolean)">
+            <summary>
+            Add multiple data to the others.
+            </summary>
+            <typeparam name="DataType">Type of the data. Should be the same as the one used in Load.</typeparam>
+            <param name="newData">New data instance.</param>
+            <param name="rebindNow">Should the new entry be created/bound right away? Set to false if multiple operations will be done immediately.</param>
+        </member>
+        <member name="M:Amplitude.UI.Boards.UIBoard.Remove``1(``0)">
+            <summary>
+            Remove the data from the collection. Immediately hides the corresponding entry.
+            </summary>
+            <typeparam name="DataType">Type of the data. Should be the same as the one used in Load.</typeparam>
+            <param name="data">Data that should be removed from the collection.</param>
+        </member>
+        <member name="M:Amplitude.UI.Boards.UIBoard.Clear">
+            <summary>
+            Clear the data collection and hides all the Entries.
+            </summary>
+        </member>
+        <member name="M:Amplitude.UI.Boards.UIBoardCell`1.Bind(`0)">
+            <summary>
+            Called when the BoardEntry is bound.
+            </summary>
+            <param name="model">Model bound to that cell.</param>
+        </member>
+        <member name="M:Amplitude.UI.Boards.UIBoardCell`1.Unbind">
+            <summary>
+            Called when the BoardEntry is unbound.
+            </summary>
+        </member>
+        <member name="M:Amplitude.UI.Boards.UIBoardCell`1.Refresh">
+            <summary>
+            Called every time the Board is refreshed.
+            </summary>
+        </member>
+        <member name="M:Amplitude.UI.Boards.UIBoardEntriesComparer.Push(Amplitude.StaticString,System.Boolean)">
+            <summary>
+            Add a Sort parameter at the top of the Stack. Default order will be 1.
+            If that Column is already at the top of the Stack, its order will be reversed.
+            </summary>
+            <param name="columnKey">Column according to which the entries should be sorted.</param>
+            <param name="reverse">The sort order (default is from lowest to highest).</param>
+        </member>
+        <member name="M:Amplitude.UI.Boards.UIBoardEntriesComparer.Clear">
+            <summary>
+            Remove all the sorting parameters.
+            </summary>
+        </member>
+        <member name="F:Amplitude.UI.Boards.UIBoardEntry.control">
+            <summary>
+            Used for selection among the Board items.
+            </summary>
+        </member>
+        <member name="M:Amplitude.UI.Boards.UIBoardEntry.Load(Amplitude.UI.Boards.IUIBoardProxy)">
+            <summary>
+            Creates all the Cell using the Definition.
+            </summary>
+            <param name="proxy">Proxy of the UIBoard that gather all the parameters required for Loading.</param>
+        </member>
+        <member name="M:Amplitude.UI.Boards.UIBoardEntry.Unload">
+            <summary>
+            Release all the models and destroy all the Cells.
+            </summary>
+        </member>
+        <member name="M:Amplitude.UI.Boards.UIBoardImpl`1.Rebind">
+            <summary>
+            Make sure every Binding is properly bound. Find a new UIBoardEntry (through caching or instantiation) for any unbound Binding.
+            </summary>
+        </member>
+        <member name="T:Amplitude.UI.Boards.UIBoardImpl`1.EntryBinding">
+            <summary>
+            Glue between a Data and its Entry.
+            </summary>
+        </member>
+        <member name="T:Amplitude.UI.UIMaterialCollection">
+            <summary>
+            General design notes : 
+            The design try to reduce a "material resolve" to bare minimal computation => 
+                    no call, fully inlined, 
+                    no pointer walking (the only instance is the array of .ResolvedMaterialEntry) It also reduce the null ref check done each time c# use a ref.
+                    minimal code, 
+            It use a "collision free hash set" with a bad, but very cheap hash function. On Load it find the minimal array size that avoid any collision.
+            This hash function also has the property to avoid the need of additional computation if not using "name" and "variant" keywords.
+            A special case for DefaultMaterialNameId is used : an entry with this material name is also registered using Empty name.
+            To finish the define INLINE_EVERYTHING, inline the reference computation.
+            </summary>
+        </member>
+        <member name="T:Amplitude.UI.Windows.IUIWindowsService">
+            <summary>
+            Client-code's API to UIWindowsManager. Should be the only one used to show/hide/access UIWindow instances.
+            </summary>
+        </member>
+        <member name="M:Amplitude.UI.Windows.UIContainer.SpecificUpdate">
+            <summary>
+            Called every frame on LateUpdate.
+            </summary>
+        </member>
+        <member name="M:Amplitude.UI.Windows.UIContainer.Refresh">
+            <summary>
+            Called on LateUpdate only if dirty flag is set to true.
+            </summary>
+        </member>
+        <member name="M:Amplitude.UI.Windows.UIShowable.SpecificUpdate">
+            <summary>
+            Call required if OnPreShow/IsReadyForShowing are used.
+            </summary>
+        </member>
+        <member name="T:Amplitude.UI.Windows.UIWindowsGroup">
+            <summary>
+            Entity managing the lifetime of its windows. Creates these from the passed-in UIWindowsGroupDefinition.
+            Can be used to ensure a display policy on the windows.
+            Its implementation should implement IUIWindowsGroupUpdatable as well so that it properly works with UIWindowsManager.
+            </summary>
+        </member>
+        <member name="M:Amplitude.UI.Windows.UIWindowsGroup.DestroyWindows">
+            <summary>
+            Destroy all the group's UIWindow (after calling their PreUnload method).
+            </summary>
+            <returns>Returns the root associated to that group.</returns>
+        </member>
+        <member name="T:Amplitude.UI.Windows.UIWindowsGroupDefinition">
+            <summary>
+            Asset defining a UIWindowsGroup. Holds references to the prefab and return the UIWindowsGroup implementation that should manage these.
+            </summary>
+        </member>
+        <member name="M:Amplitude.UI.Windows.UIWindowsManager_Base`2.RefreshWindowsGroups">
+            <summary>
+            Create a SharedDataType instance and call Update(UIWindowsSharedData) on each group.
+            </summary>
+        </member>
+    </members>
+</doc>

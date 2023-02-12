@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Amplitude.Graphics.Editor</name>
+    </assembly>
+    <members>
+        <member name="T:Amplitude.Graphics.Editor.Atlas.DefaultTextureAtlasElement">
+            <summary>
+            DefaultTextureAtlasElement define the minimal data (without custom data) to produce an atlas.
+            </summary>
+        </member>
+        <member name="T:Amplitude.Graphics.Editor.Atlas.DefaultTextureAtlasElementAtlas">
+            <summary>
+            DefaultTextureAtlasElementAtlas is the specific TextureAtlas class for the element DefaultTextureAtlasElement.
+            Due to limitation of C# genericity systeme you need to create a "real" TextureAtlas class for each type of inherited TextureAtlasElement.
+            Just need to create a name for serialisation purpose.
+            To work property you also need to create a specific custom inspector the way DefaultTextureAtlasElementAtlasCustomInspector do.
+            </summary>
+        </member>
+        <member name="T:Amplitude.Graphics.Editor.Atlas.DefaultTextureAtlasElementAtlasCustomInspector">
+            <summary>
+            DefaultTextureAtlasElementAtlasCustomInspector is the specific custom inspector for the specific class DefaultTextureAtlasElementAtlas.
+            </summary>
+        </member>
+        <member name="T:Amplitude.Graphics.Editor.Atlas.DefaultTextureAtlasElementAtlasCustomInspector.DefaultTextureAtlasElementAtlasEditorWindow">
+            <summary>
+            DefaultTextureAtlasElementAtlasEditorWindow. 
+            One specfic class needed for each TextureAtlasElement inheritance.
+            </summary>
+        </member>
+        <member name="T:Amplitude.Graphics.Editor.Atlas.TextureAtlasElement">
+            <summary>
+            TextureAtlasElement define one element of a TextureAtlas.
+            You can inherits in your project if you need additional custom properties. Do it the way it is done with DefaultTextureAtlasElement, DefaultTextureAtlasElementAtlas and DefaultTextureAtlasElementAtlasCustomInspector.
+            </summary>
+        </member>
+        <member name="P:Amplitude.Graphics.Editor.Atlas.TextureAtlasElement.EditionRect">
+            <summary>
+            Gets or sets the rectangle of the Element including margin.
+            </summary>
+        </member>
+    </members>
+</doc>

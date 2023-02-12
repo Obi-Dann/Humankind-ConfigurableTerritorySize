@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Amplitude.Mercury.Terrain.Editor</name>
+    </assembly>
+    <members>
+        <member name="T:Amplitude.Mercury.Terrain.Editor.TerrainAtlasElement">
+            <summary>
+            TerrainAtlasElement specific element for Terrain atlas. Derived from TextureAtlasElement for future possible extension.
+            </summary>
+        </member>
+        <member name="T:Amplitude.Mercury.Terrain.Editor.TerrainAtlasBuilderCustomInspector">
+            <summary>
+            TerrainAtlasCustomInspector is the specific custom inspector for the specific class TerrainAtlas.
+            </summary>
+        </member>
+        <member name="T:Amplitude.Mercury.Terrain.Editor.TerrainAtlasBuilderCustomInspector.TerrainAtlasEditorWindow">
+            <summary>
+            DefaultTextureAtlasElementAtlasEditorWindow. 
+            One specific class needed for each TextureAtlasElement inheritance.
+            </summary>
+        </member>
+    </members>
+</doc>

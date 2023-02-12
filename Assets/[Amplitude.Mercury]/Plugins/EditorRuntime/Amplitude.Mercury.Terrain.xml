@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Amplitude.Mercury.Terrain</name>
+    </assembly>
+    <members>
+        <member name="P:Amplitude.Mercury.Terrain.Avatar.AvatarDepiction.BodyAnchorTransform">
+            <summary>
+            Gets the Body anchor. This property trigger a synchronous load if necessary hence it can produce performance spike.
+            </summary>
+        </member>
+        <member name="P:Amplitude.Mercury.Terrain.Avatar.AvatarDepiction.Theater">
+            <summary>
+            Gets the AvatarDepictionTheater. This property trigger a synchronous load if necessary hence it can produce performance spike.
+            </summary>
+        </member>
+        <member name="P:Amplitude.Mercury.Terrain.Avatar.AvatarDepiction.Body">
+            <summary>
+            Gets the AvatarDepictionBody. This property trigger a synchronous load if necessary hence it can produce performance spike.
+            </summary>
+        </member>
+        <member name="M:Amplitude.Mercury.Terrain.Avatar.AvatarSummaryLoader.Continue(Amplitude.Mercury.Terrain.Avatar.AvatarSummary.ComparisonFlags)">
+            <summary>
+            Continue loading process. To do as long as this method return true.
+            </summary>
+            <param name="forceSynchronousFlags">Flag collection to force synchronous load of a particular part.</param>
+            <returns>Gets a value indicating if the loading is finished.</returns>
+        </member>
+        <member name="M:Amplitude.Mercury.Terrain.Edition.TerrainEditionModeBiomes.GetSelectedBiomeIndex">
+            <summary>
+            Returns the corresponding world Biome index from the selected UI element.
+            </summary>
+            <returns>World Biome index.</returns>
+        </member>
+        <member name="M:Amplitude.Mercury.Terrain.Edition.TerrainEditionModeBiomes.GetPickedBiomeIndex">
+            <summary>
+            Returns the corresponding UI element index for the picked data.
+            </summary>
+            <returns>UI element index.</returns>
+        </member>
+        <member name="M:Amplitude.Mercury.Terrain.Edition.TerrainEditionModePOI.GetSelectedPOIIndex">
+            <summary>
+            Returns the corresponding world POI index from the selected UI element.
+            </summary>
+            <returns>World POI index.</returns>
+        </member>
+        <member name="M:Amplitude.Mercury.Terrain.Edition.TerrainEditionModePOI.GetPickedPOIIndex">
+            <summary>
+            Returns the corresponding UI element index for the picked data.
+            </summary>
+            <returns>UI element index.</returns>
+        </member>
+        <member name="M:Amplitude.Mercury.Terrain.Fx.IFxEvolverMaterialLevelBuild.ExtractNamesInfo(Amplitude.Mercury.Terrain.Fx.NameSets@,System.Int32)">
+            <summary>
+            Add necessary names to set.
+            </summary>
+            <param name="nameSets">A struct that contains all names set.</param>
+            <param name="revision">A integer to allows quick reject of multiple call of this function. The value should change each time it is used.</param>
+        </member>
+        <member name="M:Amplitude.Mercury.Terrain.IWorldMapNaturalWonderProvider.SetNaturalWonderNames(System.String[],System.Boolean)">
+            <summary>
+            Allow an overwrite of the natural wonder names when possible. It will produce invalid content of natural wonder so the user need to restore the whole content of terrain after this function call.
+            </summary>
+            <param name="names">The list of the new natural wonder names.</param>
+            /// <param name="convertData">If convertData is true, it means that the provider needs to convert is internal hex data to use this new names.</param>
+            <returns>Get the success of the function. Some IWorldMapProvider aren't able to set those values.</returns>
+        </member>
+        <member name="M:Amplitude.Mercury.Terrain.IWorldMapPOIProvider.SetPOINames(System.String[],System.Boolean)">
+            <summary>
+            Allow an overwrite of the Point of Interest names when possible. It will produce invalid content of Point of Interest type so the user need to restore the whole content of Point of Interest after this function call.
+            </summary>
+            <param name="poiNames">The list of the new poi type names.</param>
+            /// <param name="convertData">If convertData is true, it means that the provider needs to convert is internal hex data to use this new names.</param>
+            <returns>Get the success of the function. Some IWorldMapProvider aren't able to set those values.</returns>
+        </member>
+        <member name="M:Amplitude.Mercury.Terrain.IWorldMapTerrainTypeProvider.SetTerrainTypeNames(System.String[],System.Boolean)">
+            <summary>
+            Allow an overwrite of the terrain names when possible. It will produce invalid content of terrain type so the user need to restore the whole content of terrain after this function call.
+            </summary>
+            <param name="terrainTypeNames">The list of the new terrain type names.</param>
+            /// <param name="convertData">If convertData is true, it means that the provider needs to convert is internal hex data to use this new names.</param>
+            <returns>Get the success of the function. Some IWorldMapProvider aren't able to set those values.</returns>
+        </member>
+        <member name="M:Amplitude.Mercury.Terrain.IWorldMapBiomeProvider.SetBiomeNames(System.String[],System.Boolean)">
+            <summary>
+            Allow an overwrite of the biome names when possible. if convertData == false It will produce invalid content of biomes so the user need to restore the whole content of biome after this function call.
+            </summary>
+            <param name="biomeNames">The list of the new biome names.</param>
+            <param name="convertData">If convertData is true, it means that the provider needs to convert is internal hex data to use this new names.</param>
+            <returns>Get the success of the function. Some IWorldMapProvider aren't able to set those values.</returns>
+        </member>
+    </members>
+</doc>

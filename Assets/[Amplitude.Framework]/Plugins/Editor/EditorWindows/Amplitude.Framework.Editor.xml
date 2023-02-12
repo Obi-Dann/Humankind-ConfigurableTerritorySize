@@ -1,0 +1,361 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Amplitude.Framework.Editor</name>
+    </assembly>
+    <members>
+        <member name="M:Amplitude.Framework.Editor.Asset.AssetReferenceUtility.LoadAsset``1(UnityEditor.SerializedProperty)">
+            <summary>
+            <para>Load an asset (or sub-asset) from a <see cref="T:Amplitude.Framework.Asset.AssetReference`1"/> encapsulated in a <see cref="T:UnityEditor.SerializedProperty"/>.</para>
+            <para>This method is mostly used in custom <see cref="T:UnityEditor.Editor"/>.</para>
+            </summary>
+            <typeparam name="T">The specific <see cref="T:System.Type"/> of the asset nested inside <see cref="T:Amplitude.Framework.Asset.AssetReference`1"/>.</typeparam>
+            <param name="assetReferenceSerializedProperty">The <see cref="T:UnityEditor.SerializedProperty"/> that contains the <see cref="T:Amplitude.Framework.Asset.AssetReference`1"/>.</param>
+            <returns>An asset (or sub-asset). Can come from an AssetBundle (non-editable). Can be null.</returns>
+        </member>
+        <member name="M:Amplitude.Framework.Editor.Asset.AssetReferenceUtility.IsValidAssetReferenceSerializedProperty(UnityEditor.SerializedProperty)">
+            <summary>
+            Does this <see cref="T:UnityEditor.SerializedProperty"/> handle a sub-class of <see cref="T:Amplitude.Framework.Asset.AssetReference`1"/>.
+            </summary>
+            <param name="assetReferenceSerializedProperty">The <see cref="T:UnityEditor.SerializedProperty"/>.</param>
+            <returns>True if this <see cref="T:UnityEditor.SerializedProperty"/> is NOT null and store a sub-class of <see cref="T:Amplitude.Framework.Asset.AssetReference`1"/>.</returns>
+        </member>
+        <member name="M:Amplitude.Framework.Editor.Asset.AssetReferenceUtility.AssignAsset``1(UnityEditor.SerializedProperty,``0)">
+            <summary>
+            <para>Assign an asset as the target of an <see cref="T:Amplitude.Framework.Asset.AssetReference`1"/> encapsulated in a <see cref="T:UnityEditor.SerializedProperty"/>.</para>
+            <para>The change is automatically applied to the <see cref="T:UnityEditor.SerializedObject"/>.</para>
+            <para>Call <see cref="M:Amplitude.Framework.Editor.Asset.AssetReferenceUtility.AssignAsset``1(UnityEditor.SerializedProperty,``0,System.Boolean)"/> if you want to handle this behavior.</para>
+            </summary>
+            <typeparam name="T">The specific <see cref="T:System.Type"/> of the asset nested inside <see cref="T:Amplitude.Framework.Asset.AssetReference`1"/>.</typeparam>
+            <param name="assetReferenceSerializedProperty">The <see cref="T:Amplitude.Framework.Asset.AssetReference`1"/> encapsulated in a <see cref="T:UnityEditor.SerializedProperty"/>.</param>
+            <param name="asset">The assigned asset. Can be null.</param>
+        </member>
+        <member name="M:Amplitude.Framework.Editor.Asset.AssetReferenceUtility.AssignAsset``1(UnityEditor.SerializedProperty,``0,System.Boolean)">
+            <summary>
+            <para>Assign an asset as the target of an <see cref="T:Amplitude.Framework.Asset.AssetReference`1"/> encapsulated in a <see cref="T:UnityEditor.SerializedProperty"/>.</para>
+            </summary>
+            <typeparam name="T">The specific <see cref="T:System.Type"/> of the asset nested inside <see cref="T:Amplitude.Framework.Asset.AssetReference`1"/>.</typeparam>
+            <param name="assetReferenceSerializedProperty">The <see cref="T:Amplitude.Framework.Asset.AssetReference`1"/> encapsulated in a <see cref="T:UnityEditor.SerializedProperty"/>.</param>
+            <param name="asset">The assigned asset. Can be null.</param>
+            <param name="applyModifiedProperty">Does the modification is automatically applied to the <see cref="T:UnityEditor.SerializedObject"/>.</param>
+        </member>
+        <member name="M:Amplitude.Framework.Editor.Asset.AssetUtility.IsFolderEmpty(System.String,System.Boolean)">
+            <summary>
+            Check if this folder is empty. It can handle recursive empty folders.
+            </summary>
+            <param name="absoluteFolderPath">The absolute path to this folder.</param>
+            <param name="handleEmptySubFolder">
+            <para>If set to true, it will handle empty sub folders as non-existent.</para>
+            <para>A folder with only empty sub folders in this case will be considered empty.</para>
+            <para>If set to false, it will only check if this folder has zero files and sub folders.</para>
+            </param>
+            <returns>True if this folder is considered "empty", else false.</returns>
+        </member>
+        <member name="M:Amplitude.Framework.Editor.Asset.AssetUtility.SearchForEmptyFolders(System.String,System.Boolean)">
+            <summary>
+            <para>Generate an <see cref="T:System.Collections.Generic.IEnumerable`1"/> of <see cref="T:System.String"/> of every "empty" folder absolute path.</para>
+            <para>If <paramref name="handleEmptySubFolder"/> is set to true, a folder with only empty sub folders will be considered empty.</para>
+            </summary>
+            <param name="absoluteFolderPath">An absolute folder path to start the search.</param>
+            <param name="handleEmptySubFolder">
+            <para>If set to true, it will handle empty sub folders as non-existent.</para>
+            <para>A folder with only empty sub folders in this case will be considered empty.</para>
+            <para>If set to false, it will only check if this folder has zero files and subfolders.</para>
+            </param>
+            <returns>The <see cref="T:System.Collections.Generic.IEnumerable`1"/> of <see cref="T:System.String"/> of empty folders absolute path.</returns>
+        </member>
+        <member name="T:Amplitude.Framework.Editor.Asset.PersistentAssetReference`1">
+            <summary>
+            Helper class in order to keep an asset reference (from any asset provider), event after Unity has been closed/reopened.
+            <para>Does not work with sub-asset.</para>
+            </summary>
+            <typeparam name="T">The type of asset.</typeparam>
+        </member>
+        <member name="T:Amplitude.Framework.Editor.SymlinkFolderPreferences.TreeView.DirectoryNode">
+            <summary>
+            Helper class to re-construct a directory hierarchy from an array of directories paths.
+            </summary>
+        </member>
+        <member name="M:Amplitude.Framework.Editor.Builds.AssetBundleBuildSettings.CountMountedDirectories">
+            <summary>
+            Gets the number of directories that are currently available in the project.
+            </summary>
+            <returns>A pair with the number of mounted directories as first element and the total number of expected directories as second element.</returns>
+        </member>
+        <member name="M:Amplitude.Framework.Editor.Builds.AssetBundleBuildSettings.GetOrCreateAssetBundleContentDescriptor">
+            <summary>
+            Get or create the main <see cref="T:Amplitude.Framework.Asset.AssetBundleContentDescriptor"/> that will be used as a File Allocation Table inside every <see cref="T:Amplitude.Framework.Asset.AssetBundle"/>.
+            <para>The asset is been kept alive so its GUID will be the same.</para>
+            <para>We only use one asset for every AssetBundle as to not pollute the project.</para>
+            <para>This has the side effect that the same asset (GUID) is inside every AssetBundle. This is not a problem because we load this asset using its name/addressable.</para>
+            </summary>
+            <returns>The main <see cref="T:Amplitude.Framework.Asset.AssetBundleContentDescriptor"/>.</returns>
+        </member>
+        <member name="T:Amplitude.Framework.Editor.Builds.AssetBundleBuildSettings.AssetEntry">
+            <summary>
+            Wrapper for an asset that is meant to be part of an AssetBundle build.
+            </summary>
+        </member>
+        <member name="F:Amplitude.Framework.Editor.Builds.AssetBundleBuildSettings.AssetEntry.AssetDescriptor">
+            <summary>
+            The underlying descriptor of this asset.
+            </summary>
+        </member>
+        <member name="F:Amplitude.Framework.Editor.Builds.AssetBundleBuildSettings.AssetEntry.Dependencies">
+            <summary>
+            The assets this asset depends on.
+            </summary>
+        </member>
+        <member name="F:Amplitude.Framework.Editor.Builds.AssetBundleBuildSettings.AssetEntry.Depending">
+            <summary>
+            The assets that depend on this asset.
+            </summary>
+        </member>
+        <member name="F:Amplitude.Framework.Editor.Builds.AssetBundleBuildSettings.AssetEntry.Reason">
+            <summary>
+            The actual reason this asset is included for.
+            </summary>
+        </member>
+        <member name="T:Amplitude.Framework.Editor.Builds.AssetBundleBuildSettings.AssetEntry.InclusionReason">
+            <summary>
+            The potential reasons for an asset to be included in an AssetBundle build.
+            </summary>
+        </member>
+        <member name="F:Amplitude.Framework.Editor.Builds.AssetBundleBuildSettings.AssetEntry.InclusionReason.Forced">
+            <summary>
+            The asset is forced to be included in an AssetBundle.
+            This will occur when building the full AssetBundle.
+            This is the default value.
+            </summary>
+        </member>
+        <member name="F:Amplitude.Framework.Editor.Builds.AssetBundleBuildSettings.AssetEntry.InclusionReason.AddedOrModified">
+            <summary>
+            The asset is included in an AssetBundle as it was directly added or modified.
+            </summary>
+        </member>
+        <member name="F:Amplitude.Framework.Editor.Builds.AssetBundleBuildSettings.AssetEntry.InclusionReason.ChildAddedOrModified">
+            <summary>
+            The asset is included in an AssetBundle as one or more of the assets
+            it depends on were added or modified.
+            </summary>
+        </member>
+        <member name="F:Amplitude.Framework.Editor.Builds.AssetBundleBuildSettings.AssetEntry.InclusionReason.ParentIncluded">
+            <summary>
+            The asset is included in an AssetBundle for being a descendant (dependency)
+            of an asset that is itself included in that AssetBundle.
+            </summary>
+        </member>
+        <member name="F:Amplitude.Framework.Editor.Builds.AssetBundleBuildSettings.AssetEntry.InclusionReason.ForeignDependency">
+            <summary>
+            The asset is not matched by the filters of the current AssetBundle and, thus,
+            might come from a different AssetBundle, leading to unexpected behaviors, such as duplication.
+            </summary>
+        </member>
+        <member name="F:Amplitude.Framework.Editor.Builds.PatchAssetBundleBuildSettings.DiffModeEnum.Incremental">
+            <summary>
+            Under this mode, the patch AssetBundle is built using the latest commit SHA1
+            the full AssetBundle was built with.
+            </summary>
+        </member>
+        <member name="F:Amplitude.Framework.Editor.Builds.PatchAssetBundleBuildSettings.DiffModeEnum.Custom">
+            <summary>
+            Under this mode, the patch AssetBundle is built out of two arbitrary commit SHA1.
+            </summary>
+        </member>
+        <member name="T:Amplitude.Framework.Editor.Controls.InputFieldPopupWindow">
+            <summary>
+            Show a popup window so the user can input a text value.
+            </summary>
+        </member>
+        <member name="M:Amplitude.Framework.Editor.Controls.InputFieldPopupWindow.ShowPopupWindow(UnityEngine.Vector2,System.Action{System.String},System.Action,System.Func{System.String,System.Boolean},System.String,System.String,System.String,System.String)">
+            <summary>
+            Show a popup window so the user can input a text value.
+            </summary>
+            <param name="position">The window's position.</param>
+            <param name="validClosed">Delegate called when the window is closed with a valid value that is validate by the user (through the confirm button or Enter key press).</param>
+            <param name="invalidClosed">Delegate called when the window lost focus or is canceled by the user (through the cancel button or Escape key press).</param>
+            <param name="validateInput">Optional delegate if you want to validate yourself the current input value (when the user is typing).</param>
+            <param name="inputLabel">The input label.</param>
+            <param name="inputValue">The pre-filled input value.</param>
+            <param name="confirmButtonLabel">The confirm button label.</param>
+            <param name="cancelButtonLabel">The cancel button label.</param>
+        </member>
+        <member name="M:Amplitude.Framework.Editor.DatatableElementCollectionInspector.OnTreeViewSelectionDefaultHeaderGUI">
+            <summary>
+            This method is called when the current <see cref="P:Amplitude.Framework.Editor.DatatableElementView.HasHeaderGUI"/> is false.
+            </summary>
+        </member>
+        <member name="M:Amplitude.Framework.Editor.DatatableElementCollectionInspector.OnToolbarSpecificGUI">
+            <summary>
+            Override this method if you want to add specific controls at the beginning of the tree view's toolbar.
+            </summary>
+        </member>
+        <member name="M:Amplitude.Framework.Editor.EditorUtility.DisplayDialog_DeleteAsset(UnityEngine.Object,System.Boolean)">
+            <summary>
+            Displays a dialog asking whether to confirm the asset deletion or not.
+            </summary>
+            <param name="asset">The asset that should be deleted.</param>
+            <param name="displayTheSingleAssetName">Shall the asset's name be visible in the dialog window.</param>
+            <returns>Returns True if the user confirms the deletion.</returns>
+        </member>
+        <member name="M:Amplitude.Framework.Editor.EditorUtility.DisplayDialog_DeleteAssets(System.Collections.Generic.ICollection{UnityEngine.Object},System.Boolean)">
+            <summary>
+            Displays a dialog asking whether to confirm the assets deletion or not.
+            </summary>
+            <param name="assets">The assets that should be deleted.</param>
+            <param name="displayAllTheAssetsNames">Shall the assets' names be visible in the dialog window.</param>
+            <returns>Returns True if the user confirms the deletion.</returns>
+        </member>
+        <member name="M:Amplitude.Framework.Editor.EditorUtility.DisplayDialog_DeleteAssets(System.Collections.Generic.ICollection{UnityEngine.Object},System.Int32)">
+            <summary>
+            Displays a dialog asking whether to confirm the assets deletion or not.
+            </summary>
+            <param name="assets">The asset(s) that should be deleted.</param>
+            <param name="maximumNumberOfAssetsToBeShown">How many asset names shall be enumerated inside the dialog window:
+            -1 : Display all name(s).
+             0 : Don't display any name at all.
+             n : Display a maximum of n name(s).</param>
+            <returns>Returns True if the user confirms the deletion.</returns>
+        </member>
+        <member name="M:Amplitude.Framework.Editor.Extensions.SerializedPropertyExtension.GetUnderlyingPropertyType(UnityEditor.SerializedProperty)">
+            <summary>
+            Get the underlying <see cref="T:System.Type"/> stored inside this <see cref="T:UnityEditor.SerializedProperty"/>.
+            </summary>
+            <param name="serializedProperty">The <see cref="T:UnityEditor.SerializedProperty"/>. Cannot be null.</param>
+            <returns>The <see cref="T:System.Type"/> of the property/field. Null if there is an exception.</returns>
+        </member>
+        <member name="M:Amplitude.Framework.Editor.Extensions.SerializedPropertyExtension.TryGetElementArrayIndex(UnityEditor.SerializedProperty,System.Int32@)">
+            <summary>
+            Try to get the index of an array entry element stored inside this <see cref="T:UnityEditor.SerializedProperty"/>.
+            </summary>
+            <param name="serializedProperty">The <see cref="T:UnityEditor.SerializedProperty"/> target.</param>
+            <param name="index">The array index represented.</param>
+            <returns>True if a valid index is found, false otherwise.</returns>
+        </member>
+        <member name="M:Amplitude.Framework.Editor.Extensions.SerializedPropertyExtension.TryGetUnderlyingPropertyType(UnityEditor.SerializedProperty,System.Type@)">
+            <summary>
+            Try to get the underlying <see cref="T:System.Type"/> stored inside this <see cref="T:UnityEditor.SerializedProperty"/>.
+            </summary>
+            <param name="serializedProperty">The <see cref="T:UnityEditor.SerializedProperty"/> target.</param>
+            <param name="propertyType">The ref <see cref="T:System.Type"/> that will store the return value.</param>
+            <returns>True if a valid <see cref="T:System.Type"/> has been found.</returns>
+        </member>
+        <member name="M:Amplitude.Framework.Editor.Extensions.SerializedPropertyExtension.TryGetFieldType(System.Type,System.String,System.Type@)">
+            <summary>
+            Try to get a field type from a <see cref="T:System.Type"/>.
+            </summary>
+            <param name="currentType">The current <see cref="T:System.Type"/> that should define the <paramref name="fieldName"/> (if not it will lookup through all its inherited classes).</param>
+            <param name="fieldName">The field's name.</param>
+            <param name="fieldType">The valid field <see cref="T:System.Type"/>.</param>
+            <returns>True if a valid <see cref="T:System.Type"/> has been found.</returns>
+        </member>
+        <member name="M:Amplitude.Framework.Editor.Extensions.SerializedPropertyExtension.TryGetFieldCollectionElementType(System.Type,System.Type@)">
+            <summary>
+            Try to get a <see cref="T:System.Type"/> from a collection that can be serialized by Unity (typed array or <see cref="T:System.Collections.Generic.List`1"/>.
+            </summary>
+            <param name="collectionType">The collection's <see cref="T:System.Type"/>.</param>
+            <param name="collectionElementType">The returned <see cref="T:System.Type"/> for the collection's element.</param>
+            <returns>True if a valid <see cref="T:System.Type"/> has been found.</returns>
+        </member>
+        <member name="M:Amplitude.Framework.Editor.Localization.LocalizationExcelExportWindow.VerifyLanguageSelectionOptionsSetupCorrectly">
+            <summary>
+            Replacement for option selection that was originally within the "GetDataToExport" functionality (now: LocalizationExportDataLoader).
+            Ensures the same verification check is being performed, that logs languages missing from this window's selection, that should be present.
+            </summary>
+        </member>
+        <member name="F:Amplitude.Framework.Editor.Localization.LocalizationExcelExportWindow.ExportSettings.LocalizationFolder">
+            <summary>
+            The active selected asset of type 'folder' in the project view, that is named 'Localization'.
+            </summary>
+        </member>
+        <member name="F:Amplitude.Framework.Editor.Localization.LocalizationExcelExportWindow.ExportSettings.LocalizationConfiguration">
+            <summary>
+            Configuration asset that store various data concerning the localization assets.
+            </summary>
+        </member>
+        <member name="F:Amplitude.Framework.Editor.Localization.LocalizationExcelExportWindow.ExportSettings.LanguageDefinitionCollection">
+            <summary>
+            The single language definition collection that is used to retrieve all the supported languages from.
+            </summary>
+        </member>
+        <member name="F:Amplitude.Framework.Editor.Localization.LocalizationExcelImportWindow.ImportSettings.LocalizationFolder">
+            <summary>
+            The active selected asset of type 'folder' in the project view, that is named 'Localization'.
+            </summary>
+        </member>
+        <member name="F:Amplitude.Framework.Editor.Localization.LocalizationExcelImportWindow.ImportSettings.LocalizationConfiguration">
+            <summary>
+            The single localization configuration that is used to name assets.
+            </summary>
+        </member>
+        <member name="F:Amplitude.Framework.Editor.Localization.LocalizationExcelImportWindow.ImportSettings.LanguageDefinitionCollection">
+            <summary>
+            The single language definition collection that is used to retrieve all the supported languages from.
+            </summary>
+        </member>
+        <member name="F:Amplitude.Framework.Editor.Localization.LocalizationExcelImportWindow.ImportSettings.FallbackLocalizedStringDefinitionCollection">
+            <summary>
+            The definition collection where lines are added if they are not found anywhere.
+            </summary>
+        </member>
+        <member name="T:Amplitude.Framework.Editor.Localization.SOELocalizationConnection">
+             <summary>
+             Static entry-point for automated batch tools created by SOE.
+             
+             This code is for use by SOE's automated localization connection.
+             Please contact @SOE_LocEngineer before making changes to this system.
+            
+             Note: This code throws exceptions in case of failure. This is to simplify logging from the external calling process.
+               As this code should never be called by a human, but part of an external automated process - it is preferable that it throws, and does not attempt to "fix" itself.
+             </summary>
+        </member>
+        <member name="T:Amplitude.Framework.Editor.Localization.SOELocalizationConnection.SOELocalizationConnectionException">
+            <summary>
+            Exception type specific to this SOE Localisation Connection.
+            Is thrown on any error that would otherwise mean the data cannot be exported.
+            This allows SOE's external tools to better detect the failed process.
+            </summary>
+        </member>
+        <member name="T:Amplitude.Framework.Editor.Localization.SOELocalizationConnection.SOELocalizationConnectionCommandline">
+            <summary>
+            Quick handler for commandline arguments; as this code is expected to be called from outside Unity.
+            </summary>
+        </member>
+        <member name="M:Amplitude.Framework.Editor.PrefabUtility.GetObjectListFromHierarchy(UnityEngine.GameObject,System.Collections.Generic.List{UnityEngine.Object}@)">
+            <summary>
+            <para>Extract the list of every <see cref="T:UnityEngine.GameObject"/>, <see cref="T:UnityEngine.Transform"/> and <see cref="T:UnityEngine.Component"/> inside <paramref name="gameObject"/>.</para>
+            <para>Used for <see cref="M:Amplitude.Framework.Editor.PrefabUtility.RegisterNewObjects(System.Collections.Generic.List{UnityEngine.Object},System.Collections.Generic.List{UnityEngine.Object},System.String)"/>.</para>
+            </summary>
+            <param name="gameObject">The <see cref="T:UnityEngine.GameObject"/> used as root.</param>
+            <param name="hierarchy">The list of every other <see cref="T:UnityEngine.Object"/> stored inside <paramref name="gameObject"/>.</param>
+        </member>
+        <member name="M:Amplitude.Framework.Editor.PrefabUtility.RegisterNewObjects(System.Collections.Generic.List{UnityEngine.Object},System.Collections.Generic.List{UnityEngine.Object},System.String)">
+            <summary>
+            Update a <see cref="T:UnityEngine.GameObject"/> prefab hierarchy (adding or removing children <see cref="T:UnityEngine.GameObject"/>).
+            </summary>
+            <param name="oldHierarchy">The old hierarchy of <see cref="T:UnityEngine.GameObject"/> and <see cref="T:UnityEngine.Component"/>. Can be extract using <see cref="M:Amplitude.Framework.Editor.PrefabUtility.GetObjectListFromHierarchy(UnityEngine.GameObject,System.Collections.Generic.List{UnityEngine.Object}@)"/>.</param>
+            <param name="newHierarchy">The new hierarchy of <see cref="T:UnityEngine.GameObject"/> and <see cref="T:UnityEngine.Component"/>. Can be extract using <see cref="M:Amplitude.Framework.Editor.PrefabUtility.GetObjectListFromHierarchy(UnityEngine.GameObject,System.Collections.Generic.List{UnityEngine.Object}@)"/>.</param>
+            <param name="undoMessage">The message used for the <see cref="T:UnityEditor.Undo"/> operation.</param>
+        </member>
+        <member name="T:Amplitude.Framework.Editor.UnitypackageVersion">
+            <summary>
+            Specifies the version of the unitypackage being exposed.
+            </summary>
+            <see href="https://msdn.microsoft.com/en-us/library/system.reflection.assemblyversionattribute.aspx"/>
+        </member>
+        <member name="M:Amplitude.Framework.Editor.UnitypackageVersion.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Amplitude.Framework.Editor.UnitypackageVersion"/> struct with a string.
+            </summary>
+            <param name="version">
+            The version number as a four parts, dot-separated string, as follows: "$(MajorVersion).$(MinorVersion).$(BuildNumber).$(Revision)".
+            All components of the version must be integers greater than or equal to 0.
+            </param>
+        </member>
+        <member name="T:Amplitude.Framework.Editor.Utility.EmptyFolderCleaner">
+            <summary>
+            Helper class to search inside the current project's Assets folder and prompt the removal of empty folders to the user (through a dialog box).
+            </summary>
+        </member>
+    </members>
+</doc>

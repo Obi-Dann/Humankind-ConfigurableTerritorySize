@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Amplitude.IO</name>
+    </assembly>
+    <members>
+        <member name="M:Amplitude.IO.BinaryMemoryStream.GetBuffer">
+            <summary>
+            Return the a reference to the stream's internal buffer.
+            Note that buffer.Length is equal to Capacity (i.e.: not Length).
+            </summary>
+            <returns>A byte array that represents the internal buffer.</returns>
+        </member>
+        <member name="M:Amplitude.IO.BinaryMemoryStream.Reset">
+            <summary>
+            Reset the stream in a state which is valid to start writing data.
+            This should be called if the stream is used in a static-way.
+            It sets the length and position to 0. Note that it will not zero the internal buffer.
+            </summary>
+        </member>
+        <member name="M:Amplitude.IO.BinaryMemoryStream.SetBuffer(System.Byte[])">
+            <summary>
+            Set the internal buffer of the stream.
+            Length and capacity will be updated from the provided buffer. Position will be reset at 0.
+            </summary>
+            <param name="bytes">The buffer that will be used as the stream's internal buffer.</param>
+        </member>
+        <member name="M:Amplitude.IO.BinaryMemoryStream.ToArray">
+            <summary>
+            Instantiate a new array and copy the stream's bytes into it.
+            </summary>
+            <returns>A byte array that represent the state of the stream.</returns>
+        </member>
+        <member name="F:Amplitude.IO.CompressionMode.None">
+            <summary>
+            No compression.
+            </summary>
+        </member>
+        <member name="F:Amplitude.IO.CompressionMode.LZ4">
+            <summary>
+            Compresses with LZ4 fast algorithm.
+            It corresponds to the -1 command line argument of LZ4.
+            </summary>
+        </member>
+        <member name="F:Amplitude.IO.CompressionMode.LZ4HC">
+            <summary>
+            Compresses with LZ4 High Compression algorithm.
+            It corresponds to the -9 command line argument of LZ4.
+            Slower but better than the regular LZ4 compression mode.
+            </summary>
+        </member>
+    </members>
+</doc>

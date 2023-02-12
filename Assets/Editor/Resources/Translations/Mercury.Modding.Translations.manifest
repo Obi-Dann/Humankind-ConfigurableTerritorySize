@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 2364430619
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: mercury.modding.translations.assetbundle
+      Dependencies: {}

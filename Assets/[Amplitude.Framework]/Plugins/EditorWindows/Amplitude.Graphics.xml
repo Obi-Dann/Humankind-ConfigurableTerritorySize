@@ -1,0 +1,203 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Amplitude.Graphics</name>
+    </assembly>
+    <members>
+        <member name="M:Amplitude.Graphics.Atlas.GenericTextureAtlas`1.CreateElementData(UnityEngine.Object,System.Int32,UnityEngine.Object,UnityEngine.Vector4)">
+            <summary>
+            Create the struct that will be serialized and uploaded to the buffer. Override this method to specify how to fill the content of the atlas export.
+            </summary>
+            <param name="atlas">Not typed atlas.</param>
+            <param name="elementIndex">The element index in the atlas.</param>
+            <param name="element">Not typed element should be the type of element contained in the atlas.</param>
+            <param name="uvs">The uv computed for this element.</param>
+            <returns>The element data that will be saved.</returns>
+        </member>
+        <member name="M:Amplitude.Graphics.Fx.FxEvolverMaterial.LoadIFN(Amplitude.Graphics.Fx.IFxManager,System.UInt32)">
+            <summary>
+            LoadIFN load the object if possible.
+            </summary>
+            <param name="fxManager">The IFxManager.</param>
+            <param name="doublonAvoidanceIndex">An index to avoid checking multiple time ResolveDependencies in a given Fx Tree. Zero disable any check. Use FxEvolverMaterial.NextDoublonAvoidanceIndex() to get a valid new index. </param>
+            <returns>Gets the sucess of the load attempt.</returns>
+        </member>
+        <member name="M:Amplitude.Graphics.Fx.FxGenericEvolverDescriptor`1.OnMaterialRegistered(Amplitude.Graphics.Fx.FxGenericEvolverMaterial{`0})">
+            <summary>
+            Function to override to tell every dependencies that need a refresh.
+            </summary>
+            <param name="material">The material registered.</param>
+        </member>
+        <member name="M:Amplitude.Graphics.Fx.FxGenericEvolverMaterial`1.WriteToGPUData(`0[],System.Int32)">
+            <summary>
+            Write all the needed gpuData to encode the material.
+            </summary>
+            <param name="gpuData">The buffer of TGPUData to fill.</param>
+            <param name="index">The start index to write. Should match MaterialIndex.</param>
+            <returns>How many gpuData used.</returns>
+        </member>
+        <member name="M:Amplitude.Graphics.Fx.FxGenericEvolverMaterial`1.MaxGPUDataCountNeeded">
+            <summary>
+            How many GPUData is needed to encode this material in the worst case.
+            </summary>
+            <returns>Gets how many GPUData is needed to encode this material in the worst case.</returns>
+        </member>
+        <member name="M:Amplitude.Graphics.Fx.FxGenericEvolverMaterial`1.GetCounterData(System.UInt32@,System.UInt32@,System.UInt32@)">
+            <summary>
+            Give a summary of particle count statistics.
+            </summary>
+            <param name="evolved">How many particle has been evolved this frame.</param>
+            <param name="newParticle">How many particle has been created or sub evolved this frame.</param>
+            <param name="totalNewParticle">How many particle has been created or sub evolved from the beginning of the session.</param>
+        </member>
+        <member name="M:Amplitude.Graphics.CameraGraphicService.RegisterPreCullEvent(Amplitude.Graphics.Tools.EventContainer{UnityEngine.Camera}.EventDelegate,System.Single,UnityEngine.Object)">
+            <summary>
+            Allow the user to receive an event each time the camera is rendered on the "PreCull" time. 
+            Note that if the CameraGraphicService is unloaded, all registered event are automaticly unregistered.
+            </summary>
+            <param name="preCullDelegate">A delegate of the following signature void Event(UnityEngine.Camera camera).</param>
+            <param name="priority">Priority of the event compared to each other (low means first). Order is not garanted between event with the same priority. </param>
+            <param name="referenceObject">An object reference for debug purpose.</param>
+        </member>
+        <member name="M:Amplitude.Graphics.CameraGraphicService.UnregisterPreCullEvent(Amplitude.Graphics.Tools.EventContainer{UnityEngine.Camera}.EventDelegate,UnityEngine.Object)">
+            <summary>
+            Unregister previously registered event.
+            Note that if the CameraGraphicService is unloaded, all registered event are automaticly unregistered. But this method is tolerant.
+            </summary>
+            <param name="preCullDelegate">The delegate given in the RegisterPreCullEvent.</param>
+            <param name="referenceObject">An object reference for debug purpose.</param>
+        </member>
+        <member name="M:Amplitude.Graphics.CameraGraphicService.RegisterPostRenderEvent(Amplitude.Graphics.Tools.EventContainer{UnityEngine.Camera}.EventDelegate,System.Single,UnityEngine.Object)">
+            <summary>
+            Allow the user to receive an event each time the camera is rendered on the "PostRender" time. 
+            Note that if the CameraGraphicService is unloaded, all registered event are automaticly unregistered.
+            </summary>
+            <param name="postRenderDelegate">A delegate of the following signature void Event(UnityEngine.Camera camera).</param>
+            <param name="priority">Priority of the event compared to each other (low means first). Order is not garanted between event with the same priority. </param>
+            <param name="referenceObject">An object reference for debug purpose.</param>
+        </member>
+        <member name="M:Amplitude.Graphics.CameraGraphicService.UnregisterPostRenderEvent(Amplitude.Graphics.Tools.EventContainer{UnityEngine.Camera}.EventDelegate,UnityEngine.Object)">
+            <summary>
+            Unregister previously registered event.
+            Note that if the CameraGraphicService is unloaded, all registered event are automaticly unregistered. But this method is tolerant.
+            </summary>
+            <param name="postRenderDelegate">The delegate given in the RegisterPreCullEvent.</param>
+            <param name="referenceObject">An object reference for debug purpose.</param>
+        </member>
+        <member name="M:Amplitude.Graphics.ComputeShaderMaterial.DispatchGrid(System.Int32)">
+            <summary>
+            This method will automatically dispatch with the number of threadGroups necessary to cover the whole grid.
+            </summary>
+            <param name="gridWidth">ThreadDispatchId.x range : 0 to the nearest multiple of blockWidth that is superior to gridWidth.</param>
+        </member>
+        <member name="M:Amplitude.Graphics.ComputeShaderMaterial.DispatchGrid(System.Int32,System.Int32)">
+            <summary>
+            This method will automatically dispatch with the number of threadGroups necessary to cover the whole grid.
+            </summary>
+            <param name="gridWidth">ThreadDispatchId.x range : 0 to the nearest multiple of blockWidth that is superior to gridWidth.</param>
+            <param name="gridHeight">ThreadDispatchId.y range : 0 to the nearest multiple of blockHeight that is superior to gridHeight.</param>
+        </member>
+        <member name="M:Amplitude.Graphics.ComputeShaderMaterial.DispatchGrid(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            This method will automatically dispatch with the number of threadGroups necessary to cover the whole grid.
+            </summary>
+            <param name="gridWidth">ThreadDispatchId.x range : 0 to the nearest multiple of blockWidth that is superior to gridWidth.</param>
+            <param name="gridHeight">ThreadDispatchId.y range : 0 to the nearest multiple of blockHeight that is superior to gridHeight.</param>
+            <param name="gridDepth">ThreadDispatchId.z range : 0 to the nearest multiple of blockDepth that is superior to gridDepth.</param>
+        </member>
+        <member name="M:Amplitude.Graphics.GlobalShaderState.PropertyToId(System.String)">
+            <summary>
+            Gets the Id used by Unity for internal shader use from a string. Store the conversion id to string for debug purpose.
+            </summary>
+            <param name="name">The shader property name.</param>
+            <returns>Get the result of UnityEngine.Shader.PropertyToID.</returns>
+        </member>
+        <member name="T:Amplitude.Graphics.LoadableBehaviour">
+            <summary>
+            A abstract class to ease loading/unloading component that have dependencies to other component.
+            The instance is automaticaly unloaded on destroy. But there is no "auto load" system.
+            You should add some LoadIFN/UnloadIFN, in OnEnable/OnDisable for exemple.
+            </summary>
+        </member>
+        <member name="M:Amplitude.Graphics.LoadableBehaviour.LoadIFN">
+            <summary>
+            LoadIFN : Load if necessary. If the object is still waiting for depencency, it will try to resolve it on the call and will load instantly if they are resolved.
+            </summary>
+            <returns>True if the object is loaded.</returns>
+        </member>
+        <member name="M:Amplitude.Graphics.LoadableBehaviour.UnloadIFN">
+            <summary>
+            UnloadIFN : Unload If necessary.
+            </summary>
+        </member>
+        <member name="M:Amplitude.Graphics.LoadableBehaviour.ResolveDependencies">
+            <summary>
+            ExtractService try to resolve dependency.
+            </summary>
+            <returns>True if all dependencies has been resolved, false otherwise.</returns>
+        </member>
+        <member name="M:Amplitude.Graphics.LoadableBehaviour.Load">
+            <summary>
+            Load contains the code to init the object. Don't need to mark loaded at true. Don't call it directly, use LoadIFN instead.
+            You should call base.Load to set the state of the object in the Loaded state.
+            </summary>
+        </member>
+        <member name="M:Amplitude.Graphics.LoadableBehaviour.Unload">
+            <summary>
+            Unload contains the code to deinit the object. Don't call it directly, use UnloadIFN instead.
+            </summary>
+        </member>
+        <member name="M:Amplitude.Graphics.LoadableBehaviour.WarnAboutTooLongWait(System.String,System.Int32)">
+            <summary>
+            You may override this method to better feedback what are the dependencies.
+            </summary>
+            <param name="hierarchyName">The full name of the object in the hierarchy.</param>
+            <param name="warnIndex">The total number of frame that has passed since the first Load.</param>
+        </member>
+        <member name="M:Amplitude.Graphics.RenderContext.RenderContextAttribute.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Amplitude.Graphics.RenderContext.RenderContextAttribute"/> class. Indicate that inspector will show a RenderContext drop down instead of an int property.
+            </summary>
+        </member>
+        <member name="M:Amplitude.Graphics.RenderContext.RenderContextAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Amplitude.Graphics.RenderContext.RenderContextAttribute"/> class. Indicate that inspector will show a RenderContext drop down instead of an int property.
+            </summary>
+            <param name="onChangeMessageName">Call this method when the property change. The method should have a signature of methode(int renderContext). Beware that at the call moment the render context change has yet been applied.</param>
+        </member>
+        <member name="T:Amplitude.Graphics.RenderContextAccess">
+            <summary>
+            A static class to enable access/registration/unregistration of instance per renderContext.
+            </summary>
+        </member>
+        <member name="M:Amplitude.Graphics.RenderContextAccess.GetInstanceWithFindObjetToResolve``1(System.Int32)">
+            <summary>
+            GetInstanceWithFindObjetToResolve is a more brutal GetInstance that will look globally for objects of the type given in parameter and will try to load them (unless they are disabled).
+            It is useful to get object that have very low dependencies and needed by everyone (CameraGraphicService, SharedOnGUIAccess, GPUDiagnostics for example).
+            Because it is expensive, it should not fail and so it warn any fail as a warning.
+            </summary>
+            <typeparam name="T">The Type of object wanted.</typeparam>
+            <param name="renderContextIndex">The index of the renderContext.</param>
+            <returns>The instance found.</returns>
+        </member>
+        <member name="T:Amplitude.Graphics.Tools.CameraEventAndPriority">
+            <summary>
+            A class to ease the use of CameraGraphicService.RegisterCommandBuffer/UnregisterCommandBuffer.
+            </summary>
+        </member>
+        <member name="T:Amplitude.Graphics.Tools.DrawProceduralRenderer">
+            <summary>
+            A tool to ease use of DrawProcedural in the Amplitude.Graphics. Can be used as a sample or directly.
+            </summary>
+        </member>
+        <member name="M:Amplitude.Graphics.VirtualScreen.SetMagnifyingFactor(System.Single,UnityEngine.Vector2,System.Boolean)">
+            <summary>
+            Set the general magnifying factor applied on both UI and terrain.
+            </summary>
+            <param name="magnifyingFactor">The ratio in 0-1 of zoom. 1 means no zoom, 0.1 means x10.</param>
+            <param name="viewportTranslation">The translation applied of the top left corner in the virtual screen.</param>
+            <param name="checkScreenBounderies">Clamp the translation withing the screens bounderies.</param>
+            <returns>Return the translation used after been clamped.</returns>
+        </member>
+    </members>
+</doc>

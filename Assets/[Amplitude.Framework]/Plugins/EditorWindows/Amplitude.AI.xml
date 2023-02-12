@@ -1,0 +1,341 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Amplitude.AI</name>
+    </assembly>
+    <members>
+        <member name="M:Amplitude.AI.Actuators.Actuator`2.Initialize">
+            <summary>
+            Initialize the actuator after its instantiation.
+            </summary>
+            <returns>
+            True if initialization succeeded, false if it failed.
+            </returns>
+            This is called during post load.
+        </member>
+        <member name="M:Amplitude.AI.Actuators.Actuator`2.Start">
+            <summary>
+            Start the actuator (called when the task change its status from pending to in progress).
+            </summary>
+            This not called during post load.
+        </member>
+        <member name="M:Amplitude.AI.Actuators.IActuator.Initialize">
+            <summary>
+            Initialize the actuator data structure. This is called after the actuator instantiation (before Start) and after actuator restoration (post load).
+            </summary>
+            <returns>
+            True if initialization succeeded, false if it failed.
+            </returns>
+        </member>
+        <member name="M:Amplitude.AI.Actuators.IActuator.Start">
+            <summary>
+            Start the actuator. This is called when after Initialization when a task change status from Pending to OnGoing. This is not call during actuator restoration (post load).
+            </summary>
+        </member>
+        <member name="T:Amplitude.AI.Brain">
+            <summary>
+            Object responsible of the entire decision process of the AI.
+            </summary>
+        </member>
+        <member name="P:Amplitude.AI.Data.IResourceProvider.ResourceSpenderGuids">
+            <summary>
+            Gets the resource spender guids.
+            </summary>
+            The resource provider is in charge of allocating resources for theses entities.
+            /!\ If this value is null, it provides resources for all entities.
+        </member>
+        <member name="M:Amplitude.AI.Data.IResourceProvider.ComputeResourceSpenderGuids">
+            <summary>
+            Compute the resource spender guids.
+            </summary>
+            This method is called after the post synchronization passes.
+        </member>
+        <member name="T:Amplitude.AI.Desires.AllocationStatus">
+            <summary>
+            Define allocation status. Keep the order to NOT break the serialization compatibility.
+            </summary>
+        </member>
+        <member name="F:Amplitude.AI.Desires.AllocationStatus.None">
+            <summary>
+            The resource allocation has never been processed by an allocator.
+            </summary>
+        </member>
+        <member name="F:Amplitude.AI.Desires.AllocationStatus.Pending">
+            <summary>
+            The resource allocation is waiting for an allocation.
+            </summary>
+        </member>
+        <member name="F:Amplitude.AI.Desires.AllocationStatus.Allocated">
+            <summary>
+            The resource allocation has been handled by an allocator.
+            </summary>
+        </member>
+        <member name="F:Amplitude.AI.Desires.AllocationStatus.Impossible">
+            <summary>
+            An allocator refused to handle this allocation. Other allocators can ignore other resource allocations from the same task.
+            </summary>
+        </member>
+        <member name="F:Amplitude.AI.Desires.DesireSet.DesireArray">
+            <summary>
+            Desires sorted by id.
+            </summary>
+        </member>
+        <member name="F:Amplitude.AI.Desires.Evaluation.AggregationFactor">
+            <summary>
+            Factor used to aggregate evaluation motivation in order to compute desire motivation.
+            </summary>
+        </member>
+        <member name="F:Amplitude.AI.Desires.GroupStatus.Pending">
+            <summary>
+            The group tasks are waiting for resource allocation.
+            </summary>
+        </member>
+        <member name="F:Amplitude.AI.Desires.GroupStatus.Ongoing">
+            <summary>
+            Some tasks have been executed and are waiting for completion (others are denied following the group type rule).
+            </summary>
+        </member>
+        <member name="F:Amplitude.AI.Desires.GroupStatus.Closed">
+            <summary>
+            All tasks are either succeeded or denied. The group is not alive anymore.
+            </summary>
+        </member>
+        <member name="T:Amplitude.AI.Desires.Resource">
+            <summary>
+            Define resource types. Keep the order to NOT break the serialization compatibility.
+            </summary>
+        </member>
+        <member name="F:Amplitude.AI.Desires.ResourceAllocation.Motivation">
+            <summary>
+            The allocation motivation represent the motivation to allocate the resources of this allocation.
+            </summary>
+        </member>
+        <member name="F:Amplitude.AI.Desires.ResourceAllocation.Trace">
+            <summary>
+            Contains debug info about why this resource allocation has been allocated.
+            </summary>
+            This data are cleared before each allocation process while the task is pending then it's freezed to keep the reason why it has been allocated.
+        </member>
+        <member name="T:Amplitude.AI.Desires.TaskStatus">
+            <summary>
+            Define task status. Keep the order to NOT break the serialization compatibility.
+            </summary>
+        </member>
+        <member name="F:Amplitude.AI.Desires.TaskStatus.Pending">
+            <summary>
+            The desire is taken in consideration during the graph generation and is waiting for resource allocation.
+            </summary>
+        </member>
+        <member name="F:Amplitude.AI.Desires.TaskStatus.Denied">
+            <summary>
+            The desire is taken in consideration during the graph generation but cannot be allocated.
+            </summary>
+        </member>
+        <member name="F:Amplitude.AI.Desires.TaskStatus.Ongoing">
+            <summary>
+            The desire has been executed and is waiting for completion.
+            </summary>
+        </member>
+        <member name="F:Amplitude.AI.Desires.TaskStatus.Succeeded">
+            <summary>
+            The task execution succeeded.
+            </summary>
+        </member>
+        <member name="F:Amplitude.AI.Desires.TaskStatus.Failed">
+            <summary>
+            The task execution failed.
+            </summary>
+        </member>
+        <member name="F:Amplitude.AI.Desires.TaskStatus.Canceled">
+            <summary>
+            The task has been canceled.
+            </summary>
+        </member>
+        <member name="F:Amplitude.AI.ExecutionMode.Deactivated">
+            <summary>
+            The AI player is completely deactivated, it does nothing.
+            </summary>
+        </member>
+        <member name="F:Amplitude.AI.ExecutionMode.Minimal">
+            <summary>
+            The AI have limited control on the empire. 
+            </summary>
+            This state is used while waiting for a human reconnection to avoid making big non-reversible decisions.
+        </member>
+        <member name="F:Amplitude.AI.ExecutionMode.Full">
+            <summary>
+            The AI have full control on the empire.
+            </summary>
+        </member>
+        <member name="F:Amplitude.AI.Heuristics.HeuristicFloat.Type.Value">
+            <summary>
+            Heuristic with no particular meaning. Value ∈ ]-∞,+∞[.
+            </summary>
+        </member>
+        <member name="F:Amplitude.AI.Heuristics.HeuristicFloat.Type.Motivation">
+            <summary>
+            Heuristic that represent a motivation to fulfill a desire. Motivation ∈ [0,1].
+            </summary>
+            +------------------------------------------------------------------------------------------------+
+            |Pointless -- Questionable -->-- Optional -->-- Useful -->-- Important -->-- Vital --> Mandatory |
+            |         0                 0.2            0.4          0.6             0.8           1          |
+            +------------------------------------------------------------------------------------------------+
+        </member>
+        <member name="F:Amplitude.AI.Heuristics.HeuristicFloat.Type.SignedMotivation">
+            <summary>
+            Heuristic that represent a motivation to fulfill or avoid something. Evaluation ∈ [-1,1].
+            </summary>
+            +------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+            | Suicidal -- Crippling -->-- Harmful -->-- Foolish -->-- Naive -->-- Pointless -->-- Questionable -->-- Optional -->-- Useful -->-- Important -->-- Vital --> Mandatory |
+            |        -1             -0.8          -0.6          -0.4        -0.2              0                 0.2            0.4          0.6             0.8           1          |
+            +------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+        </member>
+        <member name="F:Amplitude.AI.Heuristics.HeuristicFloat.Type.MotivationPropagation">
+            <summary>
+            Heuristic that represent the motivation propagation in desire graph. Value ∈ [-2,2].
+            </summary>
+            0 mean no propagation.
+            1 and -1 are neutral values (full positive or negative propagation).
+        </member>
+        <member name="M:Amplitude.AI.Logs.LogBook.ComputeLogBook(System.Int32)">
+            <summary>
+            Updates the logbook with the given current turn by removing outdated entries.
+            </summary>
+            <param name="turn">The turn count to update the logbook at.</param>
+        </member>
+        <member name="M:Amplitude.AI.Logs.LogBook.IsEntryActive(System.UInt64)">
+            <summary>
+            Will check if an entry matching the given name flags exists in the logbook.
+            </summary>
+            <param name="names">The flags representing the LogNames.</param>
+            <returns>True if an entry's name matched with the given flags, false otherwise.</returns>
+        </member>
+        <member name="M:Amplitude.AI.Logs.LogBook.IsCategoryActive(System.UInt64)">
+            <summary>
+            Will check if an entry matching the given category flags exists in the logbook.
+            </summary>
+            <param name="categories">The flags representing the LogCategories.</param>
+            <returns>True if an entry's category matched with the given flags, false otherwise.</returns>
+        </member>
+        <member name="M:Amplitude.AI.Logs.LogBook.IsAnyEntryActiveByTurn(System.Int32)">
+            <summary>
+            Will check if any entry has been active for less than (or equal to) the given number of turns.
+            </summary>
+            <param name="numberOfTurns">The oldest an entry can be to be taken into account.</param>
+            <returns>True if an entry's name matched with the given turn count, false otherwise.</returns>
+        </member>
+        <member name="M:Amplitude.AI.Logs.LogBook.IsEntryActiveByNameAndTurn(System.UInt64,System.Int32)">
+            <summary>
+            Checks if an entry with the given names has been active for less than (or equal to) the given number of turns.
+            </summary>
+            <param name="names">The flags representing the LogNames.</param>
+            <param name="numberOfTurns">The oldest an entry can be to be taken into account.</param>
+            <returns>True if an entry's name matched with the given flags and turn count, false otherwise.</returns>
+        </member>
+        <member name="M:Amplitude.AI.Logs.LogBook.CountActiveEntriesByName(System.UInt64)">
+            <summary>
+            Will count the entries matching the given name flags in the logbook.
+            </summary>
+            <param name="names">The flags representing the LogNames.</param>
+            <returns>The number of entries found.</returns>
+        </member>
+        <member name="M:Amplitude.AI.Logs.LogBook.CountActiveEntriesByCategories(System.UInt64)">
+            <summary>
+            Will count the entries matching the given category flags in the logbook.
+            </summary>
+            <param name="categories">The flags representing the LogCategories.</param>
+            <returns>The number of entries found.</returns>
+        </member>
+        <member name="M:Amplitude.AI.Logs.LogBook.CountActiveEntriesByNameAndTurn(System.UInt64,System.Int32)">
+            <summary>
+            Will count the entries matching the given name flags and being active for less than (or equal to) the given number of turns.
+            </summary>
+            <param name="names">The flags representing the LogNames.</param>
+            <param name="numberOfTurns">The oldest an entry can be to be counted.</param>
+            <returns>The number of entries found.</returns>
+        </member>
+        <member name="M:Amplitude.AI.Logs.LogBook.CountActiveEntriesByCategoryAndTurn(System.UInt64,System.Int32)">
+            <summary>
+            Will count the entries matching the given category flags and being active for less than (or equal to) the given number of turns.
+            </summary>
+            <param name="categories">The flags representing the LogCategories.</param>
+            <param name="numberOfTurns">The oldest an entry can be to be counted.</param>
+            <returns>The number of entries found.</returns>
+        </member>
+        <member name="M:Amplitude.AI.Math.Clamp(System.Single,System.Single,System.Single)">
+            <summary>
+            Restricts a float value to a given range.
+            </summary>
+            <param name="value">The value to clamp.</param>
+            <param name="minValue">The lower bound.</param>
+            <param name="maxValue">The upper bound.</param>
+            <returns>The original value or the bound that was overstepped.</returns>
+        </member>
+        <member name="M:Amplitude.AI.Math.Clamp01(System.Single)">
+            <summary>
+            Equivalent to the clamp function with [0, 1] as range, implemented for convenience.
+            </summary>
+            <param name="value">The value to clamp.</param>
+            <returns>Either 0, 1 or the original value.</returns>
+        </member>
+        <member name="M:Amplitude.AI.Math.Clamp11(System.Single)">
+            <summary>
+            Equivalent to the clamp function with [-1, 1] as range, implemented for convenience.
+            </summary>
+            <param name="value">The value to clamp.</param>
+            <returns>Either -1, 1 or the original value.</returns>
+        </member>
+        <member name="M:Amplitude.AI.Math.Boost(System.Single,System.Single)">
+            <summary>
+            Boosts a float value towards -1 (for negative value) or 1 (for positive values).
+            </summary>
+            <param name="value">The value to boost.</param>
+            <param name="boost">The boosting factor.</param>
+            <returns>The result of the boost operation.</returns>
+        </member>
+        <member name="M:Amplitude.AI.Math.Smoothstep(System.Single,System.Int32)">
+            <summary>
+            Applies smoothstep (as described in https://en.wikipedia.org/wiki/Smoothstep#Generalization_to_higher-order_equations) to a float value between 0 and 1.
+            </summary>
+            <param name="x">The value to interpolate.</param>
+            <param name="power">The order of the polynomial function to use.</param>
+            <returns>The result of the interpolation.</returns>
+        </member>
+        <member name="M:Amplitude.AI.ProcessingPasses.AllocatorPass`2.AllocateTasks(`1,System.Collections.Generic.List{Amplitude.AI.Desires.Task},System.Collections.Generic.List{Amplitude.AI.Desires.Task},System.Collections.Generic.List{Amplitude.AI.Desires.Task})">
+            <summary>
+            Allocate tasks for a given resource provider.
+            </summary>
+            <param name="resourceProvider">The resource provider.</param>
+            <param name="allocableTasks">Tasks in Pending status related to the resource provider sorted by allocation motivation (from higher to lower).</param>
+            <param name="ongoingTasks">Tasks in Ongoing status related to the resource provider sorted by allocation motivation (from higher to lower).</param>
+            <param name="cancelableTasks">Tasks in Ongoing status that are susceptible to be canceled for a more motivated allocable task sorted by cancel threshold (from lower to higher).</param>
+        </member>
+        <member name="M:Amplitude.AI.ProcessingPasses.AllocatorPass`2.IsAllocationStillValid(Amplitude.AI.Desires.Task,Amplitude.AI.Desires.ResourceAllocation@)">
+            <summary>
+            Check that a resource allocation of an ongoing task is still valid.
+            </summary>
+            <param name="task">The ongoing task of the resource allocation to test.</param>
+            <param name="resourceAllocation">The resource allocation of an ongoing task.</param>
+            <returns>Returns true is the allocation should keep it's Allocated state, false otherwise.</returns>
+            When an ongoing task allocation has been detected as invalid, its state is set to Pending. The task will be canceled by the brain.
+        </member>
+        <member name="F:Amplitude.AI.ProcessingPasses.GeneratorType.Default">
+            <summary>
+            Default generator are able to generate tasks and always evaluate them.
+            </summary>
+        </member>
+        <member name="F:Amplitude.AI.ProcessingPasses.GeneratorType.Boost">
+            <summary>
+            Boost generator evaluate tasks that are created by other generators, it can't generate tasks.
+            </summary>
+        </member>
+        <member name="T:Amplitude.AI.ProcessingPasses.TaskRestorationPass`3">
+            <summary>
+            Create a pass that directly create ongoing tasks from gameplay facts to allow the AI to understand what actions are currently executed (useful when the AI take over a human player or for debug situations).
+            </summary>
+            <typeparam name="TBrain">The type of AI brain that will use this pass.</typeparam>
+            <typeparam name="TContext">The data context on which you want to work.</typeparam>
+            <typeparam name="TTask">The type of task you want to restore.</typeparam>
+        </member>
+    </members>
+</doc>

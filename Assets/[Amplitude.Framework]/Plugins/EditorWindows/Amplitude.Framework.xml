@@ -1,0 +1,1291 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Amplitude.Framework</name>
+    </assembly>
+    <members>
+        <member name="F:Amplitude.Framework.Accessibility.Private">
+            <summary>
+            Access is restricted to the development teams only.
+            </summary>
+        </member>
+        <member name="F:Amplitude.Framework.Accessibility.Internal">
+            <summary>
+            Access is restricted to all company members, with additional third parties.
+            </summary>
+        </member>
+        <member name="F:Amplitude.Framework.Accessibility.ProtectedInternal">
+            <summary>
+            Access is restricted to limited audience.
+            </summary>
+        </member>
+        <member name="F:Amplitude.Framework.Accessibility.Protected">
+            <summary>
+            Access is extended to larger audience.
+            </summary>
+        </member>
+        <member name="F:Amplitude.Framework.Accessibility.Public">
+            <summary>
+            Access is granted to everyone.
+            </summary>
+        </member>
+        <member name="F:Amplitude.Framework.Achievements.StatisticsAndAchievementsManager.executeOnMainThread">
+            <summary>
+            List of actions to be executed on the main thread.
+            </summary>
+        </member>
+        <member name="M:Amplitude.Framework.Application.Quit">
+            <summary>
+            Ask the application to initiate a shutdown spanning over multiple frames.
+            </summary>
+        </member>
+        <member name="M:Amplitude.Framework.Application.TrySaveUserRegistry">
+            <summary>
+            Ask the application to save the user registry (asynchronous).
+            </summary>
+            <returns>
+            Return true if the operation succeed, false otherwise.
+            </returns>
+        </member>
+        <member name="M:Amplitude.Framework.Application.QuitHard(System.Int32)">
+            <summary>
+            Ask the application to shutdown completely before the end of the frame.
+            This is usually only used when clicking the Play button in the Editor, because in that case we cannot preempt shutdown sequence (WantsToQuit is ignored).
+            </summary>
+            <param name="timeout">The timeout in milliseconds.</param>
+        </member>
+        <member name="M:Amplitude.Framework.Asset.AssetBundle.FixUnityAssetBundleLoadingState">
+            <summary>
+            Check if the <see cref="T:UnityEngine.AssetBundle"/> is missing or not and reload it.
+            </summary>
+        </member>
+        <member name="M:Amplitude.Framework.Asset.AssetBundle.FetchAllSubAssetsOfType``1(Amplitude.Framework.Guid)">
+            <summary>
+            Fetch every sub-asset(s) stored in the same guid located file.
+            <para>Those sub-asset(s) cannot be referenced/saved by the <see cref="T:Amplitude.Framework.Asset.AssetDatabase"/> because it does not handle the sub-asset file id system.</para>
+            <para>This means you can load and manipulate them but they will not works with most of <see cref="T:Amplitude.Framework.Asset.AssetDatabase"/> utility methods.</para>
+            </summary>
+            <typeparam name="T">The sub-asset(s) <see cref="T:System.Type"/>.</typeparam>
+            <param name="guid">The main asset's <see cref="T:Amplitude.Framework.Guid"/>.</param>
+            <returns>A collection of <typeparamref name="T"/> sub-asset(s).</returns>
+        </member>
+        <member name="M:Amplitude.Framework.Asset.AssetBundle.FetchAllSubAssetsOfType(Amplitude.Framework.Guid,System.Type)">
+            <summary>
+            Fetch every sub-asset(s) stored in the same guid located file.
+            <para>Those sub-asset(s) cannot be referenced/saved by the <see cref="T:Amplitude.Framework.Asset.AssetDatabase"/> because it does not handle the sub-asset file id system.</para>
+            <para>This means you can load and manipulate them but they will not works with most of <see cref="T:Amplitude.Framework.Asset.AssetDatabase"/> utility methods.</para>
+            </summary>
+            <param name="guid">The main asset's <see cref="T:Amplitude.Framework.Guid"/>.</param>
+            <param name="assetType">The sub-asset(s) <see cref="T:System.Type"/>. Must be assignable as <see cref="T:UnityEngine.Object"/>.</param>
+            <returns>A collection of sub-asset(s).</returns>
+        </member>
+        <member name="P:Amplitude.Framework.Asset.AssetBundle.BuildRevisionsSHA1">
+            <summary>
+            Gets the build revisions and parent build revisions (in the case of patch versions)
+            for all the underlying UnityEngine.AssetBundle corresponding to this AssetBundle.
+            Currently, a single patch level is supported. That way, the returned array is expected to have a length of 2.
+            </summary>
+        </member>
+        <member name="F:Amplitude.Framework.Asset.AssetBundleContentDescriptor.revisionSHA1">
+            <summary>
+            The Git revision this AssetBundle was built upon.
+            </summary>
+        </member>
+        <member name="F:Amplitude.Framework.Asset.AssetBundleContentDescriptor.parentRevisionSHA1">
+            <summary>
+            Only defined for a patch AssetBundle. Used in conjunction with revision
+            to make sure that no desynchronization occurred between the full AssetBundle
+            and the patch AssetBundle.
+            </summary>
+        </member>
+        <member name="M:Amplitude.Framework.Asset.AssetDatabase.LoadAsset``1(Amplitude.Framework.Guid)">
+            <summary>
+            Load synchronously an Asset. Trigger an error if not found or if the asset type doesn't inherits from T.
+            </summary>
+            <typeparam name="T"> The type of the requested asset. </typeparam>
+            <param name="guid"> The guid of the requested asset. </param>
+            <returns>Gets the result asset. null if asset was not requested.</returns>
+        </member>
+        <member name="M:Amplitude.Framework.Asset.AssetDatabase.LoadAsset``1(Amplitude.Framework.Guid,System.UInt32)">
+            <summary>
+            Load synchronously an Asset. Trigger an error if not found or if the asset type doesn't inherits from T.
+            </summary>
+            <typeparam name="T"> The type of the requested asset. </typeparam>
+            <param name="guid"> The guid of the requested asset. </param>
+            <param name="assetBundleFlags"> The bit flags specifying the needed AssetBundle(s). Use Database.AllAssetBundleFlags if you don't know.</param>
+            <returns>Gets the result asset. null if asset was not requested.</returns>
+        </member>
+        <member name="M:Amplitude.Framework.Asset.AssetDatabase.LoadAsset``1(Amplitude.Framework.Guid,System.UInt32,Amplitude.Framework.Asset.IAssetLoadingFailureHandler)">
+            <summary>
+            Load synchronously an Asset. Trigger an error if not found or if the asset type doesn't inherits from T.
+            </summary>
+            <typeparam name="T"> The type of the requested asset.</typeparam>
+            <param name="guid"> The guid of the requested asset.</param>
+            <param name="assetBundleFlags"> The bit flags specifying the needed AssetBundle(s). Use Database.AllAssetBundleFlags if you don't know.</param>
+            <param name="failureHandler"> The instance of failureHandler.</param>
+            <returns>Gets the result asset. null if asset was not requested.</returns>
+        </member>
+        <member name="M:Amplitude.Framework.Asset.AssetDatabase.LoadAssetAsync``1(Amplitude.Framework.Guid)">
+            <summary>
+            Load an asset asynchronously. Trigger an error if not found.
+            </summary>
+            <typeparam name="T"> The type of the requested asset. </typeparam>
+            <param name="guid"> The guid of the requested asset. </param>
+            <returns> Gets an ILoadAssetRequest.</returns>
+        </member>
+        <member name="M:Amplitude.Framework.Asset.AssetDatabase.LoadAssetAsync``1(Amplitude.Framework.Guid,System.UInt32)">
+            <summary>
+            Load an asset asynchronously. Trigger an error if not found.
+            </summary>
+            <typeparam name="T"> The type of the requested asset. </typeparam>
+            <param name="guid"> The guid of the requested asset. </param>
+            <param name="assetBundleFlags"> The bit flags specifying the needed AssetBundle. Use Database.AllAssetBundleFlags if you don't know.</param>
+            <returns> Gets an ILoadAssetRequest.</returns>
+        </member>
+        <member name="M:Amplitude.Framework.Asset.AssetDatabase.TryLoadAssetAsync``1(Amplitude.Framework.Guid)">
+            <summary>
+            Load an asset asynchronously. Wont't trigger any error.
+            </summary>
+            <typeparam name="T"> The type of the requested asset. </typeparam>
+            <param name="guid"> The guid of the requested asset. </param>
+            <returns> Gets an ILoadAssetRequest.</returns>
+        </member>
+        <member name="M:Amplitude.Framework.Asset.AssetDatabase.TryLoadAssetAsync``1(Amplitude.Framework.Guid,System.UInt32)">
+            <summary>
+            Load an asset asynchronously. Wont't trigger any error.
+            </summary>
+            <typeparam name="T"> The type of the requested asset. </typeparam>
+            <param name="guid"> The guid of the requested asset. </param>
+            <param name="assetBundleFlags"> The bit flags specifying the needed AssetBundle. Use Database.AllAssetBundleFlags if you don't know.</param>
+            <returns> Gets an ILoadAssetRequest.</returns>
+        </member>
+        <member name="M:Amplitude.Framework.Asset.AssetDatabase.AssetOrFolderPathIsValid(System.String)">
+            <summary>
+            Return true when the given <paramref name="assetOrFolderPath"/> is a valid asset or folder path.
+            <para>This method only check the <see cref="T:System.String"/>, not if the folder(s) or file exist.</para>
+            <para>The path can be absolute or must begin with "Assets/".</para>
+            </summary>
+            <param name="assetOrFolderPath">The path to be validated.</param>
+            <returns>True if this is a correct path.</returns>
+        </member>
+        <member name="M:Amplitude.Framework.Asset.AssetDatabase.CleanPathSeparators(System.String)">
+            <summary>
+            Make sure the given <paramref name="path"/> use Unity's path separator '/'.
+            </summary>
+            <param name="path">The path that need to be sanitize.</param>
+            <returns>The cleaned path.</returns>
+        </member>
+        <member name="M:Amplitude.Framework.Asset.AssetDatabase.CreateFolderAssetPath(System.String)">
+            <summary>
+            Given a folder or asset path (e.g. "Assets/Databases" or "Assets/Resources/myTexture.PNG") this method will make sure every required folders exist in the project.
+            <para>The given path can be absolute or must begin with "Assets/".</para>
+            </summary>
+            <param name="folderOrAssetPath">The folder or asset path to be checked.</param>
+            <returns>True if the process correctly created every required folder(s).</returns>
+        </member>
+        <member name="M:Amplitude.Framework.Asset.AssetDatabase.FindAssetPathsOfType``1">
+            <summary>
+            Find every distinct asset path that contains an asset of type <typeparamref name="T"/>.
+            </summary>
+            <typeparam name="T">The asset's type.</typeparam>
+            <returns>The distinct array of asset path(s). Return an empty array if no candidate(s) have been found.</returns>
+            [RP][02032021] Too slow. Please use Amplitude.Framework.Asset.ProjectAssets or a combinaison of System.IO and UnityEditor.AssetDatabase.LoadAssetAtPath
+        </member>
+        <member name="M:Amplitude.Framework.Asset.AssetDatabase.FindAssetPathsOfType``1(System.String[])">
+            <summary>
+            Find every distinct asset path that contains an asset of type <typeparamref name="T"/>.
+            </summary>
+            <typeparam name="T">The asset's type.</typeparam>
+            <param name="folders">The specific folders where the search will be constrained.</param>
+            <returns>The distinct array of asset path(s). Return an empty array if no candidate(s) have been found.</returns>
+            [RP][02032021] Too slow. Please use Amplitude.Framework.Asset.ProjectAssets or a combinaison of System.IO and UnityEditor.AssetDatabase.LoadAssetAtPath
+        </member>
+        <member name="M:Amplitude.Framework.Asset.AssetDatabase.FindAssetPathsOfType(System.Type)">
+            <summary>
+            Find every distinct asset path that contains an asset of type <paramref name="type"/>.
+            </summary>
+            <param name="type">The asset's type. Must be a subclass of <see cref="T:UnityEngine.Object"/>.</param>
+            <returns>The distinct array of asset path(s). Return an empty array if no candidate(s) have been found.</returns>
+            [RP][02032021] Too slow. Please use Amplitude.Framework.Asset.ProjectAssets or a combinaison of System.IO and UnityEditor.AssetDatabase.LoadAssetAtPath
+        </member>
+        <member name="M:Amplitude.Framework.Asset.AssetDatabase.FindAssetPathsOfType(System.Type,System.String[])">
+            <summary>
+            Find every distinct asset path that contains an asset of type <paramref name="type"/>.
+            </summary>
+            <param name="type">The asset's type. Must be a subclass of <see cref="T:UnityEngine.Object"/>.</param>
+            <param name="folders">The specific folders where the search will be constrained.</param>
+            <returns>The distinct array of asset path(s). Return an empty array if no candidate(s) have been found.</returns>
+            [RP][02032021] Too slow. Please use Amplitude.Framework.Asset.ProjectAssets or a combinaison of System.IO and UnityEditor.AssetDatabase.LoadAssetAtPath
+        </member>
+        <member name="M:Amplitude.Framework.Asset.AssetDatabase.FindAssetPathsOfTypes(System.Type[])">
+            <summary>
+            Find every distinct asset path that contains an asset of one of those <paramref name="types"/>.
+            </summary>
+            <param name="types">The array of <see cref="T:System.Type"/> that will be used to filter the search. Must be a subclass of <see cref="T:UnityEngine.Object"/>.</param>
+            <returns>The distinct array of asset path(s). Return an empty array if no candidate(s) have been found.</returns>
+            [RP][02032021] Too slow. Please use Amplitude.Framework.Asset.ProjectAssets or a combinaison of System.IO and UnityEditor.AssetDatabase.LoadAssetAtPath
+        </member>
+        <member name="M:Amplitude.Framework.Asset.AssetDatabase.FindAssetPathsOfTypes(System.Type[],System.String[])">
+            <summary>
+            Find every distinct asset path that contains an asset of one of those <paramref name="types"/>.
+            </summary>
+            <param name="types">The array of <see cref="T:System.Type"/> that will be used to filter the search. Must be <see cref="M:System.Type.IsAssignableFrom(System.Type)"/> from <see cref="T:UnityEngine.Object"/>.</param>
+            <param name="folders">The specific folders where the search will be constrained.</param>
+            <returns>The distinct array of asset path(s). Return an empty array if no candidate(s) have been found.</returns>
+            [RP][02032021] Too slow. Please use Amplitude.Framework.Asset.ProjectAssets or a combinaison of System.IO and UnityEditor.AssetDatabase.LoadAssetAtPath
+        </member>
+        <member name="M:Amplitude.Framework.Asset.AssetDatabase.FindAssetPaths(System.String)">
+            <summary>
+            Encapsulate <see cref="M:UnityEditor.AssetDatabase.FindAssets(System.String)"/> and <see cref="M:UnityEditor.AssetDatabase.GUIDToAssetPath(System.String)"/>.
+            </summary>
+            <param name="filter">The filter used by <see cref="M:UnityEditor.AssetDatabase.FindAssets(System.String)"/>.</param>
+            <returns>The distinct array of asset path(s). Return an empty array if no candidate(s) have been found.</returns>
+            [RP][02032021] Too slow. Please use Amplitude.Framework.Asset.ProjectAssets or a combinaison of System.IO and UnityEditor.AssetDatabase.LoadAssetAtPath
+        </member>
+        <member name="M:Amplitude.Framework.Asset.AssetDatabase.FindAssetPaths(System.String,System.String[])">
+            <summary>
+            Encapsulate <see cref="M:UnityEditor.AssetDatabase.FindAssets(System.String)"/> and <see cref="M:UnityEditor.AssetDatabase.GUIDToAssetPath(System.String)"/>.
+            </summary>
+            <param name="filter">The filter used by <see cref="M:UnityEditor.AssetDatabase.FindAssets(System.String,System.String[])"/>.</param>
+            <param name="folders">The folders used by <see cref="M:UnityEditor.AssetDatabase.FindAssets(System.String,System.String[])"/>.</param>
+            <returns>The distinct array of asset path(s). Return an empty array if no candidate(s) have been found.</returns>
+            [RP][02032021] Too slow. Please use Amplitude.Framework.Asset.ProjectAssets or a combinaison of System.IO and UnityEditor.AssetDatabase.LoadAssetAtPath
+        </member>
+        <member name="M:Amplitude.Framework.Asset.AssetDatabase.FindAssetPaths(Amplitude.Framework.Asset.AssetDatabase.SearchArgs[])">
+            <summary>
+            Encapsulate <see cref="M:UnityEditor.AssetDatabase.FindAssets(System.String)"/> and <see cref="M:UnityEditor.AssetDatabase.GUIDToAssetPath(System.String)"/>.
+            <para>This method make sure there is no duplicate asset paths.</para>
+            </summary>
+            <param name="searchArgs">A small struct to encapsulate multiple filter/folders requests.</param>
+            <returns>The distinct array of asset path(s). Return an empty array if no candidate(s) have been found.</returns>
+            [RP][02032021] Too slow. Please use Amplitude.Framework.Asset.ProjectAssets or a combinaison of System.IO and UnityEditor.AssetDatabase.LoadAssetAtPath
+        </member>
+        <member name="M:Amplitude.Framework.Asset.AssetDatabase.FetchAllSubAssetsOfType``1(Amplitude.Framework.Guid)">
+            <summary>
+            Fetch every sub-asset(s) stored in the same guid located file.
+            <para>Those sub-asset(s) cannot be referenced/saved by the <see cref="T:Amplitude.Framework.Asset.AssetDatabase"/> because it does not handle the sub-asset file id system.</para>
+            <para>This means you can load and manipulate them but they will not works with most of <see cref="T:Amplitude.Framework.Asset.AssetDatabase"/> utility methods.</para>
+            </summary>
+            <typeparam name="T">The sub-asset(s) <see cref="T:System.Type"/>.</typeparam>
+            <param name="guid">The main asset's <see cref="T:Amplitude.Framework.Guid"/>.</param>
+            <returns>A collection of <typeparamref name="T"/> sub-asset(s).</returns>
+        </member>
+        <member name="M:Amplitude.Framework.Asset.AssetDatabase.FetchAllSubAssetsOfType(Amplitude.Framework.Guid,System.Type)">
+            <summary>
+            Fetch every sub-asset(s) stored in the same guid located file.
+            <para>Those sub-asset(s) cannot be referenced/saved by the <see cref="T:Amplitude.Framework.Asset.AssetDatabase"/> because it does not handle the sub-asset file id system.</para>
+            <para>This means you can load and manipulate them but they will not works with most of <see cref="T:Amplitude.Framework.Asset.AssetDatabase"/> utility methods.</para>
+            </summary>
+            <param name="guid">The main asset's <see cref="T:Amplitude.Framework.Guid"/>.</param>
+            <param name="assetType">The sub-asset(s) <see cref="T:System.Type"/>. Must be assignable as <see cref="T:UnityEngine.Object"/>.</param>
+            <returns>A collection of sub-asset(s).</returns>
+        </member>
+        <member name="M:Amplitude.Framework.Asset.AssetDatabase.FileNameIsValid(System.String)">
+            <summary>
+            Check if the given <paramref name="fileName"/> is a valid file name.
+            <para>Return false if the file name is null or empty.</para>
+            <para>Return false if the file name have invalid chars (defined inside <see cref="M:System.IO.Path.GetInvalidFileNameChars"/>).</para>
+            <para>This method does NOT check or invalidate a file name with an extension, because the extension separator ('.') is a valid file <see cref="T:System.Char"/>.</para>
+            </summary>
+            <param name="fileName">The file name to be checked.</param>
+            <returns>True if the <paramref name="fileName"/> is valid.</returns>
+        </member>
+        <member name="M:Amplitude.Framework.Asset.AssetDatabase.FillWithAllObjectOfType``1(System.String,System.Collections.Generic.List{``0}@)">
+            <summary>
+            Try to fill the output with all object of type T. Be aware that object in Project library may not be in the list unless it has been previously loaded or imported.
+            </summary>
+            <typeparam name="T">The type of object the method is looking for.</typeparam>
+            <param name="progessBarTitle">The title of the progress bar. If null or empty no progress bar is displayed.</param>
+            <param name="output">The list to fill.</param>
+        </member>
+        <member name="F:Amplitude.Framework.Asset.AssetDescriptor.typeAsString">
+            <summary>
+            <para>Old way of storing the asset type. We keep it for serialization and fallback purpose.</para>
+            <para><see cref="T:UnityEngine.Serialization.FormerlySerializedAsAttribute"/> did not work in this case (so we could "merge" the old into the new).</para>
+            <para>Used with <see cref="M:System.Type.GetType(System.String)"/>, this might not return a valid <see cref="T:System.Type"/> because
+            the serialization and de-serialization contexts might be different (Editor versus Build).</para>
+            </summary>
+        </member>
+        <member name="F:Amplitude.Framework.Asset.AssetDescriptor.typeHierarchyAsString">
+            <summary>
+            <para>New way of storing the asset type. We now store the asset type and every inherited types.</para>
+            <para>E.g. UnityEditor.Animations.AnimatorController -> UnityEngine.RuntimeAnimatorController -> UnityEngine.Object -> System.Object.</para>
+            <para>We do it this way because the asset <see cref="P:System.Type.AssemblyQualifiedName"/> at serialization time might not be valid
+            when used with <see cref="M:System.Type.GetType(System.String)"/> in a different context (Editor versus Build).</para>
+            </summary>
+        </member>
+        <member name="M:Amplitude.Framework.Asset.AssetDescriptor.GetAssetType">
+            <summary>
+            Get the asset <see cref="T:System.Type"/>.
+            In some contexts this can be null.
+            </summary>
+            <returns>The true asset <see cref="T:System.Type"/>.</returns>
+        </member>
+        <member name="M:Amplitude.Framework.Asset.AssetDescriptor.TryGetFirstValidCurrentDomainAssetType(System.Type@)">
+            <summary>
+            Try to regenerate a <see cref="T:System.Type"/> from <see cref="F:Amplitude.Framework.Asset.AssetDescriptor.typeHierarchyAsString"/>.
+            We do it this way because the serialized type (done inside the Editor) might not be valid at runtime
+            (e.g. UnityEditor.Animations.AnimatorController serialized as is but used as UnityEngine.RuntimeAnimatorController).
+            </summary>
+            <param name="type">The container for the valid <see cref="T:System.Type"/>.</param>
+            <returns>True if we successfully recovered a valid <see cref="T:System.Type"/>.</returns>
+        </member>
+        <member name="M:Amplitude.Framework.Asset.AssetDescriptor.GetAssetTypeAsString">
+            <summary>
+            Get the asset (first) <see cref="T:System.Type"/> from <see cref="F:Amplitude.Framework.Asset.AssetDescriptor.typeHierarchyAsString"/> as a <see cref="T:System.String"/>.
+            Might not be a valid/existing <see cref="T:System.Type"/> in some context (domain sensitive).
+            </summary>
+            <returns>The asset <see cref="T:System.Type"/> as <see cref="T:System.String"/>.</returns>
+        </member>
+        <member name="P:Amplitude.Framework.Asset.ILoadAssetRequest.Asset">
+            <summary>
+            Gets the loaded Asset. If not yet ready it will force a synchronous load.
+            </summary>
+        </member>
+        <member name="P:Amplitude.Framework.Asset.ILoadAssetRequest.AssetGuid">
+            <summary>
+            Gets the loaded asset guid.
+            </summary>
+        </member>
+        <member name="P:Amplitude.Framework.Asset.ILoadAssetRequest.IsDone">
+            <summary>
+            Gets a value indicating whether the loading process is finished.
+            </summary>
+        </member>
+        <member name="P:Amplitude.Framework.Asset.ILoadAssetRequest.Progress">
+            <summary>
+            Gets the loading progress when available.
+            </summary>
+        </member>
+        <member name="M:Amplitude.Framework.Asset.ProjectAssets.FetchAllSubAssetsOfType``1(Amplitude.Framework.Guid)">
+            <summary>
+            Fetch every sub-asset(s) stored in the same guid located file.
+            <para>Those sub-asset(s) cannot be referenced/saved by the <see cref="T:Amplitude.Framework.Asset.AssetDatabase"/> because it does not handle the sub-asset file id system.</para>
+            <para>This means you can load and manipulate them but they will not works with most of <see cref="T:Amplitude.Framework.Asset.AssetDatabase"/> utility methods.</para>
+            </summary>
+            <typeparam name="T">The sub-asset(s) <see cref="T:System.Type"/>.</typeparam>
+            <param name="guid">The main asset's <see cref="T:Amplitude.Framework.Guid"/>.</param>
+            <returns>A collection of <typeparamref name="T"/> sub-asset(s).</returns>
+        </member>
+        <member name="M:Amplitude.Framework.Asset.ProjectAssets.FetchAllSubAssetsOfType(Amplitude.Framework.Guid,System.Type)">
+            <summary>
+            Fetch every sub-asset(s) stored in the same guid located file.
+            <para>Those sub-asset(s) cannot be referenced/saved by the <see cref="T:Amplitude.Framework.Asset.AssetDatabase"/> because it does not handle the sub-asset file id system.</para>
+            <para>This means you can load and manipulate them but they will not works with most of <see cref="T:Amplitude.Framework.Asset.AssetDatabase"/> utility methods.</para>
+            </summary>
+            <param name="guid">The main asset's <see cref="T:Amplitude.Framework.Guid"/>.</param>
+            <param name="assetType">The sub-asset(s) <see cref="T:System.Type"/>. Must be assignable as <see cref="T:UnityEngine.Object"/>.</param>
+            <returns>A collection of sub-asset(s).</returns>
+        </member>
+        <member name="E:Amplitude.Framework.Authentication.IAuthenticationService.AuthenticationSessionChange">
+            <summary>
+            This event is raised when a user requested an authentication session toward the local user.
+            </summary>
+        </member>
+        <member name="M:Amplitude.Framework.Authentication.IAuthenticationService.AuthenticateTo(Amplitude.Framework.Networking.NetworkIdentifier,System.Action{Amplitude.Framework.Authentication.AuthenticationResult,Amplitude.Framework.Authentication.IAuthenticationHandle})">
+            <summary>
+            Authenticates to a remote user. This method is asynchronous as it requires a network messages exchange to be resolved..
+            </summary>
+            <param name="remoteIdentifier">The remote user identifier.</param>
+            <param name="callback">A callback to be called the the authentication is resolved.</param>
+            <returns>An async operation to yield on.</returns>
+        </member>
+        <member name="M:Amplitude.Framework.Authentication.IAuthenticationService.TerminateAuthenticationSession(Amplitude.Framework.Networking.NetworkIdentifier)">
+            <summary>
+            Ends an authentication session previously started.
+            </summary>
+            <see cref="E:Amplitude.Framework.Authentication.IAuthenticationService.AuthenticationSessionChange"/>
+            <param name="remoteIdentifier">The remote user identifier.</param>
+        </member>
+        <member name="P:Amplitude.Framework.Behaviour.AsyncOperation.HardShutdownMode">
+            <summary>
+            Gets or sets a value indicating whether we are in a "hard shutdown" mode (ie. the application must shut down in one frame).
+            In that case, DoWaitForCompletion() won't rely on the outer Unity coroutine to run the inner Amplitude coroutine at each frame. Instead, the function will run it explicitly.
+            </summary>
+        </member>
+        <member name="P:Amplitude.Framework.Behaviour.AsyncOperation.UnityCoroutine">
+            <summary>
+            Gets or sets the UnityEngine-specific coroutine.
+            </summary>
+        </member>
+        <member name="P:Amplitude.Framework.Behaviour.AsyncOperation.AmplitudeCoroutine">
+            <summary>
+            Gets or sets the Amplitude-specific coroutine, running inside Unity's.
+            </summary>
+        </member>
+        <member name="M:Amplitude.Framework.Database`1.Clear">
+            <summary>
+            Clears the topmost datatable only.
+            </summary>
+        </member>
+        <member name="M:Amplitude.Framework.DatatableElementReferenceAttribute.#ctor(System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Amplitude.Framework.DatatableElementReferenceAttribute" /> class.
+            <para><see cref="T:System.Type"/> <paramref name="datatableElementType"/> must implement interface <see cref="T:Amplitude.Framework.IDatatableElement"/>.</para>
+            </summary>
+            <param name="datatableElementType">What specific <see cref="T:System.Type"/> of <see cref="T:Amplitude.Framework.DatatableElement"/> is filtered in.</param>
+        </member>
+        <member name="M:Amplitude.Framework.DatatableElementReferenceAttribute.#ctor(System.Type,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Amplitude.Framework.DatatableElementReferenceAttribute" /> class.
+            <para><see cref="T:System.Type"/> <paramref name="datatableElementType"/> must implement interface <see cref="T:Amplitude.Framework.IDatatableElement"/>.</para>
+            </summary>
+            <param name="datatableElementType">What specific <see cref="T:System.Type"/> of <see cref="T:Amplitude.Framework.DatatableElement"/> is filtered in.</param>
+            <param name="allowSubclasses">Do we allow subclasses to be filtered in.</param>
+        </member>
+        <member name="M:Amplitude.Framework.DatatableElementReferenceAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Amplitude.Framework.DatatableElementReferenceAttribute" /> class.
+            <para><see cref="T:System.Type"/> extracted from <paramref name="methodName"/> must implement interface <see cref="T:Amplitude.Framework.IDatatableElement"/>.</para>
+            </summary>
+            <param name="methodName">The <see cref="T:System.Reflection.MethodInfo"/> name to extract the <see cref="T:System.Type"/> from.</param>
+        </member>
+        <member name="M:Amplitude.Framework.DatatableElementReferenceAttribute.#ctor(System.String,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Amplitude.Framework.DatatableElementReferenceAttribute" /> class.
+            <para><see cref="T:System.Type"/> extracted from <paramref name="methodName"/> must implement interface <see cref="T:Amplitude.Framework.IDatatableElement"/>.</para>
+            </summary>
+            <param name="methodName">The <see cref="T:System.Reflection.MethodInfo"/> name to extract the <see cref="T:System.Type"/> from.</param>
+            <param name="allowSubclasses">Do we allow subclasses to be filtered in.</param>
+        </member>
+        <member name="M:Amplitude.Framework.DatatableElementReferenceAttribute.#ctor(System.String,System.Reflection.BindingFlags)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Amplitude.Framework.DatatableElementReferenceAttribute" /> class.
+            <para><see cref="T:System.Type"/> extracted from <paramref name="methodName"/> must implement interface <see cref="T:Amplitude.Framework.IDatatableElement"/>.</para>
+            </summary>
+            <param name="methodName">The <see cref="T:System.Reflection.MethodInfo"/> name to extract the <see cref="T:System.Type"/> from.</param>
+            <param name="methodFlags">The <see cref="T:System.Reflection.BindingFlags"/> used in order to retrieve the <see cref="T:System.Reflection.MethodInfo"/>. Must contains <see cref="F:System.Reflection.BindingFlags.Static"/> or <see cref="F:System.Reflection.BindingFlags.Instance"/>.</param>
+        </member>
+        <member name="M:Amplitude.Framework.DatatableElementReferenceAttribute.#ctor(System.String,System.Reflection.BindingFlags,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Amplitude.Framework.DatatableElementReferenceAttribute" /> class.
+            <para><see cref="T:System.Type"/> extracted from <paramref name="methodName"/> must implement interface <see cref="T:Amplitude.Framework.IDatatableElement"/>.</para>
+            </summary>
+            <param name="methodName">The <see cref="T:System.Reflection.MethodInfo"/> name to extract the <see cref="T:System.Type"/> from.</param>
+            <param name="methodFlags">The <see cref="T:System.Reflection.BindingFlags"/> used in order to retrieve the <see cref="T:System.Reflection.MethodInfo"/>. Must contains <see cref="F:System.Reflection.BindingFlags.Static"/> or <see cref="F:System.Reflection.BindingFlags.Instance"/>.</param>
+            <param name="allowSubclasses">Do we allow subclasses to be filtered in.</param>
+        </member>
+        <member name="M:Amplitude.Framework.Extensions.DirectoryInfoExtension.IsSubdirectoryOf(System.IO.DirectoryInfo,System.IO.DirectoryInfo)">
+            <summary>
+            Does the current <see cref="T:System.IO.DirectoryInfo"/> is a (direct or indirect) subdirectory of <paramref name="parentDirectoryInfo"/>.
+            </summary>
+            <param name="subdirectoryInfo">The potential subdirectory of <paramref name="parentDirectoryInfo"/>.</param>
+            <param name="parentDirectoryInfo">The potential parent directory of <paramref name="subdirectoryInfo"/>.</param>
+            <returns>True if <paramref name="subdirectoryInfo"/> is a (direct or indirect) subdirectory of <paramref name="parentDirectoryInfo"/>, else return false.</returns>
+        </member>
+        <member name="M:Amplitude.Framework.Extensions.DirectoryInfoExtension.IsSubdirectoryOf(System.IO.DirectoryInfo,System.IO.DirectoryInfo,System.Boolean)">
+            <summary>
+            Does the current <see cref="T:System.IO.DirectoryInfo"/> is a (direct or indirect) subdirectory of <paramref name="parentDirectoryInfo"/>.
+            </summary>
+            <param name="subdirectoryInfo">The potential subdirectory of <paramref name="parentDirectoryInfo"/>.</param>
+            <param name="parentDirectoryInfo">The potential parent directory of <paramref name="subdirectoryInfo"/>.</param>
+            <param name="includeSelf">Check if <paramref name="subdirectoryInfo"/> is the same <see cref="T:System.IO.DirectoryInfo"/> as <paramref name="parentDirectoryInfo"/>.</param>
+            <returns>True if <paramref name="subdirectoryInfo"/> is a (direct or indirect) subdirectory of <paramref name="parentDirectoryInfo"/> (or same directory if <paramref name="includeSelf"/> is true), else return false.</returns>
+        </member>
+        <member name="M:Amplitude.Framework.Extensions.RectExtension.Margin(UnityEngine.Rect,System.Single)">
+            <summary>
+            <para>Create a new <see cref="T:UnityEngine.Rect"/> with a <paramref name="margin"/> value for all sides.</para>
+            <para>Positive values for the margin are pushing the new <see cref="T:UnityEngine.Rect"/> inside the original <paramref name="rect"/>. Negative values push outside.</para>
+            <para>The margin will only squishes the <see cref="T:UnityEngine.Rect"/> until zero sized: the opposing sides (left/right and bottom/top) will never crosses.</para>
+            </summary>
+            <param name="rect">The original <see cref="T:UnityEngine.Rect"/>.</param>
+            <param name="margin">The margin applied to every sides.</param>
+            <returns>A new <see cref="T:UnityEngine.Rect"/> with the <paramref name="margin"/> applied.</returns>
+        </member>
+        <member name="M:Amplitude.Framework.Extensions.RectExtension.Margin(UnityEngine.Rect,UnityEngine.Vector2,UnityEngine.Vector2)">
+            <summary>
+            <para>Create a new <see cref="T:UnityEngine.Rect"/> with four specifics margins: <paramref name="widthMargin.x.x"/> (left), <paramref name="widthMargin.y.y"/> (right), <paramref name="heightMargin.x.x"/> (bottom) and <paramref name="heightMargin.y.y"/> (top).</para>
+            <para>Positive values for the margin are pushing the new <see cref="T:UnityEngine.Rect"/> inside the original <paramref name="rect"/>. Negative values push outside.</para>
+            <para>The margin will only squishes the <see cref="T:UnityEngine.Rect"/> until zero sized: the opposing sides (left/right and bottom/top) will never crosses.</para>
+            </summary>
+            <param name="rect">The original <see cref="T:UnityEngine.Rect"/>.</param>
+            <param name="widthMargin">The margins for the left and right sides.</param>
+            <param name="heightMargin">The margins for the bottom and top sides.</param>
+            <returns>A new <see cref="T:UnityEngine.Rect"/> with the margins applied.</returns>
+        </member>
+        <member name="M:Amplitude.Framework.Extensions.RectExtension.Margin(UnityEngine.Rect,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Create a new <see cref="T:UnityEngine.Rect"/> with four specific margins: <paramref name="left"/>, <paramref name="right"/>, <paramref name="top"/> and <paramref name="bottom"/>.
+            Positive values for the margins are pushing the new <see cref="T:UnityEngine.Rect"/> inside the original <paramref name="rect"/>. Negative values push outside.
+            The margins will only squishes the <see cref="T:UnityEngine.Rect"/> until zero sized: the opposing sides (left/right and bottom/top) will never crosses.
+            </summary>
+            <param name="rect">The original <see cref="T:UnityEngine.Rect"/>.</param>
+            <param name="left">The left margin value.</param>
+            <param name="right">The right margin value.</param>
+            <param name="top">The top margin value.</param>
+            <param name="bottom">The bottom margin value.</param>
+            <returns>A new <see cref="T:UnityEngine.Rect"/> with the margins applied.</returns>
+        </member>
+        <member name="M:Amplitude.Framework.Extensions.RectExtension.GetAspectRect(UnityEngine.Rect,System.Single)">
+            <summary>
+            <para>Generate a <see cref="T:UnityEngine.Rect"/> inside this <paramref name="rect"/> with a specific <paramref name="aspectRatio"/>.</para>
+            <para>The <paramref name="aspectRatio"/> sign is not taken into account: 1.77f and -1.77f will produced the same result.</para>
+            </summary>
+            <param name="rect">The starting <see cref="T:UnityEngine.Rect"/> from witch will be extracted a new <see cref="T:UnityEngine.Rect"/>.</param>
+            <param name="aspectRatio">The aspect ratio of the new <see cref="T:UnityEngine.Rect"/> (width / height).</param>
+            <returns>A new <see cref="T:UnityEngine.Rect"/> with the specific <paramref name="aspectRatio"/>.</returns>
+        </member>
+        <member name="M:Amplitude.Framework.Extensions.RectExtension.Bound(UnityEngine.Rect,UnityEngine.Rect,System.Boolean)">
+            <summary>
+            <para>Bound a <see cref="T:UnityEngine.Rect"/> inside another <see cref="T:UnityEngine.Rect"/>.</para>
+            </summary>
+            <param name="bound">The <see cref="T:UnityEngine.Rect"/> used as bounds.</param>
+            <param name="rect">The <see cref="T:UnityEngine.Rect"/> that will be moved (and resized if <paramref name="resizeIfOversized"/> is set to true).</param>
+            <param name="resizeIfOversized">If set to true, the <paramref name="rect"/> will be resized in order to be bound inside the <paramref name="bound"/> <see cref="T:UnityEngine.Rect"/>.</param>
+            <returns>The new bounded <see cref="T:UnityEngine.Rect"/>.</returns>
+        </member>
+        <member name="T:Amplitude.Framework.IDatatableElementProvider`1">
+            <summary>
+            This interface is used at Runtime when a non-unity <see cref="T:Amplitude.Framework.IDatatableElement"/> collection is loaded from <see cref="T:Amplitude.Framework.LoadDatabaseFromAssetBundleRequest`1"/>.
+            The <see cref="T:Amplitude.Framework.IDatatableElement"/> that inherit from <see cref="T:UnityEngine.ScriptableObject"/> are automatically picked up by <see cref="M:UnityEngine.AssetBundle.LoadAllAssetsAsync``1"/>.
+            The <see cref="T:Amplitude.Framework.IDatatableElement"/> that does NOT inherit from <see cref="T:UnityEngine.ScriptableObject"/> will be iterated by the collection, through this interface.
+            </summary>
+            <typeparam name="T">The type of <see cref="T:Amplitude.Framework.IDatatableElement"/>.</typeparam>
+        </member>
+        <member name="T:Amplitude.Framework.Input.ActionMapper.ActionMap.Axis">
+            <summary>
+            Special class for actions of type 'Axis' that are driven by one or many key mappings of ours.
+            </summary>
+        </member>
+        <member name="T:Amplitude.Framework.IPropertyDocumentationProvider">
+            <summary>
+            An instance used by Amplitude.SerializedPropertyWithDocumentation to display user defined documentation. Works closely with the struct PropertyDocumentation.
+            </summary>
+        </member>
+        <member name="M:Amplitude.Framework.IPropertyDocumentationProvider.GetGUIContent(UnityEditor.SerializedProperty)">
+            <summary>
+            Return the GUIContent associated with a property. Use PropertyWithDocumentation.GetGUIContent for its implementation.
+            </summary>
+            <param name="property">The property that needs user defined display name and tooltip.</param>
+            <returns>Return the user defined GUIContent.</returns>
+        </member>
+        <member name="M:Amplitude.Framework.Manager.SupportsEditAndContinue">
+            <summary>
+            Informs the application that this manager supports edit-and-continue; meaning the manager is able to restart when part of the code gets recompiled.
+            If all the managers of an application do support edit-and-continue, then the application will be able to restart after each compilation or library import.
+            In order to support edit-and-continue: avoid using both 'Awake' and 'Start', and use either 'DoStart', 'OnEnable' and/or 'OnDisable' instead; also add the attribute '[System.NonSerialized]' to all the members that need to be reset within each new call to 'OnEnable'.
+            </summary>
+            <returns>Returns 'true' if the manager supports edit-and-continue.</returns>
+        </member>
+        <member name="F:Amplitude.Framework.Matchmaking.LobbyType.Private">
+            <summary>
+            Multiplayer, private; players must be invited in order to join in.
+            </summary>
+        </member>
+        <member name="F:Amplitude.Framework.Matchmaking.LobbyType.Protected">
+            <summary>
+            Multiplayer, protected; friends can check the lobby, other players must be invited in order to join in.
+            </summary>
+        </member>
+        <member name="F:Amplitude.Framework.Matchmaking.LobbyType.Public">
+            <summary>
+            Multiplayer, public; all players can join in.
+            </summary>
+        </member>
+        <member name="M:Amplitude.Framework.Math.PopCount(System.Int64)">
+            <summary>
+            Run the Hamming Weight computation that compute the number of bits set to 1 in a bitfield.
+            </summary>
+            <param name="bitfield">Bitfield that must be tested.</param>
+            <returns>Number of bits set to 1.</returns>
+        </member>
+        <member name="T:Amplitude.Framework.Networking.Diagnostics.IDump">
+            <summary>
+            A container capable of formatting/storing information.
+            </summary>
+        </member>
+        <member name="M:Amplitude.Framework.Networking.Diagnostics.IDump.Title(System.String)">
+            <summary>
+            Write a title in the dump.
+            </summary>
+            <param name="title">A string that represents the title.</param>
+        </member>
+        <member name="M:Amplitude.Framework.Networking.Diagnostics.IDump.BeginSection(System.String,System.Boolean)">
+            <summary>
+            Begin a named section.
+            </summary>
+            <param name="name">The title of the section.</param>
+            <param name="serializeName">Whether to serialize the name or not.</param>
+        </member>
+        <member name="M:Amplitude.Framework.Networking.Diagnostics.IDump.EndSection(System.Boolean)">
+            <summary>
+            Close the current section.
+            </summary>
+            <param name="all">Closes all the currently opened section if true.</param>
+        </member>
+        <member name="M:Amplitude.Framework.Networking.Diagnostics.IDump.Comment(System.String)">
+            <summary>
+            Append a comment to the dump.
+            </summary>
+            <param name="text">A string that represents the comment to append.</param>
+        </member>
+        <member name="M:Amplitude.Framework.Networking.Diagnostics.IDump.Label(System.String)">
+            <summary>
+            Append a label to the dump.
+            </summary>
+            <param name="text">A string that represents the label to append.</param>
+        </member>
+        <member name="M:Amplitude.Framework.Networking.Diagnostics.IDump.Format(System.String,System.Object)">
+            <summary>
+            Append a formatted string to the dump.
+            </summary>
+            <param name="format">The format.</param>
+            <param name="arg0">The first argument.</param>
+        </member>
+        <member name="M:Amplitude.Framework.Networking.Diagnostics.IDump.Format(System.String,System.Object,System.Object)">
+            <summary>
+            Append a formatted string to the dump.
+            </summary>
+            <param name="format">The format.</param>
+            <param name="arg0">The first argument.</param>
+            <param name="arg1">The second argument.</param>
+        </member>
+        <member name="M:Amplitude.Framework.Networking.Diagnostics.IDump.Format(System.String,System.Object,System.Object,System.Object)">
+            <summary>
+            Append a formatted string to the dump.
+            </summary>
+            <param name="format">The format.</param>
+            <param name="arg0">The first argument.</param>
+            <param name="arg1">The second argument.</param>
+            <param name="arg2">The third argument.</param>
+        </member>
+        <member name="M:Amplitude.Framework.Networking.Diagnostics.IDump.Format(System.String,System.Object[])">
+            <summary>
+            Append a formatted string to the dump.
+            </summary>
+            <param name="format">The format.</param>
+            <param name="args">The list of arguments.</param>
+        </member>
+        <member name="M:Amplitude.Framework.Networking.Diagnostics.IDump.Field(System.String,System.Int32,System.Boolean)">
+            <summary>
+            Append a named field that represents an integer value to the dump.
+            </summary>
+            <param name="name">The name of the field.</param>
+            <param name="value">The value to dump.</param>
+            <param name="serializeName">Whether to serialize the name or not (useful for definition name of GUID).</param>
+        </member>
+        <member name="M:Amplitude.Framework.Networking.Diagnostics.IDump.Field(System.String,System.UInt32,System.Boolean)">
+            <summary>
+            Append a named field that represents an unsigned integer value to the dump.
+            </summary>
+            <param name="name">The name of the field.</param>
+            <param name="value">The value to dump.</param>
+            <param name="serializeName">Whether to serialize the name or not (useful for definition name of GUID).</param>
+        </member>
+        <member name="M:Amplitude.Framework.Networking.Diagnostics.IDump.Field(System.String,System.Int64,System.Boolean)">
+            <summary>
+            Append a named field that represents a long integer value to the dump.
+            </summary>
+            <param name="name">The name of the field.</param>
+            <param name="value">The value to dump.</param>
+            <param name="serializeName">Whether to serialize the name or not (useful for definition name of GUID).</param>
+        </member>
+        <member name="M:Amplitude.Framework.Networking.Diagnostics.IDump.Field(System.String,System.UInt64,System.Boolean)">
+            <summary>
+            Append a named field that represents an unsigned long integer value to the dump.
+            </summary>
+            <param name="name">The name of the field.</param>
+            <param name="value">The value to dump.</param>
+            <param name="serializeName">Whether to serialize the name or not (useful for definition name of GUID).</param>
+        </member>
+        <member name="M:Amplitude.Framework.Networking.Diagnostics.IDump.Field(System.String,System.Single,System.Boolean)">
+            <summary>
+            Append a named field that represents an floating point value to the dump.
+            </summary>
+            <param name="name">The name of the field.</param>
+            <param name="value">The value to dump.</param>
+            <param name="serializeName">Whether to serialize the name or not (useful for definition name of GUID).</param>
+        </member>
+        <member name="M:Amplitude.Framework.Networking.Diagnostics.IDump.Field(System.String,System.Double,System.Boolean)">
+            <summary>
+            Append a named field that represents a double precision floating point value to the dump.
+            </summary>
+            <param name="name">The name of the field.</param>
+            <param name="value">The value to dump.</param>
+            <param name="serializeName">Whether to serialize the name or not (useful for definition name of GUID).</param>
+        </member>
+        <member name="M:Amplitude.Framework.Networking.Diagnostics.IDump.Field(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Append a named field that represents a boolean value to the dump.
+            </summary>
+            <param name="name">The name of the field.</param>
+            <param name="value">The value to dump.</param>
+            <param name="serializeName">Whether to serialize the name or not (useful for definition name of GUID).</param>
+        </member>
+        <member name="M:Amplitude.Framework.Networking.Diagnostics.IDump.Field(System.String,System.String,System.Boolean)">
+            <summary>
+            Append a named field that represents a string value to the dump.
+            </summary>
+            <param name="name">The name of the field.</param>
+            <param name="value">The value to dump.</param>
+            <param name="serializeName">Whether to serialize the name or not (useful for definition name of GUID).</param>
+        </member>
+        <member name="M:Amplitude.Framework.Networking.Diagnostics.IDump.Field(System.String,Amplitude.StaticString,System.Boolean)">
+            <summary>
+            Append a named field that represents a string value to the dump.
+            </summary>
+            <param name="name">The name of the field.</param>
+            <param name="value">The value to dump.</param>
+            <param name="serializeName">Whether to serialize the name or not (useful for definition name of GUID).</param>
+        </member>
+        <member name="M:Amplitude.Framework.Networking.Diagnostics.IDump.Field(System.String,Amplitude.FixedPoint,System.Boolean)">
+            <summary>
+            Append a named field that represents a fixed point value to the dump.
+            </summary>
+            <param name="name">The name of the field.</param>
+            <param name="value">The value to dump.</param>
+            <param name="serializeName">Whether to serialize the name or not (useful for definition name of GUID).</param>
+        </member>
+        <member name="M:Amplitude.Framework.Networking.Diagnostics.IDump.Dump(Amplitude.Framework.Networking.Diagnostics.IDumpable)">
+            <summary>
+            Append the content of an object to the dump.
+            </summary>
+            <param name="dumpable">The object to dump.</param>
+        </member>
+        <member name="M:Amplitude.Framework.Networking.Diagnostics.IDump.MD5">
+            <summary>
+            Compute the MD5 checksum of the dump.
+            </summary>
+            <returns>A string that represents the MD5 checksum.</returns>
+        </member>
+        <member name="M:Amplitude.Framework.Networking.Diagnostics.IDump.SHA1">
+            <summary>
+            Compute the SHA1 checksum of the dump.
+            </summary>
+            <returns>A string that represents the SHA1 checksum.</returns>
+        </member>
+        <member name="M:Amplitude.Framework.Networking.Diagnostics.IDump.WriteToDisk(System.String)">
+            <summary>
+            Write the content of the dump in a file.
+            </summary>
+            <param name="path">The path where to save the file.</param>
+        </member>
+        <member name="M:Amplitude.Framework.Networking.Extensions.ByteArrayExtension.DumpAsText(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Format an array of bytes into hexadecimal editor style.
+            </summary>
+            <param name="bytes">The array of bytes to format.</param>
+            <param name="bytesPerColumn">The number of bytes per column, usually 4.</param>
+            <param name="bytesPerLine">The number of bytes per line, usually 16.</param>
+            <returns>A hexadecimal editor style string.</returns>
+        </member>
+        <member name="F:Amplitude.Framework.Networking.Message.Marker">
+            <summary>
+            Used to filter messages in external packet sniffing utilities.
+            </summary>
+        </member>
+        <member name="P:Amplitude.Framework.Options.IOption`1.CurrentValue">
+            <summary>
+            Gets the currently selected value as string.
+            It is usually equivalent to the state name, except for "text" options where there's no state but only a string value.
+            </summary>
+        </member>
+        <member name="P:Amplitude.Framework.Options.IOption`1.CurrentState">
+            <summary>
+            Gets the currently selected State. 
+            NB: In case the Option is set to None, a OptionState.Null is returned.
+            </summary>
+        </member>
+        <member name="P:Amplitude.Framework.Options.IOption`1.CurrentStateIndex">
+            <summary>
+            Gets the index of the currently selected State.
+            This index will always reference a declared OptionState. If the current state is implied (e.g. undeclared 
+            PresetFallback), that value should be equal to Option.NullIndex (-1). 
+            </summary>
+        </member>
+        <member name="P:Amplitude.Framework.Options.IOption`1.StatesCount">
+            <summary>
+            Gets the number of declared states (i.e. in the Definition).
+            </summary>
+        </member>
+        <member name="P:Amplitude.Framework.Options.IOption`1.HasPreset">
+            <summary>
+            Gets a value indicating whether this Option declares any Preset in its Definition.
+            </summary>
+        </member>
+        <member name="P:Amplitude.Framework.Options.IOption`1.PresetFallbackState">
+            <summary>
+            Gets a value indicating the State representing a Preset fallback.
+            Returns NullState if none is specified.
+            </summary>
+        </member>
+        <member name="P:Amplitude.Framework.Options.IOption`1.PresetFallbackIndex">
+            <summary>
+            Gets a value indicating the index of PresetFallbackState.
+            Returns -1 if not specified.
+            </summary>
+        </member>
+        <member name="P:Amplitude.Framework.Options.IOption`1.CanBeNull">
+            <summary>
+            Gets a value indicating whether this Option might have a Null CurrentState (e.g. if that Option defines Preset.
+            but no PresetFallback is actually defined).
+            </summary>
+        </member>
+        <member name="P:Amplitude.Framework.Options.IOption`1.IsNull">
+            <summary>
+            Gets a value indicating whether the CurrentState of this Option is Null.
+            </summary>
+        </member>
+        <member name="M:Amplitude.Framework.Options.IOption`1.GetState(System.Int32)">
+            <summary>
+            Access to the States declared in the Definition.
+            </summary>
+            <param name="index">Index accessed.</param>
+            <returns>Returns the States requested. If the index is invalid, return OptionState.Null.</returns>
+        </member>
+        <member name="M:Amplitude.Framework.Options.IOption`1.IsSetToPresetFallback">
+            <summary>
+            Check IsPreset and PresetFallback to know if this Option is set to 'Custom' Preset.
+            </summary>
+            <returns>If HasPreset, test CurrentStateIndex against PresetFallbackIndex. Else returns false.</returns>
+        </member>
+        <member name="F:Amplitude.Framework.Options.Option`1.impactedOptions">
+            <summary>
+            Arrays containing all the options that could be Constraint by that Option's states.
+            </summary>
+        </member>
+        <member name="M:Amplitude.Framework.Options.Option`1.GetImpactedOptions(System.Collections.Generic.List{Amplitude.Framework.Options.Option{`0}})">
+            <summary>
+            Append all the Options impacted by that Option to cache. Ignore Options that are already in cache.
+            </summary>
+            <param name="outCache">Options receptacles.</param>
+        </member>
+        <member name="F:Amplitude.Framework.Options.Option`1.refreshVisitsCount">
+            <summary>
+            Simple watchdog to prevent infinite loop. Every time the method SetValue is called with silent = false, this value is incremented before refreshing the impacted Options.
+            If SetValue is called again on the same Option more than 5 times, an error is thrown.
+            Hack until something better is found (with a nice way to clearly identify the cycle).
+            </summary>
+        </member>
+        <member name="M:Amplitude.Framework.Options.Option`1.Refresh">
+            <summary>
+            Refresh VisibilityStates and set its CurrentState accordingly. 
+            If HasPreset, will check that the current preset is still applied.
+            </summary>
+        </member>
+        <member name="F:Amplitude.Framework.Options.OptionConstraint.Consequence.Value">
+            <summary>
+            Value that should be affected by that Consequence. If empty, this action will be applied to the Option itself.
+            </summary>
+        </member>
+        <member name="M:Amplitude.Framework.Presentation.IMouseCursorService.AddKey(Amplitude.StaticString)">
+            <summary>
+            Add a key for the cursor rules.
+            </summary>
+            <param name="key">A static string.</param>
+        </member>
+        <member name="M:Amplitude.Framework.Presentation.IMouseCursorService.RemoveKey(Amplitude.StaticString)">
+            <summary>
+            Remove a previously added key.
+            </summary>
+            <param name="key">A static string.</param>
+        </member>
+        <member name="M:Amplitude.Framework.Presentation.IMouseCursorService.HasKey(Amplitude.StaticString)">
+            <summary>
+            Return if a key is present.
+            </summary>
+            <param name="key">The key name to test.</param>
+            <returns>Gets a value indicating if the key "key" is present.</returns>
+        </member>
+        <member name="T:Amplitude.Framework.PropertyDocumentation">
+            <summary>
+            A struct to insert in a class to help the implementation of IPropertyDocumentationProvider.
+            </summary>
+        </member>
+        <member name="M:Amplitude.Framework.PropertyDocumentation.GetGUIContent(UnityEditor.SerializedProperty,UnityEngine.Object)">
+            <summary>
+            Return the used defined GUIContent associated with a property. If no entry matches the property, a new entry will be added and the owner will be set as dirty for the editor.
+            </summary>
+            <param name="property">A serialized property that needs the user defined display name and tooltip.</param>
+            <param name="owner">The UnityEngine.Object that owns the PropertyDocumentation struct.</param>
+            <returns>Return the user defined GUIContent.</returns>
+        </member>
+        <member name="M:Amplitude.Framework.PropertyDocumentation.RefreshGUIContent">
+            <summary>
+            Method used to refresh the content. Call this in case of edition of the object that own this struct. OnValidate() is a good place to call this method.
+            </summary>
+        </member>
+        <member name="F:Amplitude.Framework.Registry.backupRegisters">
+            <summary>
+            When a register is modified for the first time, a backup is stored for future restoration.
+            </summary>
+            <seealso cref="M:Amplitude.Framework.Registry.SetValue(System.String,System.String)"/>
+        </member>
+        <member name="T:Amplitude.Framework.Runtime.AssemblyValidator">
+            <summary>
+            Defines the <see cref="T:Amplitude.Framework.Runtime.AssemblyValidator" />.
+            </summary>
+        </member>
+        <member name="F:Amplitude.Framework.Runtime.AssemblyValidator.checkList">
+            <summary>
+            The list of symbols to check.
+            </summary>
+        </member>
+        <member name="F:Amplitude.Framework.Runtime.AssemblyValidator.checkMethod">
+            <summary>
+            The method used to validate the assembly (Allow list or Deny list).
+            </summary>
+        </member>
+        <member name="F:Amplitude.Framework.Runtime.AssemblyValidator.invalidTypesCache">
+            <summary>
+            The cache used to compute invalid types.
+            </summary>
+        </member>
+        <member name="M:Amplitude.Framework.Runtime.AssemblyValidator.#ctor(Amplitude.Framework.Runtime.AssemblyValidator.CheckMethod,System.String[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Amplitude.Framework.Runtime.AssemblyValidator" /> class.
+            </summary>
+            <param name="checkMethod">The validation method to use to validate assemblies.</param>
+            <param name="checkList">The list of symbols to use to validate assemblies.</param>
+        </member>
+        <member name="M:Amplitude.Framework.Runtime.AssemblyValidator.ValidateAssembly(System.String)">
+            <summary>
+            Validate an assembly using the check list.
+            </summary>
+            <param name="assemblyFilePath">The assembly to validate.</param>
+            <returns>Returns if the assembly is valid or not.</returns>
+        </member>
+        <member name="M:Amplitude.Framework.Runtime.AssemblyValidator.TypeChecker(Mono.Cecil.TypeReference)">
+            <summary>
+            Check if a type match a symbol list.
+            </summary>
+            <param name="typeReference">The type reference to check.</param>
+            <returns>Returns true if the type match one of the checklist's symbol.</returns>
+        </member>
+        <member name="T:Amplitude.Framework.Runtime.AssemblyValidator.ValidationResult">
+            <summary>
+            Defines the <see cref="T:Amplitude.Framework.Runtime.AssemblyValidator.ValidationResult" />.
+            </summary>
+        </member>
+        <member name="F:Amplitude.Framework.Runtime.AssemblyValidator.ValidationResult.AssemblyName">
+            <summary>
+            Gets the assembly name.
+            </summary>
+        </member>
+        <member name="F:Amplitude.Framework.Runtime.AssemblyValidator.ValidationResult.IsValid">
+            <summary>
+            Gets whether the assembly if valid or not.
+            </summary>
+        </member>
+        <member name="F:Amplitude.Framework.Runtime.AssemblyValidator.ValidationResult.InvalidTypes">
+            <summary>
+            Gets the invalid types used in assembly.
+            </summary>
+        </member>
+        <member name="F:Amplitude.Framework.Runtime.RuntimeModuleType.Standalone">
+            <summary>
+            The standalone module defines all the Game mechanics.
+            There must always be one and only one standalone module at a time.
+            </summary>
+        </member>
+        <member name="F:Amplitude.Framework.Runtime.RuntimeModuleType.Conversion">
+            <summary>
+            The partial conversion adds or overrides parts of the Game mechanics defined by the standalone module.
+            The partial conversion is optional.
+            There can be only one partial conversion at a time.
+            </summary>
+        </member>
+        <member name="F:Amplitude.Framework.Runtime.RuntimeModuleType.Extension">
+            <summary>
+            Extension modules override or add parts of the Game mechanics defined by previous modules.
+            There can be zero or any number of extension modules, provided they are compatible.
+            Extensions usually provide minimal cumulative changes (additions, fixes...) that may be applied to other standalone or partial conversion modules.
+            </summary>
+        </member>
+        <member name="T:Amplitude.Framework.Session.ChatEncoding.ChatMessage">
+            <summary>
+            Protocol that encodes a chat message request into a chat message.
+            </summary>
+        </member>
+        <member name="T:Amplitude.Framework.Session.ChatEncoding.Kick">
+            <summary>
+            Protocol that encodes a kick request into a chat message.
+            </summary>
+        </member>
+        <member name="T:Amplitude.Framework.Session.ChatEncoding.Metadata">
+            <summary>
+            Protocol that encodes a metadata update operation into a chat message.
+            </summary>
+        </member>
+        <member name="M:Amplitude.Framework.Session.Session.Open(System.EventHandler{Amplitude.CoroutineExceptionEventArgs})">
+            <summary>
+            Opens the session in host mode.
+            </summary>
+            <param name="exceptionHandler">Specifies the event handler to be call upon exception.</param>
+            <exception cref="T:System.InvalidOperationException">Thrown when the session cannot be opened at the moment.</exception>
+        </member>
+        <member name="M:Amplitude.Framework.Session.Session.Open(System.String,System.EventHandler{Amplitude.CoroutineExceptionEventArgs})">
+            <summary>
+            Opens the session in client mode.
+            </summary>
+            <param name="address">Specifies the address of the game server to connect to.</param>
+            <param name="exceptionHandler">Specifies the event handler to be call upon exception.</param>
+            <exception cref="T:System.InvalidOperationException">Thrown when the session cannot be opened at the moment.</exception>
+        </member>
+        <member name="M:Amplitude.Framework.Session.Session.Open(Amplitude.Framework.Networking.NetworkIdentifier,System.EventHandler{Amplitude.CoroutineExceptionEventArgs})">
+            <summary>
+            Opens the session in client mode.
+            </summary>
+            <param name="identifier">Specifies the existing lobby to be joined.</param>
+            <param name="exceptionHandler">Specifies the event handler to be call upon exception.</param>
+            <exception cref="T:System.InvalidOperationException">Thrown when the session cannot be opened at the moment.</exception>
+        </member>
+        <member name="M:Amplitude.Framework.Session.Session.Open(Amplitude.Framework.Matchmaking.LobbyType,System.EventHandler{Amplitude.CoroutineExceptionEventArgs})">
+            <summary>
+            Opens the session in host mode.
+            </summary>
+            <param name="lobbyType">Specifies which lobby type to start with; the lobby type can be changed later by reopening the session.</param>
+            <param name="exceptionHandler">Specifies the event handler to be call upon exception.</param>
+            <exception cref="T:System.InvalidOperationException">Thrown when the session cannot be opened at the moment.</exception>
+        </member>
+        <member name="F:Amplitude.Framework.Session.SessionMode.Offline">
+            <summary>
+            Single player, without networking (offline).
+            </summary>
+        </member>
+        <member name="F:Amplitude.Framework.Session.SessionMode.Online">
+            <summary>
+            Multiplayer, with networking (online).
+            </summary>
+        </member>
+        <member name="F:Amplitude.Framework.Simulation.BaseSimulationEntity.NextFreeEntityIndex">
+            <summary>
+            When the entity is free, the next free entity index point to the next free entity index in the allocator array.
+            When the entity is alive, the next free entity index is the inverted entity index in the allocator array.
+            </summary>
+        </member>
+        <member name="F:Amplitude.Framework.Simulation.BaseSimulationEntity.AllocatorIndex">
+            <summary>
+            Define the index of the entity allocator in the SimulationEntityRepository.Allocators array.
+            </summary>
+        </member>
+        <member name="M:Amplitude.Framework.Simulation.BaseSimulationEntity.OnAllocated(System.UInt64@)">
+            <summary>
+            This method is called when a simulation entity is allocated.
+            <remarks>Only a call to "SimulationController.AllocateEntity" will forward the call to this method.</remarks>
+            </summary>
+            <param name="clientUniqueId">A client unique id.</param>
+        </member>
+        <member name="M:Amplitude.Framework.Simulation.BaseSimulationEntity.OnFreeing">
+            <summary>
+            This method is called when a simulation entity is being freed.
+            </summary>
+        </member>
+        <member name="M:Amplitude.Framework.Simulation.BaseSimulationEntity.OnRefreshed">
+            <summary>
+            This method is called once per dirty SimulationEntity after the simulation refresh pass.
+            </summary>
+        </member>
+        <member name="M:Amplitude.Framework.Simulation.SimulationController.TryEvaluateProperty(Amplitude.Framework.Simulation.BaseSimulationEntity,Amplitude.Framework.Simulation.DataStructures.CompiledPath,System.String,System.Int32,Amplitude.Framework.Simulation.EvaluationMethod.Operation,Amplitude.FixedPoint@)">
+            <summary>
+            Validate the path and evaluate a given property on one or multiple SimulationEntities.
+            </summary>
+            <param name="entity">Root of the given path.</param>
+            <param name="path">Navigation and validation information through the Simulation.</param>
+            <param name="propertyName">Name of the Property that shall be evaluated.</param>
+            <param name="propertyPathIndex">Index of the SimulationEntity holding the Property in the given Path.</param>
+            <param name="evaluationMethod">Defines the way multiple property values should be combined.</param>
+            <param name="propertyEvaluation">Result of the property evaluation.</param>
+            <returns>Returns a boolean indicating whether the Property does exists on the SimulationEntity and the Path is valid.</returns>
+        </member>
+        <member name="M:Amplitude.Framework.Simulation.SimulationController.TryEvaluateReferenceCollectionCount(Amplitude.Framework.Simulation.BaseSimulationEntity,Amplitude.Framework.Simulation.DataStructures.CompiledPath,System.String,System.Int32,Amplitude.Framework.Simulation.EvaluationMethod.Operation,Amplitude.FixedPoint@)">
+            <summary>
+            Validate the path and evaluate a given reference collection count on one or multiple SimulationEntities.
+            </summary>
+            <param name="entity">Root of the given path.</param>
+            <param name="path">Navigation and validation information through the Simulation.</param>
+            <param name="referenceCollection">Name of the reference collection that shall be evaluated.</param>
+            <param name="referenceCollectionPathIndex">Index of the SimulationEntity holding the reference collection in the given Path.</param>
+            <param name="evaluationMethod">Defines the way multiple reference collection count values should be combined.</param>
+            <param name="referenceCountEvaluation">Result of the reference collection count evaluation.</param>
+            <returns>Returns a boolean indicating whether the Property does exists on the SimulationEntity and the Path is valid.</returns>
+        </member>
+        <member name="M:Amplitude.Framework.Simulation.SimulationController.CountEntities(Amplitude.Framework.Simulation.BaseSimulationEntity,Amplitude.Framework.Simulation.DataStructures.CompiledPath,System.Int32)">
+            <summary>
+            Count the existing SimulationEntity at a particular level of a Path.
+            </summary>
+            <param name="entity">Root of the Path.</param>
+            <param name="path">Navigation and validation information through the Simulation.</param>
+            <param name="countIndex">Index of the SimulationEntities that shall be counted in the given Path.</param>
+            <returns>Returns an integer indicating how many SimulationEntities validates the given Path at the given countIndex.</returns>
+        </member>
+        <member name="M:Amplitude.Framework.Storage.IStorageManagementService.Browse">
+            <summary>
+            Browse works like <see cref="M:Amplitude.Framework.Storage.IStorageManagementService.Enumerate"/> except it does not register the storage containers in the process.
+            </summary>
+            <returns>An enumerator of storage containers.</returns>
+        </member>
+        <member name="F:Amplitude.Framework.Storage.StorageContainer.InvalidContainerNameChars">
+            <summary>
+            The list of invalid characters for container names.
+            </summary>
+            We want to aggregate all invalid characters from all platform here to allow us to make cloud save easier in the future.
+        </member>
+        <member name="F:Amplitude.Framework.Storage.StorageContainer.ReservedWindowsFileName">
+            <summary>
+            The list of reserved filename for windows. Reserved file name does not work even with an extension (aka CON.txt is still invalid).
+            source: https://docs.microsoft.com/en-us/windows/win32/fileio/naming-a-file.
+            </summary>
+        </member>
+        <member name="M:Amplitude.Framework.TypeReferenceAttribute.#ctor(System.Type,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Amplitude.Framework.TypeReferenceAttribute" /> class.
+            </summary>
+            <param name="baseClassType">Filter result by forcing target to implement the <see cref="T:System.Type"/>.</param>
+            <param name="optional">Allow to specify if the property should have a valid value or accept the null value.</param>
+            <param name="allowAbstract">Allow abstract Type inside the selection.</param>
+            <param name="allowBaseClassType">Allow the base class type to be filtered in.</param>
+        </member>
+        <member name="M:Amplitude.Framework.TypeReferenceAttribute.#ctor(System.String,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Amplitude.Framework.TypeReferenceAttribute" /> class.
+            </summary>
+            <param name="assemblyTypeName">Filter result with a <see cref="T:System.String"/> that describe a <see cref="T:System.Type"/> with this pattern: "[Namespace].[Type], [Assembly]".</param>
+            <param name="optional">Allow to specify if the property should have a valid value or accept the null value.</param>
+            <param name="allowAbstract">Allow abstract Type inside the selection.</param>
+            <param name="allowBaseClassType">Allow the base class type to be filtered in.</param>
+        </member>
+        <member name="F:Amplitude.Framework.Utility.AssetDatabaseUtility.FakeDeletedAssetType">
+            <summary>
+            All the generic method around the callback caches are designed to work with a <see cref="T:System.Collections.Generic.Dictionary`2"/>, where the key being the asset <see cref="T:System.Type"/>.
+            Since we are post processing those assets, we cannot retrieve the type of the deleted ones.
+            This means every <see cref="T:Amplitude.Framework.Utility.AssetDatabaseUtility.AssetDeletedCallback"/> delegates will be registered to this fake asset type.
+            </summary>
+        </member>
+        <member name="M:Amplitude.Framework.Utility.AssetDatabaseUtility.GetAssetFileId(UnityEngine.Object)">
+            <summary>
+            Extract the fileID from an Asset. Must be persistent (from a Prefab, a ScriptableObject or a saved Scene).
+            </summary>
+            <param name="asset">The persistent asset.</param>
+            <returns>The fileID.</returns>
+        </member>
+        <member name="M:Amplitude.Framework.Utility.AssetDatabaseUtility.RegisterOnAssetChanged``1(Amplitude.Framework.Utility.AssetDatabaseUtility.AssetChangedCallback)">
+            <summary>
+            Register a callback when an asset will be imported, moved or deleted.
+            <para>This system will re-import the main asset (e.g. Collection) when a sub-asset is added/removed (e.g. Element).</para>
+            <para>You need to register on the main asset <see cref="T:System.Type"/>, even if you want to process something based on the sub-asset(s).</para>
+            <para>The <see cref="T:System.Type"/> of <typeparamref name="T"/> will be null if the asset has been deleted.</para>
+            <para>Please check the Unity documentation for all the details (https://docs.unity3d.com/ScriptReference/AssetPostprocessor.OnPostprocessAllAssets.html).</para>
+            </summary>
+            <typeparam name="T">The asset <see cref="T:System.Type"/> that will trigger the callback.</typeparam>
+            <param name="assetChangedCallback">The callback that will, indeed, be called back.</param>
+        </member>
+        <member name="M:Amplitude.Framework.Utility.AssetDatabaseUtility.RegisterOnAssetChanged(System.Type,Amplitude.Framework.Utility.AssetDatabaseUtility.AssetChangedCallback)">
+            <summary>
+            Register a callback when an asset will be imported, moved or deleted.
+            <para>This system will re-import the main asset (e.g. Collection) when a sub-asset is added/removed (e.g. Element).</para>
+            <para>You need to register on the main asset <see cref="T:System.Type"/>, even if you want to process something based on the sub-asset(s).</para>
+            <para>The <paramref name="assetType"/> will be null if the asset has been deleted.</para>
+            <para>Please check the Unity documentation for all the details (https://docs.unity3d.com/ScriptReference/AssetPostprocessor.OnPostprocessAllAssets.html).</para>
+            </summary>
+            <param name="assetType">The asset <see cref="T:System.Type"/> that will trigger the callback.</param>
+            <param name="assetChangedCallback">The callback that will, indeed, be called back.</param>
+        </member>
+        <member name="E:Amplitude.Framework.Utility.DatatableElementCollectionUtility.OnDatatableElementSelectionRequest">
+            <summary>
+            Register to this event if you want to handle the selection of a <see cref="T:Amplitude.Framework.IDatatableElement"/>.
+            <para>Return True if you did handled the selection.</para>
+            </summary>
+        </member>
+        <member name="M:Amplitude.Framework.Utility.DirectoryInfoUtility.CompareFullName(System.IO.DirectoryInfo,System.IO.DirectoryInfo)">
+            <summary>
+            Compare two <see cref="T:System.IO.DirectoryInfo"/> to sort them based on their <see cref="P:System.IO.DirectoryInfo.FullName"/>.
+            </summary>
+            <param name="leftDirectoryInfo">The first <see cref="T:System.IO.DirectoryInfo"/> for the comparison.</param>
+            <param name="rightDirectoryInfo">The second <see cref="T:System.IO.DirectoryInfo"/> for the comparison.</param>
+            <returns>An index value indicating how differents they are. 0 means they are equals.</returns>
+        </member>
+        <member name="M:Amplitude.Framework.Utility.DirectoryInfoUtility.SameFullName(System.IO.DirectoryInfo,System.IO.DirectoryInfo)">
+            <summary>
+            Check if two <see cref="T:System.IO.DirectoryInfo"/> have the same path (using their <see cref="P:System.IO.DirectoryInfo.FullName"/>).
+            </summary>
+            <param name="leftDirectoryInfo">The first <see cref="T:System.IO.DirectoryInfo"/> for the comparison.</param>
+            <param name="rightDirectoryInfo">The second <see cref="T:System.IO.DirectoryInfo"/> for the comparison.</param>
+            <returns>True if they have the same path.</returns>
+        </member>
+        <member name="M:Amplitude.Framework.Utility.TypeUtility.GetTypes(System.Predicate{System.Type},System.Collections.Generic.List{System.Type}@)">
+            <summary>
+            Get all the <see cref="T:System.Type"/> from every <see cref="T:System.Reflection.Assembly"/> of the current <see cref="P:System.AppDomain.CurrentDomain"/> using <paramref name="predicate"/>.
+            </summary>
+            <param name="predicate">The <see cref="T:System.Predicate`1"/> that will be used to filter in the <see cref="T:System.Type"/>.</param>
+            <param name="types">The corresponding <see cref="T:System.Type"/>.</param>
+        </member>
+        <member name="M:Amplitude.Framework.Utility.TypeUtility.IsSubclassOfGeneric(System.Type,System.Type)">
+            <summary>
+            <para>Test if a <see cref="T:System.Type"/> is a sub-class to a generic <see cref="T:System.Type"/>, definition or construction.</para>
+            <para>If you try to use <see cref="M:System.Type.IsAssignableFrom(System.Type)"/> or <see cref="M:System.Type.IsSubclassOf(System.Type)"/> on a <see cref="T:System.Type"/> that is a generic definition, those methods might return false.</para>
+            <para>For more in-depth explanation of the generic type definition check the MSDN C# web site.</para>
+            </summary>
+            <param name="subclassType">The <see cref="T:System.Type"/> that will be tested.</param>
+            <param name="genericType">The (potentially) base generic <see cref="T:System.Type"/> of the <paramref name="subclassType"/>.</param>
+            <returns>True if <paramref name="subclassType"/> is a direct or indirect sub-class of <paramref name="genericType"/>.</returns>
+        </member>
+        <member name="F:Amplitude.Framework.Version.Accessibility">
+            <summary>
+            Gets or sets the accessibility level.
+            </summary>
+            <example>
+            This sample shows how to restrict some code execution to both the development team and the QA:
+            <code>
+            if (Application.Version.Accessibility &lt;= Amplitude.Framework.Accessibility.Internal)
+            {
+                // Access is restricted to the development team.
+                // QA can also access this code.
+            }
+            </code>
+            </example>
+        </member>
+        <member name="F:Amplitude.Framework.Version.Build">
+            <summary>
+            Gets or sets the build number.
+            Build number should be a positive integer, increasing over time.
+            </summary>
+        </member>
+        <member name="F:Amplitude.Framework.Version.Label">
+            <summary>
+            Gets or sets a version label; like "Alpha", "Beta", "Release Candidate", "Retail"...
+            </summary>
+        </member>
+        <member name="F:Amplitude.Framework.Version.Major">
+            <summary>
+            Gets or sets the major revision number.
+            Usually the major revision starts at 1 when the Game is shipped for the first time.
+            </summary>
+        </member>
+        <member name="F:Amplitude.Framework.Version.Minor">
+            <summary>
+            Gets or sets the minor revision number.
+            It should be increased each time a new Game version is released.
+            </summary>
+        </member>
+        <member name="F:Amplitude.Framework.Version.Revision">
+            <summary>
+            Gets or sets the revision number.
+            The revision number is reset each time a new version (major, minor) is released.
+            The revision number is increased each time a new revision - not affecting either the major or minor - is released.
+            </summary>
+        </member>
+        <member name="F:Amplitude.Framework.Version.SerializationToleranceLevel">
+            <summary>
+            Gets or sets the serialization tolerance level.
+            This number is changed each time a major change affects the Game saves, that might render them incompatible and impossible to load.
+            When the Game is shipped we must make sure not not change that revision, otherwise our customers might get angry at us...
+            </summary>
+        </member>
+        <member name="P:Amplitude.Framework.Version.RuntimePlatform">
+            <summary>
+            Gets the runtime platform.
+            </summary>
+        </member>
+        <member name="P:Amplitude.Framework.Version.RuntimePlatformName">
+            <summary>
+            Gets the runtime platform name, either 'Standalone' or 'Editor'.
+            </summary>
+        </member>
+        <member name="P:Amplitude.Framework.Version.RuntimePlatformArchitecture">
+            <summary>
+            Gets the runtime platform architecture, either '32-bit' or '64-bit'.
+            </summary>
+        </member>
+    </members>
+</doc>

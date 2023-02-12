@@ -1,0 +1,177 @@
+ManifestFileVersion: 0
+CRC: 1166677324
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: ef0665c8487c8e247f29ca0b8478f3cd
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 50e63deaa02c9c65cc1466a93de62242
+HashAppended: 0
+ClassTypes:
+- Class: 114
+  Script: {fileID: 624342805, guid: a23c98f6018cbd04380b5da73a83fe41, type: 3}
+- Class: 114
+  Script: {fileID: -457851255, guid: 783efdfc86c10be41b33bb17a2a60f5c, type: 3}
+- Class: 114
+  Script: {fileID: 862152293, guid: 783efdfc86c10be41b33bb17a2a60f5c, type: 3}
+- Class: 114
+  Script: {fileID: 624342805, guid: 783efdfc86c10be41b33bb17a2a60f5c, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: Amplitude.Framework
+  ClassName: Amplitude.Framework.Asset.AssetDescriptor
+- AssemblyName: Amplitude.Framework
+  ClassName: Amplitude.Framework.Guid
+- AssemblyName: Amplitude.Framework
+  ClassName: Amplitude.Framework.Localization.LocalizedStringDefinition
+- AssemblyName: Amplitude.Framework
+  ClassName: Amplitude.Framework.Localization.LocalizedStringTranslation
+Assets:
+- Assets/Localization/Translations/ko-KR, Amplitude.Mercury.Localization.Lore (T).asset
+- Assets/Localization/Translations/ko-KR, Amplitude.Mercury.Localization (T).asset
+- Assets/Localization/Translations/de-DE, Amplitude.Mercury.Localization.Lore (T).asset
+- Assets/Localization/Translations/zh-TW, Amplitude.Mercury.Localization.DLC1 (T).asset
+- Assets/Localization/Translations/ru-RU, Amplitude.Mercury.Localization (T).asset
+- Assets/Localization/Translations/it-IT, Amplitude.Mercury.Localization.DLC03 (T).asset
+- Assets/Localization/Translations/pl-PL, Amplitude.Mercury.Localization.Deprecated
+  (T).asset
+- Assets/Localization/Translations/pt-BR, Amplitude.Mercury.Localization.Stadia (T).asset
+- Assets/Localization/Translations/zh-TW, Amplitude.Mercury.Localization (T).asset
+- Assets/Localization/Translations/zh-TW, Amplitude.Mercury.Localization.DLC02 (T).asset
+- Assets/Localization/Translations/de-DE, Amplitude.Mercury.Localization.DLC03 (T).asset
+- Assets/Localization/Translations/pt-BR, Amplitude.Mercury.Localization.Influencers
+  (T).asset
+- Assets/Localization/Translations/it-IT, Amplitude.Mercury.Localization.Overwriting
+  (T).asset
+- Assets/Localization/Translations/ko-KR, Amplitude.Mercury.Localization.DLC03 (T).asset
+- Assets/Localization/Translations/pl-PL, Amplitude.Mercury.Localization.Lore (T).asset
+- Assets/Localization/Translations/es-ES, Amplitude.Mercury.Localization.DLC02 (T).asset
+- Assets/Localization/Translations/zh-CN, Amplitude.Mercury.Localization.DLC1 (T).asset
+- Assets/Localization/Translations/zh-TW, Amplitude.Mercury.Localization.Lore (T).asset
+- Assets/AssetBundleContentDescriptor.asset
+- Assets/Localization/Translations/zh-CN, Amplitude.Mercury.Localization (T).asset
+- Assets/Localization/Translations/fr-FR, Amplitude.Mercury.Localization.Stadia (T).asset
+- Assets/Localization/Translations/zh-CN, Amplitude.Mercury.Localization.DLC03 (T).asset
+- Assets/Localization/Translations/zh-TW, Amplitude.Mercury.Localization.Deprecated
+  (T).asset
+- Assets/Localization/Translations/zh-TW, Amplitude.Mercury.Localization.DLC03 (T).asset
+- Assets/Localization/Translations/es-ES, Amplitude.Mercury.Localization.Deprecated
+  (T).asset
+- Assets/Localization/Translations/ko-KR, Amplitude.Mercury.Localization.Stadia (T).asset
+- Assets/Localization/Translations/ru-RU, Amplitude.Mercury.Localization.DLC03 (T).asset
+- Assets/Localization/Translations/ru-RU, Amplitude.Mercury.Localization.Stadia (T).asset
+- Assets/Localization/Translations/ko-KR, Amplitude.Mercury.Localization.Overwriting
+  (T).asset
+- Assets/Localization/Translations/ko-KR, Amplitude.Mercury.Localization.DLC1 (T).asset
+- Assets/Localization/Translations/pt-BR, Amplitude.Mercury.Localization.DLC02 (T).asset
+- Assets/Localization/Translations/tr-TR, Amplitude.Mercury.Localization.DLC02 (T).asset
+- Assets/Localization/Translations/tr-TR, Amplitude.Mercury.Localization (T).asset
+- Assets/Localization/Translations/en-US, Amplitude.Mercury.Localization.Stadia (T).asset
+- Assets/Localization/Translations/ko-KR, Amplitude.Mercury.Localization.DLC02 (T).asset
+- Assets/Localization/Translations/zh-TW, Amplitude.Mercury.Localization.Stadia (T).asset
+- Assets/Localization/Translations/fr-FR, Amplitude.Mercury.Localization.DLC1 (T).asset
+- Assets/Localization/Translations/zh-CN, Amplitude.Mercury.Localization.Overwriting
+  (T).asset
+- Assets/Localization/Translations/zh-TW, Amplitude.Mercury.Localization.Influencers
+  (T).asset
+- Assets/Localization/Translations/it-IT, Amplitude.Mercury.Localization.Stadia (T).asset
+- Assets/Localization/Translations/de-DE, Amplitude.Mercury.Localization (T).asset
+- Assets/Localization/Translations/it-IT, Amplitude.Mercury.Localization.Influencers
+  (T).asset
+- Assets/Localization/Translations/tr-TR, Amplitude.Mercury.Localization.DLC1 (T).asset
+- Assets/Localization/Translations/es-ES, Amplitude.Mercury.Localization.Lore (T).asset
+- Assets/Localization/Translations/tr-TR, Amplitude.Mercury.Localization.Overwriting
+  (T).asset
+- Assets/Localization/Translations/tr-TR, Amplitude.Mercury.Localization.Lore (T).asset
+- Assets/Localization/Translations/pl-PL, Amplitude.Mercury.Localization.DLC03 (T).asset
+- Assets/Localization/Translations/es-ES, Amplitude.Mercury.Localization.Overwriting
+  (T).asset
+- Assets/Localization/Translations/en-US, Amplitude.Mercury.Localization (T).asset
+- Assets/Localization/Translations/ko-KR, Amplitude.Mercury.Localization.Deprecated
+  (T).asset
+- Assets/Localization/Translations/pl-PL, Amplitude.Mercury.Localization.DLC1 (T).asset
+- Assets/Localization/Translations/ru-RU, Amplitude.Mercury.Localization.Influencers
+  (T).asset
+- Assets/Localization/Translations/en-US, Amplitude.Mercury.Localization.DLC02 (T).asset
+- Assets/Localization/Translations/it-IT, Amplitude.Mercury.Localization.Lore (T).asset
+- Assets/Localization/Translations/ru-RU, Amplitude.Mercury.Localization.DLC02 (T).asset
+- Assets/Localization/Translations/en-US, Amplitude.Mercury.Localization.DLC03 (T).asset
+- Assets/Localization/Translations/fr-FR, Amplitude.Mercury.Localization.Overwriting
+  (T).asset
+- Assets/Localization/Translations/ru-RU, Amplitude.Mercury.Localization.Overwriting
+  (T).asset
+- Assets/Localization/Translations/es-ES, Amplitude.Mercury.Localization.DLC1 (T).asset
+- Assets/Localization/Translations/de-DE, Amplitude.Mercury.Localization.Deprecated
+  (T).asset
+- Assets/Localization/Translations/es-ES, Amplitude.Mercury.Localization.Influencers
+  (T).asset
+- Assets/Localization/Translations/fr-FR, Amplitude.Mercury.Localization (T).asset
+- Assets/Localization/Translations/zh-CN, Amplitude.Mercury.Localization.DLC02 (T).asset
+- Assets/Localization/Translations/es-ES, Amplitude.Mercury.Localization.DLC03 (T).asset
+- Assets/Localization/Translations/pl-PL, Amplitude.Mercury.Localization.DLC02 (T).asset
+- Assets/Localization/Translations/tr-TR, Amplitude.Mercury.Localization.Influencers
+  (T).asset
+- Assets/Localization/Translations/de-DE, Amplitude.Mercury.Localization.Overwriting
+  (T).asset
+- Assets/Localization/Translations/de-DE, Amplitude.Mercury.Localization.Influencers
+  (T).asset
+- Assets/Localization/Translations/it-IT, Amplitude.Mercury.Localization.DLC02 (T).asset
+- Assets/Localization/Translations/ru-RU, Amplitude.Mercury.Localization.DLC1 (T).asset
+- Assets/Localization/Translations/en-US, Amplitude.Mercury.Localization.DLC1 (T).asset
+- Assets/Localization/Translations/pl-PL, Amplitude.Mercury.Localization (T).asset
+- Assets/Localization/Translations/zh-CN, Amplitude.Mercury.Localization.Deprecated
+  (T).asset
+- Assets/Localization/Translations/en-US, Amplitude.Mercury.Localization.Deprecated
+  (T).asset
+- Assets/Localization/Translations/en-US, Amplitude.Mercury.Localization.Overwriting
+  (T).asset
+- Assets/Localization/Translations/it-IT, Amplitude.Mercury.Localization.DLC1 (T).asset
+- Assets/Localization/Translations/pt-BR, Amplitude.Mercury.Localization.DLC1 (T).asset
+- Assets/Localization/Translations/fr-FR, Amplitude.Mercury.Localization.Lore (T).asset
+- Assets/Localization/Translations/en-US, Amplitude.Mercury.Localization.Influencers
+  (T).asset
+- Assets/Localization/Translations/pt-BR, Amplitude.Mercury.Localization (T).asset
+- Assets/Localization/Translations/pt-BR, Amplitude.Mercury.Localization.Overwriting
+  (T).asset
+- Assets/Localization/Translations/pt-BR, Amplitude.Mercury.Localization.Deprecated
+  (T).asset
+- Assets/Localization/Translations/de-DE, Amplitude.Mercury.Localization.DLC02 (T).asset
+- Assets/Localization/Translations/pl-PL, Amplitude.Mercury.Localization.Influencers
+  (T).asset
+- Assets/Localization/Translations/ko-KR, Amplitude.Mercury.Localization.Influencers
+  (T).asset
+- Assets/Localization/Translations/de-DE, Amplitude.Mercury.Localization.Stadia (T).asset
+- Assets/Localization/Translations/en-US, Amplitude.Mercury.Localization.Lore (T).asset
+- Assets/Localization/Translations/pt-BR, Amplitude.Mercury.Localization.Lore (T).asset
+- Assets/Localization/Translations/ru-RU, Amplitude.Mercury.Localization.Deprecated
+  (T).asset
+- Assets/Localization/Translations/fr-FR, Amplitude.Mercury.Localization.Influencers
+  (T).asset
+- Assets/Localization/Translations/zh-CN, Amplitude.Mercury.Localization.Lore (T).asset
+- Assets/Localization/Translations/pt-BR, Amplitude.Mercury.Localization.DLC03 (T).asset
+- Assets/Localization/Translations/ru-RU, Amplitude.Mercury.Localization.Lore (T).asset
+- Assets/Localization/Translations/zh-CN, Amplitude.Mercury.Localization.Stadia (T).asset
+- Assets/Localization/Translations/fr-FR, Amplitude.Mercury.Localization.DLC03 (T).asset
+- Assets/Localization/Translations/zh-CN, Amplitude.Mercury.Localization.Influencers
+  (T).asset
+- Assets/Localization/Translations/zh-TW, Amplitude.Mercury.Localization.Overwriting
+  (T).asset
+- Assets/Localization/Translations/fr-FR, Amplitude.Mercury.Localization.Deprecated
+  (T).asset
+- Assets/Localization/Translations/pl-PL, Amplitude.Mercury.Localization.Stadia (T).asset
+- Assets/Localization/Translations/it-IT, Amplitude.Mercury.Localization.Deprecated
+  (T).asset
+- Assets/Localization/Translations/de-DE, Amplitude.Mercury.Localization.DLC1 (T).asset
+- Assets/Localization/Translations/fr-FR, Amplitude.Mercury.Localization.DLC02 (T).asset
+- Assets/Localization/Translations/tr-TR, Amplitude.Mercury.Localization.Deprecated
+  (T).asset
+- Assets/Localization/Translations/tr-TR, Amplitude.Mercury.Localization.Stadia (T).asset
+- Assets/Localization/Translations/it-IT, Amplitude.Mercury.Localization (T).asset
+- Assets/Localization/Translations/tr-TR, Amplitude.Mercury.Localization.DLC03 (T).asset
+- Assets/Localization/Translations/es-ES, Amplitude.Mercury.Localization.Stadia (T).asset
+- Assets/Localization/Translations/es-ES, Amplitude.Mercury.Localization (T).asset
+- Assets/Localization/Translations/pl-PL, Amplitude.Mercury.Localization.Overwriting
+  (T).asset
+Dependencies: []

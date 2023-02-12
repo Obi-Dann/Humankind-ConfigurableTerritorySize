@@ -1,0 +1,594 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Amplitude</name>
+    </assembly>
+    <members>
+        <member name="T:Amplitude.Collections.BinaryHeap`1">
+            <summary>
+            A binary heap, useful for sorting data and priority queues.
+            </summary>
+            <typeparam name="T"><![CDATA[IComparable<T> type of item in the heap]]>.</typeparam>
+            https://en.wikipedia.org/wiki/Binary_heap
+        </member>
+        <member name="M:Amplitude.Collections.BinaryHeap`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Amplitude.Collections.BinaryHeap`1"/> class. 
+            </summary>
+        </member>
+        <member name="P:Amplitude.Collections.BinaryHeap`1.Capacity">
+            <summary>
+            Gets or sets the capacity of the heap.
+            </summary>
+        </member>
+        <member name="P:Amplitude.Collections.BinaryHeap`1.Count">
+            <summary>
+            Gets the number of values in the heap. 
+            </summary>
+        </member>
+        <member name="P:Amplitude.Collections.BinaryHeap`1.IsReadOnly">
+            <summary>
+            Gets a value indicating whether or not the binary heap is read only.
+            </summary>
+        </member>
+        <member name="M:Amplitude.Collections.BinaryHeap`1.Add(`0)">
+            <summary>
+            Adds an item to the heap.
+            </summary>
+            <param name="item">The item to add to the heap.</param>
+            The CompareTo function (of the <see cref="T:System.IComparable`1"/> interface) will be used to insert the item in the heap.
+        </member>
+        <member name="M:Amplitude.Collections.BinaryHeap`1.AddOnce(`0)">
+            <summary>
+            Adds a key to the heap if it was not already in it, update the heap if it already is in the heap.
+            </summary>
+            <param name="item">The item to add/update to the heap.</param>
+            The CompareTo function (of the <see cref="T:System.IComparable`1"/> interface) will be used to insert the item in the heap.
+            The Equals function (of the <see cref="T:System.IEquatable`1"/> interface) will be used to check if the item is already in the heap.
+        </member>
+        <member name="M:Amplitude.Collections.BinaryHeap`1.Clear">
+            <summary>
+            Removes all items from the heap.
+            </summary>
+        </member>
+        <member name="M:Amplitude.Collections.BinaryHeap`1.Contains(`0)">
+            <summary>
+            Checks to see if the binary heap contains the specified item.
+            </summary>
+            <param name="item">The item to search the binary heap for.</param>
+            <returns>A boolean, true if binary heap contains item.</returns>
+            The Equals function (of the <see cref="T:System.IEquatable`1"/> interface) will be used to check if the item is already in the heap.
+        </member>
+        <member name="M:Amplitude.Collections.BinaryHeap`1.Copy">
+            <summary>
+            Creates a new instance of an identical binary heap.
+            </summary>
+            <returns>A BinaryHeap.</returns>
+        </member>
+        <member name="M:Amplitude.Collections.BinaryHeap`1.CopyTo(`0[],System.Int32)">
+            <summary>
+            Copies the binary heap to an array at the specified index.
+            </summary>
+            <param name="array">One dimensional array that is the destination of the copied elements.</param>
+            <param name="arrayIndex">The zero-based index at which copying begins.</param>
+        </member>
+        <member name="M:Amplitude.Collections.BinaryHeap`1.GetEnumerator">
+            <summary>
+            Gets an enumerator for the binary heap.
+            </summary>
+            <returns>An IEnumerator of type T.</returns>
+        </member>
+        <member name="M:Amplitude.Collections.BinaryHeap`1.Peek">
+            <summary>
+            Gets the first value in the heap without removing it.
+            </summary>
+            <returns>The lowest value of type TValue.</returns>
+        </member>
+        <member name="M:Amplitude.Collections.BinaryHeap`1.Remove">
+            <summary>
+            Removes and returns the first item in the heap.
+            </summary>
+            <returns>The lowest value of type TValue in the heap.</returns>
+        </member>
+        <member name="M:Amplitude.Collections.BinaryHeap`1.Remove(`0)">
+            <summary>
+            Removes an item from the binary heap. This will not remove duplicates.
+            </summary>
+            <param name="item">The item to be removed.</param>
+            <returns>Boolean true if the item was removed.</returns>
+            The Equals function (of the <see cref="T:System.IEquatable`1"/> interface) will be used to check if the item is already in the heap.
+        </member>
+        <member name="M:Amplitude.Collections.BinaryHeap`1.UpHeap(System.Int32)">
+            <summary>
+            Helper function that performs up-heap bubbling.
+            </summary>
+            <param name="startIndex">The item index where the up heap start.</param>
+            <returns>Returns the new index of item.</returns>
+        </member>
+        <member name="T:Amplitude.Collections.RingBuffer`1">
+            <summary>
+            A ring buffer, useful for keeping the last <see cref="P:Amplitude.Collections.RingBuffer`1.Capacity"/> elements.
+            </summary>
+            <typeparam name="T"><![CDATA[IComparable<T> type of item in the buffer]]>.</typeparam>
+        </member>
+        <member name="M:Amplitude.Collections.RingBuffer`1.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Amplitude.Collections.RingBuffer`1"/> class. 
+            </summary>
+            <param name="capacity">The maximum number of elements in the ring buffer.</param>
+        </member>
+        <member name="P:Amplitude.Collections.RingBuffer`1.Capacity">
+            <summary>
+            Gets or sets the maximum number of elements in the ring buffer.
+            </summary>
+        </member>
+        <member name="P:Amplitude.Collections.RingBuffer`1.Count">
+            <summary>
+            Gets the current number of elements in the ring buffer.
+            </summary>
+        </member>
+        <member name="P:Amplitude.Collections.RingBuffer`1.Last">
+            <summary>
+            Gets or sets the last element in the ring buffer (the last in).
+            </summary>
+        </member>
+        <member name="P:Amplitude.Collections.RingBuffer`1.Item(System.Int32)">
+            <summary>
+            Get the element at the following index.
+            </summary>
+            <param name="index">The index of the element. 'count - 1' is the last element that have been added to the ring buffer.</param>
+            <returns>Returns the element at the following index.</returns>
+        </member>
+        <member name="M:Amplitude.Collections.RingBuffer`1.Push(`0)">
+            <summary>
+            Add an element to the ring buffer.
+            </summary>
+            <param name="element">The element to add to the ring buffer.</param>
+        </member>
+        <member name="M:Amplitude.Collections.RingBuffer`1.PushRange(`0[],System.Int32)">
+            <summary>
+            Adds a range of elements to the ring buffer. If specified, only the first 'count' element will be copied.
+            </summary>
+            <param name="range">The array of elements to copy into the ring buffer.</param>
+            <param name="count">If specified, the number of elements to copy, starting at index 0.</param>
+        </member>
+        <member name="M:Amplitude.Collections.RingBuffer`1.Skip(System.Int32)">
+            <summary>
+            Skip the first <paramref name="elementCount"/> element of the ring buffer.
+            </summary>
+            <param name="elementCount">The number of elements to skip.</param>
+        </member>
+        <member name="M:Amplitude.Collections.RingBuffer`1.Pop">
+            <summary>
+            Get and skip the first element of the ring buffer.
+            </summary>
+            <returns>Returns the first element of the ring buffer.</returns>
+        </member>
+        <member name="M:Amplitude.Collections.RingBuffer`1.Clear">
+            <summary>
+            Clear the ring buffer content.
+            </summary>
+        </member>
+        <member name="M:Amplitude.Extensions.ListExtension.Shuffle``1(System.Collections.Generic.IList{``0},System.Random)">
+            <summary>
+            Randomize the content of the IList.
+            </summary>
+            <typeparam name="T">The type of the list element.</typeparam>
+            <param name="list">The System.Collections.Generic.IList{T} to randomize.</param>
+            <param name="random">An option random class.</param>
+            Implement the Fisher–Yates shuffle.
+            https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle
+        </member>
+        <member name="M:Amplitude.Extensions.ListExtension.ToString``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.String},System.String,System.String)">
+            <summary>
+             Convert the list to a string, by converting each element to a string via a delegate.
+            </summary>
+            <typeparam name="T">The type of the list element.</typeparam>
+            <param name="list">The System.Collections.Generic.List{T} to print.</param>
+            <param name="stringifier">The delegate converting each element to a string.</param>
+            <param name="separator">The separator to add between each elements.</param>
+            <param name="defaultIfEmpty">If the string for a elements is empty, the string to use instead.</param>
+            <returns>A string describing the list, printing each elements.</returns>
+        </member>
+        <member name="M:Amplitude.Extensions.ListExtension.ToString``1(System.Collections.Generic.IEnumerable{``0},System.String,System.String)">
+            <summary>
+             Convert the list to a string, by converting each element to a string, using the element's ToString implementation.
+            </summary>
+            <typeparam name="T">The type of the list element.</typeparam>
+            <param name="list">The System.Collections.Generic.List{T} to print.</param>
+            <param name="separator">The separator to add between each elements.</param>
+            <param name="defaultIfEmpty">If the string for a elements is empty, the string to use instead.</param>
+            <returns>A string describing the list, printing each elements.</returns>
+        </member>
+        <member name="M:Amplitude.Extensions.XmlDocumentExtension.CreateNodeFromXPath(System.Xml.XmlDocument,System.String)">
+            <summary>
+            Selects or creates a node in the document that matches the given xpath.
+            Use a format like //configuration/appSettings/add[@key='name']/@value.
+            </summary>
+            <param name="xmlDocument">The document instance.</param>
+            <param name="xpath">The xpath to be matched.</param>
+            <returns>Returns the selected node at xpath.</returns>
+        </member>
+        <member name="F:Amplitude.HighPerformanceCounter.PerformanceFrequency">
+            <summary>
+            The frequency of the performance counter (in counts per second).
+            </summary>
+        </member>
+        <member name="M:Amplitude.HighPerformanceCounter.QueryPerformanceCounter(System.Int64@)">
+            <summary>
+            Retrieves the current value of the performance counter, which is a high resolution (under 1us) time stamp that can be used for time-interval measurements.
+            </summary>
+            <param name="lpPerformanceCount">The variable that receives the current performance-counter value, in counts.</param>
+            <returns>Returns true if it succeed to get the performance counter value.</returns>
+        </member>
+        <member name="M:Amplitude.HighPerformanceCounter.QueryPerformanceFrequency(System.Int64@)">
+            <summary>
+            Retrieves the frequency of the performance counter (in counts per second).
+            </summary>
+            <param name="lpFrequency">The variable that receives the current performance-counter frequency, in counts per second.</param>
+            <returns>Returns true if it succeed to get the performance counter frequency value.</returns>
+            The frequency of the performance counter is fixed at system boot and is consistent across all processors. Therefore, the frequency need only be queried upon application initialization, and the result can be cached.
+        </member>
+        <member name="T:Amplitude.Http.HttpMethod">
+            <summary>
+            The Method is the HTTP method that is used to access the resource.
+            </summary>
+            http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html
+        </member>
+        <member name="T:Amplitude.Http.HttpServer">
+            <summary>
+            Represent a http server.
+            </summary>
+            Response format inpired from: http://labs.omniti.com/labs/jsend
+        </member>
+        <member name="M:Amplitude.Http.HttpServer.GetContentTypeFromAssetPath(System.String)">
+            <summary>
+            Get the content type from the asset path.
+            </summary>
+            <param name="assetPath">The asset path.</param>
+            <returns>Returns the content type.</returns>
+            Sources: https://www.iana.org/assignments/media-types/media-types.xhtml
+        </member>
+        <member name="T:Amplitude.Http.Routing.CaptureSegment">
+            <summary>
+            Implement a rest segment which captures whatever is passed into the given segment of the requested URL and then passes it into the Action of the route.
+            </summary>
+            /{name}
+        </member>
+        <member name="T:Amplitude.Http.Routing.LiteralSegment">
+            <summary>
+            Implement a rest segment which require an exact match.
+            </summary>
+            /some/literal/segments 
+        </member>
+        <member name="T:Amplitude.Http.Routing.MultipleCaptureSegment">
+            <summary>
+            Implement a rest segment which contains a mix of captures and literals.
+            </summary>
+            /{file}.{extension} or /{file}.ext
+        </member>
+        <member name="T:Amplitude.Http.Routing.RestSegment">
+            <summary>
+            Define a Rest segment.
+            </summary>
+            source: https://github.com/NancyFx/Nancy/wiki/Defining-routes#pattern
+        </member>
+        <member name="T:Amplitude.Http.Routing.RootSegment">
+            <summary>
+            Implement a root rest segment.
+            </summary>
+        </member>
+        <member name="F:Amplitude.LogLevel.Debug">
+            <summary>
+            Debug information used by the developers during development.
+            </summary>
+            <remarks>
+            Debug information requires the 'ENABLE_LOG' preprocessor definition to be defined in the client project(s).
+            </remarks>
+        </member>
+        <member name="F:Amplitude.LogLevel.Trace">
+            <summary>
+            Traces are used by the developers when one is 'tracing' the code.
+            </summary>
+            <remarks>
+            Traces requires the 'ENABLE_TRACE' preprocessor definition to be defined in the client project(s).
+            </remarks>
+        </member>
+        <member name="F:Amplitude.LogLevel.Information">
+            <summary>
+            Standard information to be handed to the front user.
+            This is the default log level.
+            </summary>
+        </member>
+        <member name="F:Amplitude.LogLevel.Warning">
+            <summary>
+            Warnings are recognized oddities that should be investigated, or information that requires one's attention.
+            </summary>
+        </member>
+        <member name="F:Amplitude.LogLevel.Error">
+            <summary>
+            Errors are problems that should be investigated.
+            Code must be robust enough and able to recover from one or many errors; until they are fixed.
+            </summary>
+        </member>
+        <member name="F:Amplitude.LogLevel.Critical">
+            <summary>
+            Critical errors are application or system failures that should be investigated immediately.
+            Typically a process cannot recover from a critical error.
+            </summary>
+            <remarks>
+            Typically a critical error only occurs once in the process lifetime, so if the log file is tied to the process this should be the last message in the log.
+            </remarks>
+        </member>
+        <member name="T:Amplitude.MethodImplOptions">
+            <summary>Defines the details of how a method is implemented.</summary>
+            This attribute is a copy of System.Runtime.CompilerServices.MethodImplOptions the version in Unity .net 3.5 does not contains the AggressiveInlining option.
+            The AggressiveInlining works even if it's not defined (sources: https://stackoverflow.com/questions/43060376/aggressiveinlining-doesnt-exist, https://twitter.com/xoofx/status/697025049916628996)
+            Documentation: https://msdn.microsoft.com/en-us/library/system.runtime.compilerservices.methodimploptions(v=vs.110).aspx
+            Usage: [System.Runtime.CompilerServices.MethodImpl((short)Amplitude.MethodImplOptions.AggressiveInlining)]
+        </member>
+        <member name="F:Amplitude.MethodImplOptions.Unmanaged">
+            <summary>
+            The method is implemented in unmanaged code.
+            </summary>
+        </member>
+        <member name="F:Amplitude.MethodImplOptions.NoInlining">
+            <summary>
+            The method cannot be inlined. Inlining is an optimization by which a method call is replaced with the method body.
+            </summary>
+        </member>
+        <member name="F:Amplitude.MethodImplOptions.ForwardRef">
+            <summary>
+            The method is declared, but its implementation is provided elsewhere.
+            </summary>
+        </member>
+        <member name="F:Amplitude.MethodImplOptions.Synchronized">
+            <summary>
+            The method can be executed by only one thread at a time. Static methods lock on the type, whereas instance methods lock on the instance. 
+            Only one thread can execute in any of the instance functions, and only one thread can execute in any of a class's static functions.
+            </summary>
+        </member>
+        <member name="F:Amplitude.MethodImplOptions.NoOptimization">
+            <summary>
+            The method is not optimized by the just-in-time (JIT) compiler or by native code generation when debugging possible code generation problems.
+            </summary>
+        </member>
+        <member name="F:Amplitude.MethodImplOptions.PreserveSig">
+            <summary>
+            The method signature is exported exactly as declared.
+            </summary>
+        </member>
+        <member name="F:Amplitude.MethodImplOptions.AggressiveInlining">
+            <summary>
+            The method should be inlined if possible.
+            </summary>
+            Be careful with AggressiveInlining, in some cases it can reduce the performances.
+            More informations on AggressiveInlining:
+            -  http://blogs.microsoft.co.il/sasha/2012/01/20/aggressive-inlining-in-the-clr-45-jit/
+            -  https://blogs.msdn.microsoft.com/ericgu/2004/01/29/more-on-inlining/
+            -  https://www.dotnetperls.com/aggressiveinlining
+        </member>
+        <member name="F:Amplitude.MethodImplOptions.InternalCall">
+            <summary>
+            The call is internal, that is, it calls a method that is implemented within the common language runtime.
+            </summary>
+        </member>
+        <member name="T:Amplitude.Serialization.ISerializable">
+            <summary>
+            Make a class or struct serializable by the serialization system.
+            </summary>
+        </member>
+        <member name="P:Amplitude.Stopwatch.StartTime">
+            <summary>
+            Gets the start time measured by the current instance, in timer ticks.
+            </summary>
+        </member>
+        <member name="P:Amplitude.Stopwatch.StopTime">
+            <summary>
+            Gets the stop time measured by the current instance, in timer ticks.
+            </summary>
+        </member>
+        <member name="P:Amplitude.Stopwatch.TickPerSecond">
+            <summary>
+            Gets the frequency of the timer as the number of ticks per second.
+            </summary>
+        </member>
+        <member name="P:Amplitude.Stopwatch.IsRunning">
+            <summary>
+            Gets a value indicating whether the <see cref="T:Amplitude.Stopwatch" /> timer is running.
+            </summary>
+        </member>
+        <member name="P:Amplitude.Stopwatch.IsStopped">
+            <summary>
+            Gets a value indicating whether the <see cref="T:Amplitude.Stopwatch" /> timer has been started once then stopped.
+            </summary>
+        </member>
+        <member name="M:Amplitude.Stopwatch.Start">
+            <summary>
+            Reset and start the performance measure.
+            </summary>
+        </member>
+        <member name="M:Amplitude.Stopwatch.Stop">
+            <summary>
+            Stop the performance measure.
+            </summary>
+        </member>
+        <member name="M:Amplitude.String.CountSimilarStrings(System.String,System.String[],System.Int32)">
+            <summary>
+            Counts the number of strings approximately similar.
+            </summary>
+            <param name="reference">The reference string to be compared with.</param>
+            <param name="compare">String to compare `reference` with.</param>
+            <param name="maxDistance">The maximum Levenshtein distance to consider string as similar.</param>
+            <returns>The number of string that are considered as similar.</returns>
+        </member>
+        <member name="M:Amplitude.String.GetLevenshteinDistance(System.String,System.String)">
+            <summary>
+            Gets the Levenshtein distance between two strings.
+            </summary>
+            <param name="left">The first string to be compared.</param>
+            <param name="right">The second string to be compared.</param>
+            <returns>The Levenshtein distance between the two strings.</returns>
+        </member>
+        <member name="T:Amplitude.Utilities.TopologicalMapper`2">
+            <summary>
+            Helper class for the topological sorted collections.
+            </summary>
+            <typeparam name="T">The type of elements in the topological sorted collection.</typeparam>
+            <typeparam name="R">The type that is used to perform dependency checks.</typeparam>
+        </member>
+        <member name="P:Amplitude.Utilities.TopologicalSortedList`2.Count">
+            <summary>
+            Gets the number of elements contained in the System.Collections.Generic.ICollection{T}.
+            </summary>
+        </member>
+        <member name="P:Amplitude.Utilities.TopologicalSortedList`2.System#Collections#Generic#ICollection{T}#IsReadOnly">
+            <summary>
+            Gets a value indicating whether the System.Collections.Generic.ICollection{T} is read-only.
+            </summary>
+            <returns>true if the System.Collections.Generic.ICollection{T} is read-only; otherwise, false.</returns>
+        </member>
+        <member name="P:Amplitude.Utilities.TopologicalSortedList`2.Item(System.Int32)">
+            <summary>
+            Gets or sets the element at the specified index.
+            </summary>
+            <param name="index">The zero-based index of the element to get or set.</param>
+            <returns>The element at the specified index.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">index is not a valid index in the System.Collections.Generic.IList{T}.</exception>
+            <exception cref="T:System.NotSupportedException">The property is set and the System.Collections.Generic.IList{T} is read-only.</exception>
+        </member>
+        <member name="M:Amplitude.Utilities.TopologicalSortedList`2.Add(`0)">
+            <summary>
+            Adds an item to the System.Collections.Generic.ICollection{T}.
+            </summary>
+            <param name="item">The object to add to the System.Collections.Generic.ICollection{T}.</param>
+            <exception cref="T:System.NotSupportedException">The System.Collections.Generic.ICollection{T} is read-only.</exception>
+        </member>
+        <member name="M:Amplitude.Utilities.TopologicalSortedList`2.Clear">
+            <summary>
+            Removes all items from the System.Collections.Generic.ICollection{T}.
+            </summary>
+            <exception cref="T:System.NotSupportedException">The System.Collections.Generic.ICollection{T} is read-only.</exception>
+        </member>
+        <member name="M:Amplitude.Utilities.TopologicalSortedList`2.Contains(`0)">
+            <summary>
+            Determines whether the System.Collections.Generic.ICollection{T} contains a specific value.
+            </summary>
+            <param name="item">The object to locate in the System.Collections.Generic.ICollection{T}.</param>
+            <returns>true if item is found in the System.Collections.Generic.ICollection{T}; otherwise, false.</returns>
+        </member>
+        <member name="M:Amplitude.Utilities.TopologicalSortedList`2.CopyTo(`0[],System.Int32)">
+            <summary>
+            Copies the elements of the System.Collections.Generic.ICollection{T} to an System.Array, starting at a particular System.Array index.
+            </summary>
+            <param name="array">The one-dimensional System.Array that is the destination of the elements copied from System.Collections.Generic.ICollection{T}.
+            The System.Array must have zero-based indexing.</param>
+            <param name="arrayIndex">The zero-based index in array at which copying begins.</param>
+            <exception cref="T:System.ArgumentNullException">array is null.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">arrayIndex is less than 0.</exception>
+            <exception cref="T:System.ArgumentException">array is multidimensional.
+            -or- arrayIndex is equal to or greater than the length of array.
+            -or- The number of elements in the source System.Collections.Generic.ICollection{T} is greater than the available space from arrayIndex to the end of the destination array.
+            -or- Type T cannot be cast automatically to the type of the destination array.</exception>
+        </member>
+        <member name="M:Amplitude.Utilities.TopologicalSortedList`2.System#Collections#Generic#IEnumerable{T}#GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+            <returns>A System.Collections.Generic.IEnumerator{T} that can be used to iterate through the collection.</returns>
+        </member>
+        <member name="M:Amplitude.Utilities.TopologicalSortedList`2.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through a collection.
+            </summary>
+            <returns> An System.Collections.IEnumerator object that can be used to iterate through the collection.</returns>
+        </member>
+        <member name="M:Amplitude.Utilities.TopologicalSortedList`2.IndexOf(`0)">
+            <summary>
+            Determines the index of a specific item in the System.Collections.Generic.IList{T}.
+            </summary>
+            <param name="item">The object to locate in the System.Collections.Generic.IList{T}.</param>
+            <returns>The index of item if found in the list; otherwise, -1.</returns>
+        </member>
+        <member name="M:Amplitude.Utilities.TopologicalSortedList`2.Insert(System.Int32,`0)">
+            <summary>
+            Inserts an item to the System.Collections.Generic.IList{T} at the specified index.
+            </summary>
+            <param name="index">The zero-based index at which item should be inserted.</param>
+            <param name="item">The object to insert into the System.Collections.Generic.IList{T}.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">index is not a valid index in the System.Collections.Generic.IList{T}.</exception>
+            <exception cref="T:System.NotSupportedException">The System.Collections.Generic.IList{T} is read-only..</exception>
+        </member>
+        <member name="M:Amplitude.Utilities.TopologicalSortedList`2.Remove(`0)">
+            <summary>
+            Removes the first occurrence of a specific object from the System.Collections.Generic.ICollection{T}.
+            </summary>
+            <param name="item">The object to remove from the System.Collections.Generic.ICollection{T}.</param>
+            <returns>true if item was successfully removed from the System.Collections.Generic.ICollection{T}; otherwise, false.
+            This method also returns false if item is not found in the original System.Collections.Generic.ICollection{T}.</returns>
+            <exception cref="T:System.NotSupportedException">The System.Collections.Generic.IList{T} is read-only.</exception>
+        </member>
+        <member name="M:Amplitude.Utilities.TopologicalSortedList`2.RemoveAt(System.Int32)">
+            <summary>
+            Removes the System.Collections.Generic.IList{T} item at the specified index.
+            </summary>
+            <param name="index">The zero-based index of the item to remove.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">index is not a valid index in the System.Collections.Generic.IList{T}.</exception>
+            <exception cref="T:System.NotSupportedException">The System.Collections.Generic.IList{T} is read-only.</exception>
+        </member>
+        <member name="T:Amplitude.Utilities.TopologicalSorter">
+            <summary>
+            Implementation of the topological sort algorithm, described here http://en.wikipedia.org/wiki/Topological_sorting.
+            Source : http://tawani.blogspot.fr/2009/02/topological-sorting-and-cyclic.html.
+            </summary>
+        </member>
+        <member name="M:Amplitude.Utilities.TopologicalSorter.Sort">
+            <summary>
+            Topological sort.
+            </summary>
+            <returns>Sorted array of indices.</returns>
+        </member>
+        <member name="T:Amplitude.WeakReference`1">
+            <summary> 
+            Represents a weak reference, which references an object while still allowing   
+            that object to be reclaimed by garbage collection.    
+            </summary>    
+            <typeparam name="T">The type of the object that is referenced.</typeparam>
+        </member>
+        <member name="M:Amplitude.WeakReference`1.#ctor(`0)">
+            <summary>
+            Initializes a new instance of the <typeparamref name="T"/> class.
+            </summary>
+            <param name="target">The object to reference.</param>        
+        </member>
+        <member name="M:Amplitude.WeakReference`1.#ctor(`0,System.Boolean)">
+            <summary>        
+            Initializes a new instance of the <typeparamref name="T"/> class.
+            Referencing the specified object and using the specified resurrection tracking. 
+            </summary>        
+            <param name="target">An object to track.</param> 
+            <param name="trackResurrection">Indicates when to stop tracking the object. If true, the object is tracked 
+            after finalization; if false, the object is only tracked until finalization.</param> 
+        </member>
+        <member name="P:Amplitude.WeakReference`1.Target">
+            <summary> 
+            Gets or sets the object (the target) referenced by the current WeakReference{T} 
+            object. 
+            </summary> 
+        </member>
+        <member name="M:Amplitude.WeakReference`1.op_Implicit(`0)~Amplitude.WeakReference{`0}">
+            <summary> 
+            Casts an object of the type T to a weak reference 
+            of T. 
+            </summary> 
+            <param name="target">The target.</param>
+        </member>
+        <member name="M:Amplitude.WeakReference`1.op_Implicit(Amplitude.WeakReference{`0})~`0">
+            <summary> 
+            Casts a weak reference to an object of the type the 
+            reference represents. 
+            </summary> 
+            <param name="reference">The weak reference to convert.</param>
+        </member>
+    </members>
+</doc>

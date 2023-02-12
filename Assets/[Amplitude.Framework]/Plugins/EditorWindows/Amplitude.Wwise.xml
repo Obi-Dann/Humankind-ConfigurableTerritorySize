@@ -1,0 +1,793 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Amplitude.Wwise</name>
+    </assembly>
+    <members>
+        <member name="M:Amplitude.Wwise.Audio.AudioHelpers.ComputeDopplerPitch(UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Vector3,System.Single)">
+            <summary>
+            Compute the doppler factor.
+            </summary>
+            <param name="emitterPosition">The emitter position.</param>
+            <param name="emitterSpeed">The emitter speed.</param>
+            <param name="receiverPosition">The reference receiver position.</param>
+            <param name="receiverSpeed">The reference receiver speed.</param>
+            <param name="dopplerFactor">The doppler factor.</param>
+            <returns>Returns the doppler factor corresponding to the giving parameters.</returns>
+        </member>
+        <member name="M:Amplitude.Wwise.Audio.AudioHelpers.ComputeDopplerPitch(UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Vector3,System.Single,System.Single)">
+            <summary>
+            Compute the doppler factor.
+            </summary>
+            <param name="emitterPosition">The emitter position.</param>
+            <param name="emitterSpeed">The emitter speed.</param>
+            <param name="receiverPosition">The reference receiver position.</param>
+            <param name="receiverSpeed">The reference receiver speed.</param>
+            <param name="cameraDopplerFactor">The camera doppler factor. To respect the physics the camera and emitter doppler factors must be equals.</param>
+            <param name="emitterDopplerFactor">The emitter doppler factor. To respect the physics the camera and emitter doppler factors must be equals.</param>
+            <returns>Returns the doppler factor corresponding to the giving parameters.</returns>
+        </member>
+        <member name="M:Amplitude.Wwise.Audio.AudioHelpers.ComputeAzimuth(UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Vector3)">
+            <summary>
+            Compute the azimuth.
+            </summary>
+            <param name="emitterPosition">The emitter position.</param>
+            <param name="receiverPosition">The receiver position.</param>
+            <param name="receiverForward">The receiver forward.</param>
+            <returns>The azimuth value in degrees.</returns>
+            The azimuth is the angle between the receiver forward vector and the receiverToEmitter vector projected on x,z plan.
+        </member>
+        <member name="M:Amplitude.Wwise.Audio.AudioManager.BankHandle.LoadBank">
+            <summary>Loads a bank.</summary>
+            This version blocks until the bank is loaded. See AK::SoundEngine::LoadBank for more information.
+        </member>
+        <member name="M:Amplitude.Wwise.Audio.AudioManager.BankHandle.LoadBankAsync">
+            <summary>Loads a bank asynchronously.</summary>
+            <returns>Return an async operation.</returns>
+            This version returns right away and loads in background. See AK::SoundEngine::LoadBankAsync for more information.
+        </member>
+        <member name="M:Amplitude.Wwise.Audio.AudioManager.BankHandle.UnloadBank">
+            <summary>Unload a bank synchronously.</summary>
+        </member>
+        <member name="F:Amplitude.Wwise.Audio.AudioManager.soundBanksBasePath">
+            <summary>Path for the soundbanks.</summary>
+            This must contain one sub folder per platform (see AkBankPathUtil for the names).
+        </member>
+        <member name="F:Amplitude.Wwise.Audio.AudioManager.monitorQueuePoolSize">
+            <summary>The monitor queue pool size.</summary>
+            Size of the monitoring queue pool, in bytes. This parameter is not used in Release build.
+            Default size is 64 KB, but you should adjust for your needs.
+        </member>
+        <member name="F:Amplitude.Wwise.Audio.AudioManager.callbackManagerBufferSize">
+            <summary>The monitor queue pool size.</summary>
+            Size of the buffer used per-frame to transfer callback data.
+            Default size is 4 KB, but you should increase this, if required.
+        </member>
+        <member name="F:Amplitude.Wwise.Audio.AudioManager.commandQueueSize">
+            <summary>The command queue pool size.</summary>
+            Size of the buffer used per-frame to transfer API calls.
+            Default size is 256 KB, but you should increase this, if required.
+        </member>
+        <member name="F:Amplitude.Wwise.Audio.AudioManager.language">
+            <summary>
+            Language sub-folder.
+            </summary>
+        </member>
+        <member name="P:Amplitude.Wwise.Audio.AudioManager.HeadphoneMode">
+            <summary>
+            Gets or sets a value indicating whether the headphone mode is active or not.
+            </summary>
+            <a href="https://www.audiokinetic.com/library/edge/?source=Help&amp;id=speakers_vs_headphones_panning_rules">Wwise documentation.</a>
+        </member>
+        <member name="P:Amplitude.Wwise.Audio.AudioManager.SpeakerConfiguration">
+            <summary>
+            Gets or sets the speaker configuration.
+            </summary>
+            <a href="https://www.audiokinetic.com/library/edge/?source=SDK&amp;id=struct_ak_channel_config_a4c0f4b3d39608a10c9b330c1ef8281a7.html">Wwise documentation.</a>
+        </member>
+        <member name="M:Amplitude.Wwise.Audio.IAudioManagmentService.SetAudioEntityPosition(Amplitude.Wwise.Audio.AudioEntityGUID,UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Vector3)">
+            <summary>
+            Set the audio entity position.
+            </summary>
+            <param name="audioEntityGUID">The audio entity GUID.</param>
+            <param name="position">The position of the entity.</param>
+            <param name="forward">The forward vector of the entity. This vector must be normalized.</param>
+            <param name="top">The top vector of the entity. This vector must be normalized.</param>
+            <returns>Return AK_Success when successful, AK_InvalidParameter if parameters are not valid.</returns>
+            Forward and top vectors should be orthogonal and normalized.
+        </member>
+        <member name="P:Amplitude.Wwise.Audio.IAudioOptionsService.MasterEnabled">
+            <summary>
+            Gets or sets a value indicating whether the master channel is enabled.
+            </summary>
+        </member>
+        <member name="P:Amplitude.Wwise.Audio.IAudioOptionsService.MasterVolume">
+            <summary>
+            Gets or sets the volume of the master channel.
+            </summary>
+        </member>
+        <member name="P:Amplitude.Wwise.Audio.IAudioOptionsService.MusicEnabled">
+            <summary>
+            Gets or sets a value indicating whether the music channel is enabled.
+            </summary>
+        </member>
+        <member name="P:Amplitude.Wwise.Audio.IAudioOptionsService.MusicVolume">
+            <summary>
+            Gets or sets the volume of the music channel.
+            </summary>
+        </member>
+        <member name="P:Amplitude.Wwise.Audio.IAudioOptionsService.SFXEnabled">
+            <summary>
+            Gets or sets a value indicating whether the SFX channel is enabled.
+            </summary>
+        </member>
+        <member name="P:Amplitude.Wwise.Audio.IAudioOptionsService.SFXVolume">
+            <summary>
+            Gets or sets the volume of the SFX channel.
+            </summary>
+        </member>
+        <member name="P:Amplitude.Wwise.Audio.IAudioOptionsService.GUIEnabled">
+            <summary>
+            Gets or sets a value indicating whether the GUI channel is enabled.
+            </summary>
+        </member>
+        <member name="P:Amplitude.Wwise.Audio.IAudioOptionsService.GUIVolume">
+            <summary>
+            Gets or sets the volume of the GUI channel.
+            </summary>
+        </member>
+        <member name="P:Amplitude.Wwise.Audio.IAudioOptionsService.VoiceEnabled">
+            <summary>
+            Gets or sets a value indicating whether voices are enabled.
+            </summary>
+        </member>
+        <member name="P:Amplitude.Wwise.Audio.IAudioOptionsService.VoiceVolume">
+            <summary>
+            Gets or sets the volume of Voices.
+            </summary>
+        </member>
+        <member name="P:Amplitude.Wwise.Audio.IAudioOptionsService.MuteWhenLostFocus">
+            <summary>
+            Gets or sets a value indicating whether the master channel is muted when the application lost focus.
+            </summary>
+        </member>
+        <member name="P:Amplitude.Wwise.Audio.IAudioOptionsService.MusicIntervalDuration">
+            <summary>
+            Gets or sets the silence duration between tracks (s).
+            </summary>
+        </member>
+        <member name="P:Amplitude.Wwise.Audio.IAudioOptionsService.HeadphoneMode">
+            <summary>
+            Gets or sets a value indicating whether the headphone mode is enable.
+            </summary>
+        </member>
+        <member name="P:Amplitude.Wwise.Audio.IAudioOptionsService.SpeakerConfiguration">
+            <summary>
+            Gets or sets a value indicating whether the headphone mode is enable.
+            </summary>
+        </member>
+        <member name="M:Amplitude.Wwise.Audio.IAudioService.Post2DEvent(Amplitude.Wwise.Audio.AudioEventHandle,Amplitude.Wwise.Interop.AkCallbackType,Amplitude.Wwise.Interop.AkCallbackManager.EventCallback,System.Object)">
+            <summary>
+            Asynchronously post an non localized event to the sound engine (by event ID).
+            </summary>
+            <param name="audioHandle">The audio handle.</param>
+            <param name="callbackType">Callback type.</param>
+            <param name="callback">Callback function.</param>
+            <param name="cookie">Callback cookie that will be sent to the callback function along with additional information.</param>
+            <returns>The playing ID of the event launched, or AK_INVALID_PLAYING_ID if posting the event failed.</returns>
+            The callback function can be used to be noticed when markers are reached or when the event is finished.
+        </member>
+        <member name="M:Amplitude.Wwise.Audio.IAudioService.PostEvent(Amplitude.Wwise.Audio.AudioEventHandle,Amplitude.Wwise.Audio.AudioEntityGUID)">
+            <summary>
+            Asynchronously post an event to the sound engine (by audio handle).
+            </summary>
+            <param name="audioHandle">The audio handle.</param>
+            <param name="emitterAudioEntityGUID">Associated audio entity guid.</param>
+            <returns>The playing ID of the event launched, or AK_INVALID_PLAYING_ID if posting the event failed.</returns>
+        </member>
+        <member name="M:Amplitude.Wwise.Audio.IAudioService.PostEvent(Amplitude.Wwise.Audio.AudioEventHandle,Amplitude.Wwise.Audio.AudioEntityGUID,Amplitude.Wwise.Interop.AkCallbackType,Amplitude.Wwise.Interop.AkCallbackManager.EventCallback,System.Object)">
+            <summary>
+            Asynchronously post an event to the sound engine (by event ID).
+            </summary>
+            <param name="audioHandle">The audio handle.</param>
+            <param name="emitterAudioEntityGUID">Associated audio entity guid.</param>
+            <param name="callbackType">Callback type.</param>
+            <param name="callback">Callback function.</param>
+            <param name="cookie">Callback cookie that will be sent to the callback function along with additional information.</param>
+            <returns>The playing ID of the event launched, or AK_INVALID_PLAYING_ID if posting the event failed.</returns>
+            The callback function can be used to be noticed when markers are reached or when the event is finished.
+        </member>
+        <member name="M:Amplitude.Wwise.Audio.IAudioService.StopPlayingID(System.UInt32,System.Int32,Amplitude.Wwise.Interop.AkCurveInterpolation)">
+            <summary>
+            Stop the current content, associated to the specified playing ID, from playing.
+            </summary>
+            <param name="playingId">The playing Id.</param>
+            <param name="transitionDuration">Fade duration in milliseconds.</param>
+            <param name="fadeCurve">Curve type to be used for the transition. Use values from CurveInterpolation.</param>
+        </member>
+        <member name="M:Amplitude.Wwise.Audio.IAudioService.SetState(Amplitude.Wwise.Audio.AudioStateHandle)">
+            <summary>
+            Set the state of a state group (by IDs).
+            </summary>
+            <param name="audioHandle">Handle of the state.</param>
+        </member>
+        <member name="M:Amplitude.Wwise.Audio.IAudioService.Set2DSwitch(Amplitude.Wwise.Audio.AudioSwitchHandle)">
+            <summary>
+            Set the state of a switch group (by IDs).
+            </summary>
+            <param name="audioHandle">Handle of the switch.</param>
+        </member>
+        <member name="M:Amplitude.Wwise.Audio.IAudioService.SetSwitch(Amplitude.Wwise.Audio.AudioSwitchHandle,Amplitude.Wwise.Audio.AudioEntityGUID)">
+            <summary>
+            Set the state of a switch group (by IDs).
+            </summary>
+            <param name="audioHandle">Handle of the switch.</param>
+            <param name="emitterAudioEntityGUID">Associated audio entity guid.</param>
+        </member>
+        <member name="M:Amplitude.Wwise.Audio.IAudioService.SetRTPCValue(Amplitude.Wwise.Audio.AudioGameParameterHandle,System.Single)">
+            <summary>
+            Set the value of a real-time parameter control.
+            </summary>
+            <param name="audioHandle">The audio handle of the game parameter.</param>
+            <param name="value">Value to set.</param>
+        </member>
+        <member name="M:Amplitude.Wwise.Audio.IAudioService.SetRTPCValue(Amplitude.Wwise.Audio.AudioGameParameterHandle,System.Single,Amplitude.Wwise.Audio.AudioEntityGUID)">
+            <summary>
+            Set the value of a real-time parameter control.
+            </summary>
+            <param name="audioHandle">The audio handle of the game parameter.</param>
+            <param name="value">Value to set.</param>
+            <param name="emitterAudioEntityGuid">Associated audio emitter entity GUID.</param>
+        </member>
+        <member name="M:Amplitude.Wwise.Audio.IBankService.LoadBank(Amplitude.Wwise.Audio.AudioBank)">
+            <summary>Load a bank.</summary>
+            <param name="audioBank">The bank description object.</param>
+            This version blocks until the bank is loaded.  See AK::SoundEngine::LoadBank for more information.
+        </member>
+        <member name="M:Amplitude.Wwise.Audio.IBankService.LoadBankAsync(Amplitude.Wwise.Audio.AudioBank)">
+            <summary>Load a bank asynchronously.</summary>
+            <param name="audioBank">The bank description object.</param>
+            <returns>Returns an async operation.</returns>
+            This version returns an async operation away and loads in background. See AK::SoundEngine::LoadBankAsync for more information.
+        </member>
+        <member name="M:Amplitude.Wwise.Audio.IBankService.UnloadBank(Amplitude.Wwise.Audio.AudioBank)">
+            <summary>Unload a bank.</summary>
+            <param name="audioBank">The bank description object.</param>
+            See AK::SoundEngine::UnloadBank for more information.
+        </member>
+        <member name="M:Amplitude.Wwise.Audio.IBankService.UnloadBankAsync(Amplitude.Wwise.Audio.AudioBank)">
+            <summary>Unload a bank asynchronously.</summary>
+            <param name="audioBank">The bank description object.</param>
+            <returns>Returns an async operation.</returns>
+            This version returns right away and unloads in background. See AK::SoundEngine::UnloadBank for more information.
+        </member>
+        <member name="M:Amplitude.Wwise.Audio.IMusicService.GetOrCreateMusicLayer(System.Int32,System.String)">
+            <summary>
+            Create or retrieve a music layer.
+            </summary>
+            <param name="layerIndex">The index of the layer.</param>
+            <param name="layerName">The name of the layer.</param>
+            <returns>Returns the music layer corresponding the layerIndex.</returns>
+        </member>
+        <member name="M:Amplitude.Wwise.Audio.IMusicService.PlayMusic(System.Int32,Amplitude.Wwise.Audio.AudioEventHandle,Amplitude.Wwise.Audio.PlayMode)">
+            <summary>
+            Play a specific music track on a layer. If the layer was not activated, it will be and if it was, the currently playing track will be stop. 
+            </summary>
+            <param name="layerIndex">The music layer index.</param>
+            <param name="musicTrack">The music track audio handle.</param>
+            <param name="playMode">The play mode of the event.</param>
+            The track is not added in the tracks of the layer so it will not be added in the playlist if it is refilled.
+        </member>
+        <member name="M:Amplitude.Wwise.Audio.IMusicService.PlayMusic(System.Int32,System.String,Amplitude.Wwise.Audio.PlayMode)">
+            <summary>
+            Play a specific music track on a layer. If the layer was not activated, it will be and if it was, the currently playing track will be stop. 
+            </summary>
+            <param name="layerIndex">The music layer index.</param>
+            <param name="musicTrackEventName">The music track audio handles.</param>
+            <param name="playMode">The play mode of the event.</param>
+            The track is not added in the tracks of the layer so it will not be added in the playlist if it is refilled.
+            /!\ We should always use the PlayMusic function that directly use AudioHandles. This one only exist because UI don't use AudioHandles.
+        </member>
+        <member name="M:Amplitude.Wwise.Audio.IMusicService.StartMusicLayer(System.Int32)">
+            <summary>
+            Start a specific music layer. If a layer with an highest priority is already playing, this action will put the specific layer in pause state (ready to be played when it become the highest priority layer).
+            </summary>
+            <param name="layerIndex">The layer index.</param>
+        </member>
+        <member name="M:Amplitude.Wwise.Audio.IMusicService.StopMusicLayer(System.Int32)">
+            <summary>
+            Stop a specific music layer. The layer with the highest priority is automatically activated.
+            </summary>
+            <param name="layerIndex">The layer index.</param>
+        </member>
+        <member name="M:Amplitude.Wwise.Audio.IMusicService.StopAllMusicLayers">
+            <summary>
+            Stop all the active music layers.
+            </summary>
+        </member>
+        <member name="M:Amplitude.Wwise.Audio.MusicLayer.AddTracks(Amplitude.Wwise.Audio.AudioEventHandle[])">
+            <summary>
+            Add tracks to the music layer. The tracks will be used to fill the playlist.
+            </summary>
+            <param name="audioHandles">The audio handles of the tracks.</param>
+        </member>
+        <member name="M:Amplitude.Wwise.Audio.MusicLayer.InsertTrackInPlaylist(Amplitude.Wwise.Audio.AudioEventHandle)">
+            <summary>
+            Insert a track in the currently played playlist (the track start when this function is called). The track will not be used to fill the playlist in the future.
+            </summary>
+            <param name="audioHandle">The track to play.</param>
+        </member>
+        <member name="M:Amplitude.Wwise.Audio.MusicLayer.QueueTrackInPlaylist(Amplitude.Wwise.Audio.AudioEventHandle)">
+            <summary>
+            Queue a track at the end of the currently played playlist. The track will not be used to fill the playlist in the future.
+            </summary>
+            <param name="audioHandle">The track to play.</param>
+        </member>
+        <member name="M:Amplitude.Wwise.Audio.MusicLayer.ForceTrackInPlaylist(Amplitude.Wwise.Audio.AudioEventHandle)">
+            <summary>
+            Clear the currently played playlist and play the track (the track start when this function is called). The track will not be used to fill the playlist in the future.
+            </summary>
+            <param name="audioHandle">The track to play.</param>
+        </member>
+        <member name="F:Amplitude.Wwise.Audio.PlayMode.Queue">
+            <summary>
+            Queue the event at the end of the track list.
+            </summary>
+        </member>
+        <member name="F:Amplitude.Wwise.Audio.PlayMode.Insert">
+            <summary>
+            Insert the event in the front of the queue. The event will be played now, the rest of the track list will follow normally.
+            </summary>
+        </member>
+        <member name="F:Amplitude.Wwise.Audio.PlayMode.Force">
+            <summary>
+            Play the event now and discard the current content of the track list.
+            </summary>
+        </member>
+        <member name="F:Amplitude.Wwise.Audio.PlayMode.Discard">
+            <summary>
+            Discard the event if the layer is already playing an event.
+            </summary>
+        </member>
+        <member name="F:Amplitude.Wwise.Components.AudioEmitter.listener">
+            <summary>
+            Bitmask representing the active listeners.
+            </summary>
+        </member>
+        <member name="F:Amplitude.Wwise.Components.AudioEmitter.occlusionMaxDistance">
+            <summary>
+            Set a maximum distance beyond which the sound Obstruction/Occlusion calculations are disabled.
+            </summary>
+        </member>
+        <member name="F:Amplitude.Wwise.Components.AudioEmitter.fullObstructionMaxDistance">
+            <summary>
+            Sets the maximum distance after which the Obstruction value starts to decrease with distance.
+            </summary>
+        </member>
+        <member name="M:Amplitude.Wwise.Components.AudioEmitter.UpdateObstructionAndOcclusion(Amplitude.Wwise.Components.AudioListener)">
+            <summary>
+            Update the obstruction / occlusion factors.
+            </summary>
+            Algorithm taken from cry engine documentation: http://docs.cryengine.com/pages/viewpage.action?pageId=18384659
+            <param name="audioListener">The reference audio receiver.</param>
+        </member>
+        <member name="P:Amplitude.Wwise.Components.AudioEntity.Position">
+            <summary>
+            Gets the position of the audio emitter.
+            </summary>
+            This position is the virtual position of the emitter used for doppler computation. The real final position is stored in finalEmitterPosition.
+            For a simple AudioEmitter Position == finalEmitterPosition.
+        </member>
+        <member name="F:Amplitude.Wwise.Components.AudioEvent.executeActionTriggers">
+            <summary>
+            Enables additional options to reuse existing events.
+            </summary>
+            Use it to transform a Play event into a Stop event without having to define one in the Wwise Project.
+        </member>
+        <member name="F:Amplitude.Wwise.Components.AudioEvent.actionOnEventType">
+            <summary>
+            Replacement action.
+            </summary>
+            See AK::SoundEngine::ExecuteEventOnAction().
+        </member>
+        <member name="F:Amplitude.Wwise.Components.AudioEvent.curveInterpolation">
+            <summary>
+            Fade curve to use with the new Action.
+            </summary>
+            See AK::SoundEngine::ExecuteEventOnAction().
+        </member>
+        <member name="F:Amplitude.Wwise.Components.AudioEvent.transitionDuration">
+            <summary>
+            Duration of the fade.
+            </summary>
+            See AK::SoundEngine::ExecuteEventOnAction().
+        </member>
+        <member name="T:Amplitude.Wwise.Components.AudioListener">
+            <summary>Add this script on the game object that represent an audio listener.</summary>
+            The listener will follow the position of the game object it is set on. This is normally added to the Camera object or the Player object.
+        </member>
+        <member name="F:Amplitude.Wwise.Components.RTPCUpdateState.Deactivated">
+            <summary>
+            The RTPC value will not be computed nor updated in wwise.
+            </summary>
+        </member>
+        <member name="F:Amplitude.Wwise.Components.RTPCUpdateState.ForceZero">
+            <summary>
+            The RTPC value will not be computed but will be updated with value 0.
+            </summary>
+        </member>
+        <member name="F:Amplitude.Wwise.Components.RTPCUpdateState.Compute">
+            <summary>
+            The RTPC value will be updated with the correct computed value.
+            </summary>
+        </member>
+        <member name="F:Amplitude.Wwise.Components.SoundObstructionType.NoAttenuation">
+            <summary>
+            No raycasts are applied, and the sound is unaffected by other objects in the Game World.
+            </summary>
+        </member>
+        <member name="F:Amplitude.Wwise.Components.SoundObstructionType.SingleRay">
+            <summary>
+            The entity shoots a SingleRay in order to calculate the treatment the sound receives depending on the position and physical properties of the objects found between the source and the listener.
+            </summary>
+        </member>
+        <member name="F:Amplitude.Wwise.Components.SoundObstructionType.MultipleRays">
+            <summary>
+            The entity shoots MultipleRays in order to calculate the treatment the sound receives depending on the position and physical properties of the objects found between the source and the listener.
+            </summary>
+        </member>
+        <member name="T:Amplitude.Wwise.Interop.AkSoundEngine">
+            @brief Contains C# functions exposed from the Wwise C++ API.
+            
+            The AkSoundEngine class contains functions converted to C# from the following C++ namespaces: 
+            - AK::Monitor
+            - AK::MusicEngine
+            - AK::SoundEngine
+            - AK::SoundEngine::DynamicDialogue
+            - AK::SoundEngine::Query
+            - AK::SpatialAudio
+        </member>
+        <member name="M:Amplitude.Wwise.Interop.AkSoundEngine.StringFromIntPtrString(System.IntPtr)">
+            <summary>
+                Converts "char*" C-strings to C# strings.
+            </summary>
+            <param name="ptr">"char*" memory pointer passed to C# as an IntPtr.</param>
+            <returns>Converted string.</returns>
+        </member>
+        <member name="M:Amplitude.Wwise.Interop.AkSoundEngine.StringFromIntPtrWString(System.IntPtr)">
+            <summary>
+                Converts "wchar_t*" C-strings to C# strings.
+            </summary>
+            <param name="ptr">"wchar_t*" memory pointer passed to C# as an IntPtr.</param>
+            <returns>Converted string.</returns>
+        </member>
+        <member name="T:Amplitude.Wwise.Interop.AkSoundEngine.GameObjectHashFunction">
+            <summary>
+                The type for hash functions used to convert a Unity Game Object into an integer.
+            </summary>
+            <param name="gameObject">The Unity Game Object.</param>
+            <returns>The AkGameObjectID used by the sound engine.</returns>
+        </member>
+        <member name="P:Amplitude.Wwise.Interop.AkSoundEngine.GameObjectHash">
+            <summary>
+                The user assignable hash function used to convert a Unity Game Object into an AkGameObjectID used by the sound
+                engine. Used by GetAkGameObjectID().
+            </summary>
+        </member>
+        <member name="M:Amplitude.Wwise.Interop.AkSoundEngine.GetAkGameObjectID(UnityEngine.GameObject)">
+            <summary>
+                The hash function used to convert a Unity Game Object into an AkGameObjectID used by the sound engine.
+            </summary>
+        </member>
+        <member name="M:Amplitude.Wwise.Interop.AkSoundEngine.RegisterGameObj(UnityEngine.GameObject)">
+            <summary>
+                Registers a Unity Game Object with an ID obtained from GetAkGameObjectID().
+            </summary>
+            <param name="gameObject">The Unity Game Object.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Amplitude.Wwise.Interop.AkSoundEngine.RegisterGameObj(UnityEngine.GameObject,System.String)">
+            <summary>
+                Registers a Unity Game Object with an ID obtained from GetAkGameObjectID().
+            </summary>
+            <param name="gameObject">The Unity Game Object.</param>
+            <param name="name">The name that is visible in the Wwise Profiler.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Amplitude.Wwise.Interop.AkSoundEngine.UnregisterGameObj(UnityEngine.GameObject)">
+            <summary>
+                Unregisters a Unity Game Object with an ID obtained from GetAkGameObjectID().
+            </summary>
+            <param name="gameObject">The Unity Game Object.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Amplitude.Wwise.Interop.AkSoundEngine.StringFromIntPtrOSString(System.IntPtr)">
+            <summary>
+                Converts "AkOSChar*" C-strings to C# strings.
+            </summary>
+            <param name="ptr">"AkOSChar*" memory pointer passed to C# as an IntPtr.</param>
+            <returns>Converted string.</returns>
+        </member>
+        <member name="T:Amplitude.Wwise.Interop.AkAudioInputManager">
+            <summary>
+                This class represents an example audio input manager and is responsible for managing the audio sample and format
+                callbacks provided to the Wwise Audio Input plug-in.
+            </summary>
+        </member>
+        <member name="T:Amplitude.Wwise.Interop.AkAudioInputManager.AudioFormatDelegate">
+            <summary>
+                Sanitized audio format delegate to be used by classes that implement audio input plug-ins. The samples are ALWAYS
+                set to be non-interleaved 32-bit float.
+            </summary>
+            <param name="playingID">The playingID of a sound that uses the audio input plug-in.</param>
+            <param name="format">The C# analog of the C++ AkAudioFormat class.</param>
+        </member>
+        <member name="T:Amplitude.Wwise.Interop.AkAudioInputManager.AudioFormatInteropDelegate">
+            <summary>
+                Audio format delegate that is sent to C++.
+            </summary>
+        </member>
+        <member name="T:Amplitude.Wwise.Interop.AkAudioInputManager.AudioSamplesDelegate">
+            <summary>
+                Sanitized audio sample delegate to be used by classes that implement audio input plug-ins. For every event posted,
+                this delegate is called once per audio frame for each channel until the delegates for all the channels associated
+                with this event return false.
+            </summary>
+            <param name="playingID">The playingID of a sound that uses the audio input plug-in.</param>
+            <param name="channelIndex">The number of the channel associated with this specific invocation of the delegate.</param>
+            <param name="samples">The sample array that MUST be filled even when returning false.</param>
+            <returns>Return true when more sample frames are require and false when complete.</returns>
+        </member>
+        <member name="T:Amplitude.Wwise.Interop.AkAudioInputManager.AudioSamplesInteropDelegate">
+            <summary>
+                Audio sample delegate that is sent to C++.
+            </summary>
+        </member>
+        <member name="M:Amplitude.Wwise.Interop.AkAudioInputManager.PostAudioInputEvent(System.UInt32,UnityEngine.GameObject,Amplitude.Wwise.Interop.AkAudioInputManager.AudioSamplesDelegate,Amplitude.Wwise.Interop.AkAudioInputManager.AudioFormatDelegate)">
+            <summary>
+                This method is used to post events that use the Wwise Audio Input plug-in.
+            </summary>
+            <param name="akEventID">The ID of the event to post.</param>
+            <param name="gameObject">The GameObject that the event will be posted on.</param>
+            <param name="sampleDelegate">The C# audio sample delegate.</param>
+            <param name="formatDelegate">
+                The C# audio format delegate. If not specified, defaults to a mono source running at the
+                sample rate of the sound engine.
+            </param>
+            <returns>The playingID of the newly instantiated sound associated with the posted event.</returns>
+        </member>
+        <member name="M:Amplitude.Wwise.Interop.AkAudioInputManager.PostAudioInputEvent(System.String,UnityEngine.GameObject,Amplitude.Wwise.Interop.AkAudioInputManager.AudioSamplesDelegate,Amplitude.Wwise.Interop.AkAudioInputManager.AudioFormatDelegate)">
+            <summary>
+                This method is used to post events that use the Wwise Audio Input plug-in.
+            </summary>
+            <param name="akEventName">The name of the event to post.</param>
+            <param name="gameObject">The GameObject that the event will be posted on.</param>
+            <param name="sampleDelegate">The C# audio sample delegate.</param>
+            <param name="formatDelegate">
+                The C# audio format delegate. If not specified, defaults to a mono source running at the
+                sample rate of the sound engine.
+            </param>
+            <returns>The playingID of the newly instantiated sound associated with the posted event.</returns>
+        </member>
+        <member name="T:Amplitude.Wwise.Interop.AkBankManager">
+            @brief Maintains the list of loaded SoundBanks loaded. This is currently used only with AkAmbient objects.
+        </member>
+        <member name="M:Amplitude.Wwise.Interop.AkBankManager.LoadBank(System.String,System.Boolean,System.Boolean)">
+            Loads a SoundBank. This version blocks until the bank is loaded. See AK::SoundEngine::LoadBank for more information.
+        </member>
+        <member name="M:Amplitude.Wwise.Interop.AkBankManager.LoadBankAsync(System.String,Amplitude.Wwise.Interop.AkCallbackManager.BankCallback)">
+            Loads a SoundBank. This version returns right away and loads in background. See AK::SoundEngine::LoadBank for more information.
+        </member>
+        <member name="M:Amplitude.Wwise.Interop.AkBankManager.UnloadBank(System.String)">
+            Unloads a SoundBank. See AK::SoundEngine::UnloadBank for more information.
+        </member>
+        <member name="M:Amplitude.Wwise.Interop.AkBankManager.BankHandle.DoLoadBank">
+            Loads a bank. This version blocks until the bank is loaded. See AK::SoundEngine::LoadBank for more information.
+        </member>
+        <member name="M:Amplitude.Wwise.Interop.AkBankManager.BankHandle.UnloadBank(System.Boolean)">
+            Unloads a bank.
+        </member>
+        <member name="M:Amplitude.Wwise.Interop.AkBankManager.AsyncBankHandle.DoLoadBank">
+            Loads a bank.  This version returns right away and loads in background. See AK::SoundEngine::LoadBank for more information
+        </member>
+        <member name="M:Amplitude.Wwise.Interop.AkBankManager.DecodableBankHandle.DoLoadBank">
+            Loads a bank. This version blocks until the bank is loaded. See AK::SoundEngine::LoadBank for more information.
+        </member>
+        <member name="M:Amplitude.Wwise.Interop.AkBankManager.DecodableBankHandle.UnloadBank(System.Boolean)">
+            Unloads a bank.
+        </member>
+        <member name="T:Amplitude.Wwise.Interop.AkBasePathGetter">
+            <summary>
+                This class is responsible for determining the path where sound banks are located. When using custom platforms, this
+                class needs to be extended.
+            </summary>
+        </member>
+        <member name="T:Amplitude.Wwise.Interop.AkBasePathGetter.CustomPlatformNameGetter">
+            <summary>
+                User hook called to retrieve the custom platform name used to determine the base path. Do not modify platformName
+                to use default platform names.
+            </summary>
+            <param name="platformName">The custom platform name. Leave unaffected if the default location is acceptable.</param>
+        </member>
+        <member name="M:Amplitude.Wwise.Interop.AkBasePathGetter.GetPlatformName">
+            <summary>
+                Determines the platform name which is also the sub-folder within the base path where sound banks are located for
+                this platform.
+            </summary>
+            <returns>The platform name.</returns>
+        </member>
+        <member name="M:Amplitude.Wwise.Interop.AkBasePathGetter.GetPlatformBasePath">
+            <summary>
+                Returns the absolute path to the platform specific sound banks.
+            </summary>
+            <returns>The absolute path to the platform specific sound banks.</returns>
+        </member>
+        <member name="M:Amplitude.Wwise.Interop.AkBasePathGetter.GetFullSoundBankPathEditor">
+            <summary>
+                Returns the absolute path to the folder above the platform specific sound banks sub-folders.
+            </summary>
+            <returns>The absolute sound bank base path.</returns>
+        </member>
+        <member name="M:Amplitude.Wwise.Interop.AkBasePathGetter.GetPlatformBasePathEditor(System.String)">
+            <summary>
+                Determines the platform base path for use within the Editor.
+            </summary>
+            <param name="platformName">The platform name.</param>
+            <returns>The full path to the sound banks for use within the Editor.</returns>
+        </member>
+        <member name="T:Amplitude.Wwise.Interop.AkCallbackManager">
+            <summary>
+                This class manages the callback queue.  All callbacks from the native Wwise SDK go through this queue.
+                The queue needs to be driven by regular calls to PostCallbacks().  This is currently done in AkInitializer.cs, in
+                LateUpdate().
+            </summary>
+        </member>
+        <member name="T:Amplitude.Wwise.Interop.AkCallbackManager.EventCallback">
+            <summary>
+            Event callback used when posting events.
+            </summary>
+        </member>
+        <member name="T:Amplitude.Wwise.Interop.AkCallbackManager.MonitoringCallback">
+            <summary>
+            Monitoring callback called when Wwise reports errors.
+            </summary>
+        </member>
+        <member name="T:Amplitude.Wwise.Interop.AkCallbackManager.BankCallback">
+            <summary>
+            Bank callback called upon bank load and unload and when errors occur.
+            </summary>
+        </member>
+        <member name="T:Amplitude.Wwise.Interop.AkCallbackManager.EventCallbackPackage">
+            <summary>
+            This class holds the data associated with an event callback.
+            </summary>
+        </member>
+        <member name="T:Amplitude.Wwise.Interop.AkCallbackManager.BankCallbackPackage">
+            <summary>
+            This class holds the data associated with a bank load or unload callback.
+            </summary>
+        </member>
+        <member name="M:Amplitude.Wwise.Interop.AkCallbackManager.SetMonitoringCallback(Amplitude.Wwise.Interop.AkMonitorErrorLevel,Amplitude.Wwise.Interop.AkCallbackManager.MonitoringCallback)">
+            Call this to set a function to call whenever Wwise prints a message (warnings or errors).
+        </member>
+        <member name="M:Amplitude.Wwise.Interop.AkCallbackManager.SetBGMCallback(Amplitude.Wwise.Interop.AkCallbackManager.BGMCallback,System.Object)">
+            Call this to set a background music callback function. By default this callback is not defined.
+        </member>
+        <member name="M:Amplitude.Wwise.Interop.AkCallbackManager.PostCallbacks">
+            This function dispatches all the accumulated callbacks from the native sound engine. 
+            It must be called regularly.  By default this is called in AkInitializer.cs.
+        </member>
+        <member name="F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.FRONT_LEFT">
+            Standard speakers (channel mask):
+        </member>
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.FRONT_RIGHT" -->
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.FRONT_CENTER" -->
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.LOW_FREQUENCY" -->
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.BACK_LEFT" -->
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.BACK_RIGHT" -->
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.BACK_CENTER" -->
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.SIDE_LEFT" -->
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.SIDE_RIGHT" -->
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.TOP" -->
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.HEIGHT_FRONT_LEFT" -->
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.HEIGHT_FRONT_CENTER" -->
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.HEIGHT_FRONT_RIGHT" -->
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.HEIGHT_BACK_LEFT" -->
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.HEIGHT_BACK_CENTER" -->
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.HEIGHT_BACK_RIGHT" -->
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.SETUP_MONO" -->
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.SETUP_0POINT1" -->
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.SETUP_1POINT1" -->
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.SETUP_STEREO" -->
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.SETUP_2POINT1" -->
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.SETUP_3STEREO" -->
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.SETUP_3POINT1" -->
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.SETUP_4" -->
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.SETUP_4POINT1" -->
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.SETUP_5" -->
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.SETUP_5POINT1" -->
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.SETUP_6" -->
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.SETUP_6POINT1" -->
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.SETUP_7" -->
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.SETUP_7POINT1" -->
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.SETUP_SURROUND" -->
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.SETUP_DPL2" -->
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.SETUP_HEIGHT_4" -->
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.SETUP_HEIGHT_5" -->
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.SETUP_HEIGHT_ALL" -->
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.SETUP_AURO_222" -->
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.SETUP_AURO_8" -->
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.SETUP_AURO_9" -->
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.SETUP_AURO_9POINT1" -->
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.SETUP_AURO_10" -->
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.SETUP_AURO_10POINT1" -->
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.SETUP_AURO_11" -->
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.SETUP_AURO_11POINT1" -->
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.SETUP_AURO_11_740" -->
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.SETUP_AURO_11POINT1_740" -->
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.SETUP_AURO_13_751" -->
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.SETUP_AURO_13POINT1_751" -->
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.SETUP_DOLBY_5_0_2" -->
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.SETUP_DOLBY_5_1_2" -->
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.SETUP_DOLBY_6_0_2" -->
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.SETUP_DOLBY_6_1_2" -->
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.SETUP_DOLBY_6_0_4" -->
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.SETUP_DOLBY_6_1_4" -->
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.SETUP_DOLBY_7_0_2" -->
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.SETUP_DOLBY_7_1_2" -->
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.SETUP_DOLBY_7_0_4" -->
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.SETUP_DOLBY_7_1_4" -->
+        <!-- Badly formed XML comment ignored for member "F:Amplitude.Wwise.Interop.AkCommonOutputSettings.ChannelConfiguration.ChannelMask.SETUP_ALL_SPEAKERS" -->
+        <member name="T:Amplitude.Wwise.Interop.AkUtilities.MigrationStep">
+            <summary>
+            These values represent the maximum value of the "Unity Integration Version" number in the Version.txt file that will migrated.
+            For example, in Wwise v2019.1.0, "Unity Integration Version" is 18 which means that all migrations up until this version are required.
+            </summary>
+        </member>
+        <member name="F:Amplitude.Wwise.Interop.AkUtilities.MigrationStep.Current">
+            <summary>
+            The value that is currently in the Version.txt file.
+            </summary>
+        </member>
+        <member name="M:Amplitude.Wwise.Interop.AkUtilities.ExecuteCommandLine(System.String,System.String)">
+            Executes a command-line. Blocks the calling thread until the new process has completed. Returns the logged stdout in one big string.
+        </member>
+        <member name="M:Amplitude.Wwise.Interop.AkUtilities.IsSoundbankOverrideEnabled(System.String)">
+            Reads the user settings (not the project settings) to check if there is an override currently defined for the SoundBank generation folders.
+        </member>
+        <member name="M:Amplitude.Wwise.Interop.AkUtilities.MoveFolder(System.String,System.String)">
+            <summary>
+            Renames or moves a folder using UnityEditor.Database API.
+            </summary>
+            <param name="oldPath"></param>
+            <param name="newPath"></param>
+            <returns>Returns true if the operation was successful.</returns>
+        </member>
+        <member name="M:Amplitude.Wwise.Interop.AkUtilities.GetLastRectAbsolute(UnityEngine.Rect)">
+            This function returns the absolute position and the width and height of the last drawn GuiLayout(or EditorGuiLayout) element in the inspector window.
+            This function must be called in the OnInspectorGUI function
+             
+            The inspector must be in repaint mode in order to get the correct position 
+            Example => if(Event.current.type == EventType.Repaint) Rect pos = AkUtilities.GetLastRectAbsolute();
+        </member>
+        <member name="T:Amplitude.Wwise.Interop.AkUtilities.ShortIDGenerator">
+            <summary>
+                This is based on FNVHash as used by the DataManager
+                to assign short IDs to objects. Be sure to keep them both in sync
+                when making changes!
+            </summary>
+        </member>
+        <member name="M:Amplitude.Wwise.Interop.AkBaseArray`1.DefaultConstructAtIntPtr(System.IntPtr)">
+            <summary>
+            This method is called for each element of the array when the array is constructed. It should be used to clear the memory associated with an element so that it will be seen as if it had been default constructed.
+            </summary>
+            <param name="address">The address of the element</param>
+        </member>
+        <member name="M:Amplitude.Wwise.Interop.AkBaseArray`1.ReleaseAllocatedMemoryFromReferenceAtIntPtr(System.IntPtr)">
+            <summary>
+            This method is called for each element of the array when the array is disposed. It should be used to delete memory allocated by elements.
+            </summary>
+            <param name="address">The address of the element</param>
+        </member>
+    </members>
+</doc>
