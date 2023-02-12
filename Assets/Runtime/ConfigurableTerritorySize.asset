@@ -15,7 +15,7 @@ MonoBehaviour:
   Author: DannCi
   Description: Allows to change the average number of land tiles per territory  in
     the "new game" settings
-  Homepage: 
+  Homepage: https://github.com/Obi-Dann/Humankind-ConfigurableTerritorySize
   ReleaseNotes: 
   RuntimeModuleType: 2
   Tags: 
@@ -30,12 +30,13 @@ MonoBehaviour:
     Build: 0
     Label: 
     Major: 0
-    Minor: 46
+    Minor: 48
     Revision: 0
     SerializationToleranceLevel: 0
   LoadingScreenBackground: {fileID: 0}
   runtimePlugins:
   - {fileID: 1261425568442451938}
+  - {fileID: 5862641156398471474}
   guid:
     a: 316152550
     b: 1915021073
@@ -52,5 +53,18 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: -203084690, guid: 783efdfc86c10be41b33bb17a2a60f5c, type: 3}
   m_Name: DatabasePlugin
+  m_EditorClassIdentifier: 
+  AssetBundleManifest: {fileID: 11400000, guid: d26a49a6fd96d414bb7f4ce81f02932f, type: 2}
+--- !u!114 &5862641156398471474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1177289026, guid: 783efdfc86c10be41b33bb17a2a60f5c, type: 3}
+  m_Name: LocalizationPlugin
   m_EditorClassIdentifier: 
   AssetBundleManifest: {fileID: 11400000, guid: d26a49a6fd96d414bb7f4ce81f02932f, type: 2}
