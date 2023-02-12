@@ -30,7 +30,7 @@ MonoBehaviour:
     Build: 0
     Label: 
     Major: 0
-    Minor: 43
+    Minor: 46
     Revision: 0
     SerializationToleranceLevel: 0
   LoadingScreenBackground: {fileID: 0}

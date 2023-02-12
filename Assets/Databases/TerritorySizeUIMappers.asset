@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 763423559, guid: 722acb04e362a9243a944ac3117daa73, type: 3}
+  m_Name: TerritorySizeUIMappers
+  m_EditorClassIdentifier: 
+--- !u!114 &5005926985295243553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 2112378186, guid: b310e23bee821cb478da05296ba685d0, type: 3}
+  m_Name: GameOption_TerritorySize
+  m_EditorClassIdentifier: 
+  Title: '%OptionRegionSizeTitle'
+  Description: '%OptionRegionSizeDescription'
+  Images: []
+  Color: {r: 0, g: 0, b: 0, a: 0}
+  Symbol: 
+  ControlType: 0
+  OptionFlags: 0
+  OptionConstraintLocalizations: []
+--- !u!114 &7272847748896869350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -797787753, guid: b310e23bee821cb478da05296ba685d0, type: 3}
+  m_Name: GameOptionGroup_LobbyWorldOptions
+  m_EditorClassIdentifier: 
+  Title: '%NewGameWorldOptionsTabTitle'
+  Description: '%NewGameWorldOptionsTabDescription'
+  Images: []
+  Color: {r: 0, g: 0, b: 0, a: 0}
+  Symbol: 
+  headerOptionName: GameOption_WorldSize
+  optionsName:
+  - GameOption_WorldShape
+  - GameOption_ContinentShape
+  - GameOption_Climate
+  - GameOption_PercentageOfLandmassOverWater
+  - GameOption_NumberOfContinents
+  - GameOption_NewWorld
+  - GameOption_IslandsOdds
+  - GameOption_WorldWrap
+  - GameOption_WorldHemispheres
+  - GameOption_Seed
+  - GameOption_ContinentSpread
+  - GameOption_ContinentForm
+  - GameOption_LakeOdds
+  - GameOption_LakeSize
+  - GameOption_Rivers
+  - GameOption_RidgesAndCliffs
+  - GameOption_Elevation
+  - GameOption_TerritorySize
+  - GameOption_StrategicResourceAmount
+  - GameOption_LuxuryResourceAmount
+  - GameOption_LuxuryResourceRepartition
+  statesUIMapperPrefix: GameSize_

@@ -1,0 +1,156 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1843101837, guid: 783efdfc86c10be41b33bb17a2a60f5c, type: 3}
+  m_Name: en-US, Translations
+  m_EditorClassIdentifier: 
+  LanguageId: en-US
+  AffixTagMask: 224
+  lineCollection:
+  - LineId: '%GameOption_TerritorySize30Title'
+    NodeIndexes: 00000000
+    CompactedNodes:
+    - Id: 1
+      TextValue: Extra Small (30 tiles)
+      ParameterIndex: 0
+      VariationIndex: 0
+      Mask: 0
+      ChildIndexes: 
+    TagCodes: 00000000
+    LocalizedStringElementFlag: 0
+  - LineId: '%GameOption_TerritorySize30Description'
+    NodeIndexes: 00000000
+    CompactedNodes:
+    - Id: 1
+      TextValue: The average number of land tiles per territory will be set to 30
+        tiles. It may be difficult to find large enough territories for some of the
+        end-game projects
+      ParameterIndex: 0
+      VariationIndex: 0
+      Mask: 0
+      ChildIndexes: 
+    TagCodes: 00000000
+    LocalizedStringElementFlag: 0
+  - LineId: '%GameOption_TerritorySize35Title'
+    NodeIndexes: 00000000
+    CompactedNodes:
+    - Id: 1
+      TextValue: Small (35 tiles)
+      ParameterIndex: 0
+      VariationIndex: 0
+      Mask: 0
+      ChildIndexes: 
+    TagCodes: 00000000
+    LocalizedStringElementFlag: 0
+  - LineId: '%GameOption_TerritorySize35Description'
+    NodeIndexes: 00000000
+    CompactedNodes:
+    - Id: 1
+      TextValue: The average number of land tiles per territory will be set to 35
+        tiles. It may be difficult to find large enough territories for some of the
+        end-game projects
+      ParameterIndex: 0
+      VariationIndex: 0
+      Mask: 0
+      ChildIndexes: 
+    TagCodes: 00000000
+    LocalizedStringElementFlag: 0
+  - LineId: '%GameOption_TerritorySize40Title'
+    NodeIndexes: 00000000
+    CompactedNodes:
+    - Id: 1
+      TextValue: Standard (40 tiles)
+      ParameterIndex: 0
+      VariationIndex: 0
+      Mask: 0
+      ChildIndexes: 
+    TagCodes: 00000000
+    LocalizedStringElementFlag: 0
+  - LineId: '%GameOption_TerritorySize40Description'
+    NodeIndexes: 00000000
+    CompactedNodes:
+    - Id: 1
+      TextValue: The default territory size in Humankind
+      ParameterIndex: 0
+      VariationIndex: 0
+      Mask: 0
+      ChildIndexes: 
+    TagCodes: 00000000
+    LocalizedStringElementFlag: 0
+  - LineId: '%GameOption_TerritorySize50Title'
+    NodeIndexes: 00000000
+    CompactedNodes:
+    - Id: 1
+      TextValue: Large (50 tiles)
+      ParameterIndex: 0
+      VariationIndex: 0
+      Mask: 0
+      ChildIndexes: 
+    TagCodes: 00000000
+    LocalizedStringElementFlag: 0
+  - LineId: '%GameOption_TerritorySize50Description'
+    NodeIndexes: 00000000
+    CompactedNodes:
+    - Id: 1
+      TextValue: The average number of land tiles per territory will be set to 50
+        tiles
+      ParameterIndex: 0
+      VariationIndex: 0
+      Mask: 0
+      ChildIndexes: 
+    TagCodes: 00000000
+    LocalizedStringElementFlag: 0
+  - LineId: '%GameOption_TerritorySize60Title'
+    NodeIndexes: 00000000
+    CompactedNodes:
+    - Id: 1
+      TextValue: Extra Large (60 tiles)
+      ParameterIndex: 0
+      VariationIndex: 0
+      Mask: 0
+      ChildIndexes: 
+    TagCodes: 00000000
+    LocalizedStringElementFlag: 0
+  - LineId: '%GameOption_TerritorySize60Description'
+    NodeIndexes: 00000000
+    CompactedNodes:
+    - Id: 1
+      TextValue: The average number of land tiles per territory will be set to 60
+        tiles
+      ParameterIndex: 0
+      VariationIndex: 0
+      Mask: 0
+      ChildIndexes: 
+    TagCodes: 00000000
+    LocalizedStringElementFlag: 0
+  - LineId: '%GameOption_TerritorySize70Title'
+    NodeIndexes: 00000000
+    CompactedNodes:
+    - Id: 1
+      TextValue: Huge (70 tiles)
+      ParameterIndex: 0
+      VariationIndex: 0
+      Mask: 0
+      ChildIndexes: 
+    TagCodes: 00000000
+    LocalizedStringElementFlag: 0
+  - LineId: '%GameOption_TerritorySize70Description'
+    NodeIndexes: 00000000
+    CompactedNodes:
+    - Id: 1
+      TextValue: The average number of land tiles per territory will be set to 70
+        tiles
+      ParameterIndex: 0
+      VariationIndex: 0
+      Mask: 0
+      ChildIndexes: 
+    TagCodes: 00000000
+    LocalizedStringElementFlag: 0
