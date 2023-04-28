@@ -15,15 +15,9 @@ MonoBehaviour:
   LocalizedStringDefinitionCollection: {fileID: 0}
   LanguageCode: en-US
   Translations:
-  - serializedData: 0000000032%GameOption_TerritorySize30Title0000000022Extra%20Small%20(30%20tiles)00000000000000000008
-  - serializedData: 0000000038%GameOption_TerritorySize30Description0000000158The%20average%20number%20of%20land%20tiles%20per%20territory%20will%20be%20set%20to%2030%20tiles.%20It%20may%20be%20difficult%20to%20find%20large%20enough%20territories%20for%20some%20of%20the%20end-game%20projects00000000000000000008
-  - serializedData: 0000000032%GameOption_TerritorySize35Title0000000016Small%20(35%20tiles)00000000000000000008
-  - serializedData: 0000000038%GameOption_TerritorySize35Description0000000158The%20average%20number%20of%20land%20tiles%20per%20territory%20will%20be%20set%20to%2035%20tiles.%20It%20may%20be%20difficult%20to%20find%20large%20enough%20territories%20for%20some%20of%20the%20end-game%20projects00000000000000000008
-  - serializedData: 0000000032%GameOption_TerritorySize40Title0000000019Standard%20(40%20tiles)00000000000000000008
-  - serializedData: 0000000038%GameOption_TerritorySize40Description0000000039The%20default%20territory%20size%20in%20Humankind00000000000000000008
-  - serializedData: 0000000032%GameOption_TerritorySize50Title0000000016Large%20(50%20tiles)00000000000000000008
-  - serializedData: 0000000038%GameOption_TerritorySize50Description0000000070The%20average%20number%20of%20land%20tiles%20per%20territory%20will%20be%20set%20to%2050%20tiles00000000000000000008
-  - serializedData: 0000000032%GameOption_TerritorySize60Title0000000022Extra%20Large%20(60%20tiles)00000000000000000008
-  - serializedData: 0000000038%GameOption_TerritorySize60Description0000000070The%20average%20number%20of%20land%20tiles%20per%20territory%20will%20be%20set%20to%2060%20tiles00000000000000000008
-  - serializedData: 0000000032%GameOption_TerritorySize70Title0000000015Huge%20(70%20tiles)00000000000000000008
-  - serializedData: 0000000038%GameOption_TerritorySize70Description0000000070The%20average%20number%20of%20land%20tiles%20per%20territory%20will%20be%20set%20to%2070%20tiles00000000000000000008
+  - serializedData: 0000000036%GameOption_TerritoryLandSize50Title000000000850%20tiles00000000000000000008
+  - serializedData: 0000000042%GameOption_TerritoryLandSize50Description0000000054Continental%20Territories%20have%2050%20land%20tiles%20on%20average.00000000000000000008
+  - serializedData: 0000000036%GameOption_TerritoryLandSize60Title000000000860%20tiles00000000000000000008
+  - serializedData: 0000000042%GameOption_TerritoryLandSize60Description0000000054Continental%20Territories%20have%2060%20land%20tiles%20on%20average.00000000000000000008
+  - serializedData: 0000000036%GameOption_TerritoryLandSize70Title000000000870%20tiles00000000000000000008
+  - serializedData: 0000000042%GameOption_TerritoryLandSize70Description0000000054Continental%20Territories%20have%2070%20land%20tiles%20on%20average.00000000000000000008

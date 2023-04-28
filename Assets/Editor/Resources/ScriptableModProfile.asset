@@ -15,7 +15,7 @@ MonoBehaviour:
   modId: 2780901
   editableModProfile:
     status:
-      value: 0
+      value: 1
       isDirty: 0
     visibility:
       value: 1
@@ -27,12 +27,16 @@ MonoBehaviour:
       value: configurableterritorysize
       isDirty: 0
     summary:
-      value: Allows to change the average number of land tiles per territory in the
-        "new game" settings
-      isDirty: 0
+      value: 'Adds more options to the Land Territory Size new game option: 50, 60
+        and 70 tiles'
+      isDirty: 1
     descriptionAsHTML:
-      value: The mod adds a new option to the new game menu
-      isDirty: 0
+      value: 'The mod adds more options to the Land Territory Size new game option:
+        50, 60 and 70 tiles.
+
+        It used to add the new Territory Size dropdown,
+        but it''s part of the basegame now.'
+      isDirty: 1
     homepageURL:
       value: 
       isDirty: 0
@@ -49,12 +53,12 @@ MonoBehaviour:
       value:
       - key: RuntimeModuleGUID
         value: 6ea18d21117e4227ab89362cbdaa5695
-      isDirty: 0
+      isDirty: 1
     logoLocator:
       value:
-        fileName: Screenshot 2023-02-12 233659.png
-        url: C:/Users/xdans/Pictures/Screenshots/Screenshot 2023-02-12 233659.png
-      isDirty: 0
+        fileName: Screenshot 2023-04-28 134536.png
+        url: C:/Users/xdans/Pictures/Screenshots/Screenshot 2023-04-28 134536.png
+      isDirty: 1
     youTubeURLs:
       value: []
       isDirty: 0
@@ -63,6 +67,6 @@ MonoBehaviour:
       isDirty: 0
     galleryImageLocators:
       value:
-      - fileName: Screenshot_20230212_111636.png
-        url: C:/Users/xdans/Pictures/Screenshots/Screenshot_20230212_111636.png
-      isDirty: 0
+      - fileName: Screenshot 2023-04-28 134536.png
+        url: C:/Users/xdans/Pictures/Screenshots/Screenshot 2023-04-28 134536.png
+      isDirty: 1
