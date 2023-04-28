@@ -15,7 +15,7 @@ MonoBehaviour:
   modId: 2780901
   editableModProfile:
     status:
-      value: 0
+      value: 1
       isDirty: 0
     visibility:
       value: 1

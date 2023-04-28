@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Amplitude.Steamworks</name>
+    </assembly>
+    <members>
+        <member name="M:Amplitude.Steamworks.DigitalDistribution.SteamworksDigitalDistributionClient.AttachCrossplayInviteHandler(Amplitude.Framework.DigitalDistribution.DigitalPlatform,Amplitude.Framework.DigitalDistribution.IInviteHandler)">
+            <summary>
+            Attach a CrossPlay Invite Handler to forward the invitation accepted callback.
+            </summary>
+            <param name="digitalPlatform">The DigitalPlatform of the invitation handle.</param>
+            <param name="inviteHandler">The InviteHandler that will receive the invite from another platform than the build platform.</param>
+        </member>
+        <member name="M:Amplitude.Steamworks.DigitalDistribution.SteamworksDigitalDistributionClient.AttachMultiplayerInviteContext(Amplitude.Framework.Networking.NetworkIdentifier,Amplitude.Framework.Matchmaking.LobbyType)">
+            <summary>
+            Creates a multiplayer invite context for the specified lobby identifier (photon).
+            This will create a Steam lobby and then add a lobby data containing the photon lobby identifier; any player that joins the steam lobby can retrieve the photon lobby identifier and then join it. If there is already a MultiplayerInviteContext, it will use it.
+            </summary>
+            <param name="lobbyIdentifier">The photon lobby identifier to wrap in Steam's.</param>
+            <param name="lobbyType">The lobby privacy type.</param>
+        </member>
+        <member name="M:Amplitude.Steamworks.DigitalDistribution.SteamworksDigitalDistributionClient.DetachCrossplayInviteHandler(Amplitude.Framework.DigitalDistribution.DigitalPlatform)">
+            <summary>
+            Detach a CrossPlayInviteHandler that was receiving invitation to forward to the invitation service.
+            </summary>
+            <param name="digitalPlatform">The digital platform of the InviteHandler that will receive the invite from another platform than the build platform.</param>
+        </member>
+        <member name="M:Amplitude.Steamworks.DigitalDistribution.SteamworksDigitalDistributionClient.GetCrossplayInviteHandler(Amplitude.Framework.DigitalDistribution.DigitalPlatform)">
+            <summary>
+            Retrieve the invitation handler of the provided digital platform.
+            </summary>
+            <param name="digitalPlatform"> The digital platform of the InviteHandler that will receive the invite from another platform than the build platform.</param>
+            <returns> The invitation handler requested.</returns>
+        </member>
+        <member name="M:Amplitude.Steamworks.DigitalDistribution.SteamworksDigitalDistributionClient.ShowMultiplayerInviteOverlay(Amplitude.Framework.Networking.NetworkIdentifier)">
+            <summary>
+            Opens the steam invite overlay for the provided lobby identifier.
+            </summary>
+            <param name="lobbyIdentifier">The lobby identifier to open the invitation overlay for.
+            It can be either a valid Steam lobby we are a member of, or the photon lobby identifier that was bound already <see cref="M:Amplitude.Steamworks.DigitalDistribution.SteamworksDigitalDistributionClient.AttachMultiplayerInviteContext(Amplitude.Framework.Networking.NetworkIdentifier,Amplitude.Framework.Matchmaking.LobbyType)"/>.</param>
+        </member>
+        <member name="M:Amplitude.Steamworks.DigitalDistribution.SteamworksDigitalDistributionClient.TranslateSteamIDLobby(System.UInt64)">
+            <summary>
+            Creates a new TranslateSteamIDLobbyOperation, or returns the current one if it does match the provided <paramref name="steamIDLobby"/>.
+            This will read the steam lobby data 'LobbyIdentifier' to get the photon lobby identifier.
+            If the player is already member of the given <paramref name="steamIDLobby"/>, it will simply read the lobby data, otherwise, it shall request the steam lobby data and read the value once the callback is triggered.
+            </summary>
+            <param name="steamIDLobby">The Steam lobby identifier.</param>
+            <returns>Returns an async operation to keep track of the task's progression.</returns>
+        </member>
+        <member name="E:Amplitude.Steamworks.UGC.ISteamUGCService.SteamUGCRemoteStoragePublishedFileSubscribed">
+            <summary>In-game notifications can be received when a user has subscribed or unsubscribed from a file through any mechanism (e.g. ISteamUGC, Steam Workshop Portal).</summary>
+            <remarks>Event is raised regardless of the application's steam appid.</remarks>
+        </member>
+        <member name="E:Amplitude.Steamworks.UGC.ISteamUGCService.SteamUGCRemoteStoragePublishedFileUnsubscribed">
+            <summary>In-game notifications can be received when a user has subscribed or unsubscribed from a file through any mechanism (e.g. ISteamUGC, Steam Workshop Portal).</summary>
+            <remarks>Event is raised regardless of the application's steam appid.</remarks>
+        </member>
+        <member name="P:Amplitude.Steamworks.UGC.ISteamUGCService.PublishedFileId">
+            <summary>
+            Gets the last known published file id.
+            (set upon item creation).
+            </summary>
+        </member>
+        <member name="P:Amplitude.Steamworks.UGC.ISteamUGCService.SteamUGC">
+            <summary>
+            Gets the SteamUGC cached reference, for convenience.
+            </summary>
+        </member>
+        <member name="M:Amplitude.Steamworks.UGC.ISteamUGCService.CreateItem(System.UInt32,Amplitude.Steamworks.Interop.SteamRemoteStorage.EWorkshopFileType)">
+            <summary>
+            Creates a new workshop item.
+            (asynchronous method, listen for 'SteamUGCItemCreated' events).
+            </summary>
+            <param name="consumerApplicationId">Steam AppID of the game (content it's to be created for).</param>
+            <param name="workshopFileType">Of type 'k_EWorkshopFileTypeCommunity' for normal workshop items that can be subscribed to.</param>
+            <returns>Returns a SteamAPICall_t handle for tracking; returns zero when the call fails.</returns>
+        </member>
+        <member name="M:Amplitude.Steamworks.UGC.ISteamUGCService.RequestUGCDetails(System.UInt64[],System.UInt32)">
+            <summary>
+            Sends a query requesting some UGC details.
+            (asynchronous method, listen for 'SteamUGCQueryCompleted' events).
+            </summary>
+            <param name="publishedFileIDs">IDs of the published items.</param>
+            <param name="numPublishedFileIDs">Number of  IDs to check, starting from first one (1) to last (Length).</param>
+            <returns>Returns a SteamAPICall_t handle for tracking; returns zero when the call fails.</returns>
+        </member>
+        <member name="M:Amplitude.Steamworks.UGC.ISteamUGCService.SubmitItemUpdate(System.UInt64,System.String)">
+            <summary>
+            Submits an item update.
+            (asynchronous method, listen for 'SteamUGCItemUpdateSubmited' events).
+            </summary>
+            <param name="updateHandle">A 64-bit handle returned by 'SteamUGC.StartItemUpdate()'.</param>
+            <param name="changeNote">Some change notes.</param>
+            <returns>Returns a SteamAPICall_t handle for tracking; returns zero when the call fails.</returns>
+        </member>
+    </members>
+</doc>

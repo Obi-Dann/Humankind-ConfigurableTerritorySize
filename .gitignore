@@ -46,3 +46,9 @@ sysinfo.txt
 
 # Crashlytics generated file
 crashlytics-build.properties
+Assets/AssetBundles
+Distribution
+UserSettings
+.idea
+ProjectSettings/*.asset
+#!ProjectSettings/*.asset

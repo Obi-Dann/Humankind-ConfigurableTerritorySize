@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "com.spoiledcat.git": "1.0.12",
     "com.unity.assetbundlebrowser": "https://github.com/Unity-Technologies/AssetBundles-Browser.git",
     "com.unity.collab-proxy": "1.15.15",
     "com.unity.ide.rider": "3.0.13",
