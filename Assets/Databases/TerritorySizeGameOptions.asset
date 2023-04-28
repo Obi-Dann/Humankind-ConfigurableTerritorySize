@@ -1,18 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1746657617, guid: b310e23bee821cb478da05296ba685d0, type: 3}
-  m_Name: TerritorySizeGameOptions
-  m_EditorClassIdentifier: 
---- !u!114 &6581965895014352434
+--- !u!114 &-457346194166413718
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -22,27 +10,39 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -1457510912, guid: b310e23bee821cb478da05296ba685d0, type: 3}
-  m_Name: GameOption_TerritorySize
+  m_Name: GameOption_TerritoryLandSize
   m_EditorClassIdentifier: 
-  Default: 40
+  Default: Average
   PresetFallback: 
   States:
-  - Value: 30
+  - Value: Tiny
+    KeyValuePairs:
+    - Key: ExpectedRegionArea
+      Value: 25
+    Presets:
+      Items: []
+  - Value: Small
     KeyValuePairs:
     - Key: ExpectedRegionArea
       Value: 30
     Presets:
       Items: []
-  - Value: 35
+  - Value: Average
     KeyValuePairs:
     - Key: ExpectedRegionArea
       Value: 35
     Presets:
       Items: []
-  - Value: 40
+  - Value: Big
     KeyValuePairs:
     - Key: ExpectedRegionArea
       Value: 40
+    Presets:
+      Items: []
+  - Value: Huge
+    KeyValuePairs:
+    - Key: ExpectedRegionArea
+      Value: 45
     Presets:
       Items: []
   - Value: 50
@@ -63,8 +63,24 @@ MonoBehaviour:
       Value: 70
     Presets:
       Items: []
+  - Value: Random
+    KeyValuePairs: []
+    Presets:
+      Items: []
   Constraints: []
-  CanBeRandomized: 0
-  RandomState: 
+  CanBeRandomized: 1
+  RandomState: Random
   IsEditableInGame: 0
-  Key: 0
+  Key: 46
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1746657617, guid: b310e23bee821cb478da05296ba685d0, type: 3}
+  m_Name: TerritorySizeGameOptions
+  m_EditorClassIdentifier: 

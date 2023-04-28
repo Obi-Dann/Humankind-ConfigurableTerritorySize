@@ -25,42 +25,45 @@ namespace Editor
             public string Description { get; } = Description;
         }
 
-        static readonly Option[] OptionValues =
+        static readonly Option[] AdditionalOptionValues =
         {
-            new Option(30, "Extra Small (30 tiles)",
-                "The average number of land tiles per territory will be set to 30 tiles. It may be difficult to find large enough territories for some of the end-game projects"),
-            new Option(35, "Small (35 tiles)",
-                "The average number of land tiles per territory will be set to 35 tiles. It may be difficult to find large enough territories for some of the end-game projects"),
-            new Option(40, "Standard (40 tiles)", "The default territory size in Humankind"),
-            new Option(50, "Large (50 tiles)",
-                $"The average number of land tiles per territory will be set to 50 tiles"),
-            new Option(60, "Extra Large (60 tiles)",
-                $"The average number of land tiles per territory will be set to 60 tiles"),
-            new Option(70, "Huge (70 tiles)",
-                $"The average number of land tiles per territory will be set to 70 tiles"),
+            new Option(50, "50 tiles",
+                $"Continental Territories have 50 land tiles on average."),
+            new Option(60, "60 tiles",
+                $"Continental Territories have 60 land tiles on average."),
+            new Option(70, "70 tiles",
+                $"Continental Territories have 70 land tiles on average."),
         };
 
         [MenuItem("Humankind MOD/Generate Territory Size Options")]
         public static void CreateRuntimeModule()
         {
-            CreateGameOption();
-            CreateUIMapper();
-            CreateLocalizedStrings();
+            var gameOption = CreateGameOption();
+            CreateLocalizedStrings(gameOption);
 
             AssetDatabase.SaveAssets();
         }
 
-        static void CreateGameOption()
+        static GameOptionDefinition CreateGameOption()
         {
             var collection = ScriptableObject.CreateInstance<GameOptionDefinitionCollection>();
             AssetDatabase.CreateAsset(collection,
                 "Assets/Databases/TerritorySizeGameOptions.asset");
 
-            var gameOptionDefinition =
-                collection.CreateDatatableElement<GameOptionDefinition>("GameOption_TerritorySize");
+            var originalGameOptionDefinition = GetOriginalTerritorySizeGameOption();
 
-            gameOptionDefinition.Default = $"{defaultValue}";
-            gameOptionDefinition.States = OptionValues.Select(x =>
+            var gameOptionDefinition = collection.CreateDatatableElement<GameOptionDefinition>();
+            gameOptionDefinition.Reset(originalGameOptionDefinition);
+            var originalOptions = gameOptionDefinition.States.ToList();
+
+            var insertAt = originalOptions.FindIndex(x => string.Equals("Random", x.Value));
+            if (insertAt < 0)
+            {
+                // let's just inject at the end
+                insertAt = originalOptions.Count;
+            }
+            
+            originalOptions.InsertRange(insertAt, AdditionalOptionValues.Select(x =>
             {
                 var state = new OptionState
                 {
@@ -76,56 +79,36 @@ namespace Editor
                 };
 
                 return state;
-            }).ToArray();
+            }));
+            
+            gameOptionDefinition.States = originalOptions.ToArray();
 
             EditorUtility.SetDirty(collection);
+            return gameOptionDefinition;
         }
 
-        static void CreateUIMapper()
-        {
-            var collection = ScriptableObject.CreateInstance<UIMappersCollection>();
-            AssetDatabase.CreateAsset(collection,
-                "Assets/Databases/TerritorySizeUIMappers.asset");
-
-            var gameOptionUIMapper = collection.CreateDatatableElement<OptionUIMapper>("GameOption_TerritorySize");
-
-            gameOptionUIMapper.Title = "%OptionRegionSizeTitle";
-            gameOptionUIMapper.Description = "%OptionRegionSizeDescription";
-            gameOptionUIMapper.ControlType = UIControlType.DropList;
-
-            var originalOptionsGroupUIMapper = GetOriginalOptionsGroupUIMapper();
-            if (originalOptionsGroupUIMapper != null)
-            {
-                var modifiedOptionsGroupUIMapper = (OptionsGroupUIMapper)originalOptionsGroupUIMapper.Clone();
-                InjectGameOption(modifiedOptionsGroupUIMapper);
-                AssetDatabase.AddObjectToAsset(modifiedOptionsGroupUIMapper, collection);
-                EditorUtility.SetDirty(modifiedOptionsGroupUIMapper);
-            }
-
-            EditorUtility.SetDirty(collection);
-            EditorUtility.SetDirty(gameOptionUIMapper);
-        }
-
-        static void CreateLocalizedStrings()
+        static void CreateLocalizedStrings(GameOptionDefinition gameOption)
         {
             var collection1 = ScriptableObject.CreateInstance<LocalizedStringTranslationCollection>();
             collection1.LanguageCode = "en-US";
+            var gameOptionName = gameOption.name;
 
-            foreach (var option in OptionValues)
+            foreach (var option in AdditionalOptionValues)
             {
                 collection1.Translations.Add(new LocalizedStringTranslation
                 {
                     LocalizationLine = new NonProcessedLocalizationString
                     {
-                        Id = $"%GameOption_TerritorySize{option.Value}Title",
+                        Id = $"%{gameOptionName}{option.Value}Title",
                         Body = option.Name
                     },
                     LocalizationState = LocalizationState.Translated
-                }); collection1.Translations.Add(new LocalizedStringTranslation
+                });
+                collection1.Translations.Add(new LocalizedStringTranslation
                 {
                     LocalizationLine = new NonProcessedLocalizationString
                     {
-                        Id = $"%GameOption_TerritorySize{option.Value}Description",
+                        Id = $"%{gameOptionName}{option.Value}Description",
                         Body = option.Description
                     },
                     LocalizationState = LocalizationState.Translated
@@ -133,13 +116,13 @@ namespace Editor
             }
 
             AssetDatabase.CreateAsset(collection1, "Assets/Localization/Translations/Translations.asset");
-        
+
             collection1.Initialize();
-            
+
             LocalizationUtils.GenerateRuntime();
         }
 
-        static OptionsGroupUIMapper GetOriginalOptionsGroupUIMapper()
+        static GameOptionDefinition GetOriginalTerritorySizeGameOption()
         {
             var allLoaded = AssetBundle.GetAllLoadedAssetBundles();
 
@@ -156,36 +139,24 @@ namespace Editor
             }
 
             var assetBundle = (Amplitude.Framework.Asset.AssetBundle)assetProvider;
-            if (!assetBundle.TryGetGuidFromAssetPath("Assets/Databases/Option/GameOptionGroupUIMappers.asset",
+            if (!assetBundle.TryGetGuidFromAssetPath("Assets/Databases/Option/GameOptionDefinition.asset",
                     out var assetGuid))
             {
-                Debug.LogError("Could not find a GUID for GameOptionGroupUIMappers.asset");
+                Debug.LogError("Could not find a GUID for GameOptionDefinition.asset");
             }
 
-            var optionsGroupUIMappers = assetBundle.FetchAllSubAssetsOfType<OptionsGroupUIMapper>(assetGuid);
+            var gameOptionDefinitions = assetBundle.FetchAllSubAssetsOfType<GameOptionDefinition>(assetGuid);
 
-            var lobbyWorldOptionsMapper = (OptionsGroupUIMapper)optionsGroupUIMappers
-                .FirstOrDefault(x => x.name == "GameOptionGroup_LobbyWorldOptions");
+            var territorySizeGameOption = (GameOptionDefinition)gameOptionDefinitions
+                .FirstOrDefault(x => x.name == "GameOption_TerritoryLandSize");
 
-            if (lobbyWorldOptionsMapper == null)
+            if (territorySizeGameOption == null)
             {
-                Debug.LogError("Could not find GameOptionGroup_LobbyWorldOptions OptionsGRoupUIMapper");
+                Debug.LogError("Could not find GameOption_TerritoryLandSize GameOptionDefinition");
                 return null;
             }
 
-            return lobbyWorldOptionsMapper;
-        }
-
-        static void InjectGameOption(OptionsGroupUIMapper optionsGroupUIMapper)
-        {
-            var optionNamesField =
-                typeof(OptionsGroupUIMapper).GetField("optionsName", BindingFlags.Instance | BindingFlags.NonPublic);
-
-            var optionsList = ((string[])optionNamesField.GetValue(optionsGroupUIMapper)).ToList();
-
-            optionsList.Insert(optionsList.IndexOf("GameOption_Elevation") + 1, "GameOption_TerritorySize");
-            optionNamesField.SetValue(optionsGroupUIMapper, optionsList.ToArray());
-            optionsGroupUIMapper.Initialize();
+            return territorySizeGameOption;
         }
     }
 }

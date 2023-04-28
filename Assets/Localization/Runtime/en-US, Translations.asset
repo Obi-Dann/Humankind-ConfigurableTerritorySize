@@ -15,139 +15,66 @@ MonoBehaviour:
   LanguageId: en-US
   AffixTagMask: 224
   lineCollection:
-  - LineId: '%GameOption_TerritorySize30Title'
+  - LineId: '%GameOption_TerritoryLandSize50Title'
     NodeIndexes: 00000000
     CompactedNodes:
     - Id: 1
-      TextValue: Extra Small (30 tiles)
+      TextValue: 50 tiles
       ParameterIndex: 0
       VariationIndex: 0
       Mask: 0
       ChildIndexes: 
     TagCodes: 00000000
     LocalizedStringElementFlag: 0
-  - LineId: '%GameOption_TerritorySize30Description'
+  - LineId: '%GameOption_TerritoryLandSize50Description'
     NodeIndexes: 00000000
     CompactedNodes:
     - Id: 1
-      TextValue: The average number of land tiles per territory will be set to 30
-        tiles. It may be difficult to find large enough territories for some of the
-        end-game projects
+      TextValue: Continental Territories have 50 land tiles on average.
       ParameterIndex: 0
       VariationIndex: 0
       Mask: 0
       ChildIndexes: 
     TagCodes: 00000000
     LocalizedStringElementFlag: 0
-  - LineId: '%GameOption_TerritorySize35Title'
+  - LineId: '%GameOption_TerritoryLandSize60Title'
     NodeIndexes: 00000000
     CompactedNodes:
     - Id: 1
-      TextValue: Small (35 tiles)
+      TextValue: 60 tiles
       ParameterIndex: 0
       VariationIndex: 0
       Mask: 0
       ChildIndexes: 
     TagCodes: 00000000
     LocalizedStringElementFlag: 0
-  - LineId: '%GameOption_TerritorySize35Description'
+  - LineId: '%GameOption_TerritoryLandSize60Description'
     NodeIndexes: 00000000
     CompactedNodes:
     - Id: 1
-      TextValue: The average number of land tiles per territory will be set to 35
-        tiles. It may be difficult to find large enough territories for some of the
-        end-game projects
+      TextValue: Continental Territories have 60 land tiles on average.
       ParameterIndex: 0
       VariationIndex: 0
       Mask: 0
       ChildIndexes: 
     TagCodes: 00000000
     LocalizedStringElementFlag: 0
-  - LineId: '%GameOption_TerritorySize40Title'
+  - LineId: '%GameOption_TerritoryLandSize70Title'
     NodeIndexes: 00000000
     CompactedNodes:
     - Id: 1
-      TextValue: Standard (40 tiles)
+      TextValue: 70 tiles
       ParameterIndex: 0
       VariationIndex: 0
       Mask: 0
       ChildIndexes: 
     TagCodes: 00000000
     LocalizedStringElementFlag: 0
-  - LineId: '%GameOption_TerritorySize40Description'
+  - LineId: '%GameOption_TerritoryLandSize70Description'
     NodeIndexes: 00000000
     CompactedNodes:
     - Id: 1
-      TextValue: The default territory size in Humankind
-      ParameterIndex: 0
-      VariationIndex: 0
-      Mask: 0
-      ChildIndexes: 
-    TagCodes: 00000000
-    LocalizedStringElementFlag: 0
-  - LineId: '%GameOption_TerritorySize50Title'
-    NodeIndexes: 00000000
-    CompactedNodes:
-    - Id: 1
-      TextValue: Large (50 tiles)
-      ParameterIndex: 0
-      VariationIndex: 0
-      Mask: 0
-      ChildIndexes: 
-    TagCodes: 00000000
-    LocalizedStringElementFlag: 0
-  - LineId: '%GameOption_TerritorySize50Description'
-    NodeIndexes: 00000000
-    CompactedNodes:
-    - Id: 1
-      TextValue: The average number of land tiles per territory will be set to 50
-        tiles
-      ParameterIndex: 0
-      VariationIndex: 0
-      Mask: 0
-      ChildIndexes: 
-    TagCodes: 00000000
-    LocalizedStringElementFlag: 0
-  - LineId: '%GameOption_TerritorySize60Title'
-    NodeIndexes: 00000000
-    CompactedNodes:
-    - Id: 1
-      TextValue: Extra Large (60 tiles)
-      ParameterIndex: 0
-      VariationIndex: 0
-      Mask: 0
-      ChildIndexes: 
-    TagCodes: 00000000
-    LocalizedStringElementFlag: 0
-  - LineId: '%GameOption_TerritorySize60Description'
-    NodeIndexes: 00000000
-    CompactedNodes:
-    - Id: 1
-      TextValue: The average number of land tiles per territory will be set to 60
-        tiles
-      ParameterIndex: 0
-      VariationIndex: 0
-      Mask: 0
-      ChildIndexes: 
-    TagCodes: 00000000
-    LocalizedStringElementFlag: 0
-  - LineId: '%GameOption_TerritorySize70Title'
-    NodeIndexes: 00000000
-    CompactedNodes:
-    - Id: 1
-      TextValue: Huge (70 tiles)
-      ParameterIndex: 0
-      VariationIndex: 0
-      Mask: 0
-      ChildIndexes: 
-    TagCodes: 00000000
-    LocalizedStringElementFlag: 0
-  - LineId: '%GameOption_TerritorySize70Description'
-    NodeIndexes: 00000000
-    CompactedNodes:
-    - Id: 1
-      TextValue: The average number of land tiles per territory will be set to 70
-        tiles
+      TextValue: Continental Territories have 70 land tiles on average.
       ParameterIndex: 0
       VariationIndex: 0
       Mask: 0
